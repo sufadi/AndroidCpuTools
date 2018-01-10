@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CPU Tools</string>
+    <string name="cpu_freq">CPU Freq</string>
+</resources>
