@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvInfo = (TextView) findViewById(R.id.tv_info);
         btnFreq = (Button) findViewById(R.id.btn_freq);
 
-        tvInfo.setText(CpuUtils.getCpuName());
+        tvInfo.setText("NumCpuCores = " + CpuUtils.getNumCpuCores());
     }
 
     private void initValues() {
