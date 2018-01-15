@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.fadisu.cpurun.util.CpuUtils;
+import com.fadisu.cpurun.util.ReadCpuProcFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_freq:
                 updateCpuFreq();
+
+                ReadCpuProcFile.getTotalCpuTime();
+
+                CpuUtils.isCPU64();
 
                 mHandle.sendEmptyMessage(UPDATE_UI);
                 break;
