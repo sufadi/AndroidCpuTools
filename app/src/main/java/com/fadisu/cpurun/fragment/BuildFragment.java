@@ -56,7 +56,6 @@ public class BuildFragment extends Fragment implements CustomAdapter.LayoutView{
         initViews();
         initValues();
         initListeners();
-        startTask();
         return mView;
     }
 
@@ -65,9 +64,6 @@ public class BuildFragment extends Fragment implements CustomAdapter.LayoutView{
     }
 
     private void initValues() {
-        mCustomAdapter = new CustomAdapter<String>(result);
-        mListView.setAdapter(mCustomAdapter);
-
         result = new ArrayList<String>();
         result.add("手机制造商:" + BuildHelper.getProduct());
         result.add("系统定制商:" + BuildHelper.getBrand());
@@ -76,20 +72,15 @@ public class BuildFragment extends Fragment implements CustomAdapter.LayoutView{
         result.add("型号:" + BuildHelper.getMode());
         result.add("Android 系统版本:" + BuildHelper.getAndroidVersion());
         result.add("CPU 指令集:" + BuildHelper.getCpuAbi());
+        result.addAll(BuildHelper.getAllBuildInformation());
+
+        mCustomAdapter = new CustomAdapter<String>(result);
+        mListView.setAdapter(mCustomAdapter);
+        mHandler.sendEmptyMessage(UPDATE_UI);
     }
 
     private void initListeners() {
         mCustomAdapter.setLayoutView(this);
-    }
-
-    private void startTask() {
-        new  Thread(new Runnable() {
-            @Override
-            public void run() {
-                result.addAll(BuildHelper.getAllBuildInformation());
-                mHandler.sendEmptyMessage(UPDATE_UI);
-            }
-        }).start();
     }
 
     class ViewHolder {

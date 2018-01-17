@@ -10,17 +10,20 @@ import android.widget.RadioButton;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.fragment.BuildFragment;
+import com.fadisu.cpurun.fragment.MoreFragment;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private static String currentFragmentTag = "";
+    private static String currentFragmentTag;
 
     private Fragment mBuildFragment;
+    private Fragment mMoreFragmen;
     private FragmentManager mFragmentManager;
 
-    private RadioButton mBuildInfoRb, mMoreRb;
+    private RadioButton mMoreRb;
+    private RadioButton mBuildInfoRb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void initValues() {
+        currentFragmentTag = MainActivity.class.getSimpleName();
+
         mBuildFragment = new BuildFragment();
+        mMoreFragmen = new MoreFragment();
         mFragmentManager = getSupportFragmentManager();
 
         changeFrament(mBuildFragment, null, BuildFragment.class.getSimpleName());
@@ -78,6 +84,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 changeFrament(mBuildFragment, null, BuildFragment.class.getSimpleName());
                 break;
             case R.id.rb_more:
+                changeFrament(mMoreFragmen, null, MoreFragment.class.getSimpleName());
                 break;
         }
     }
