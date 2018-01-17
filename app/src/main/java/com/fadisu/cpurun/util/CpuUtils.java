@@ -18,10 +18,10 @@ public class CpuUtils {
 
     private static final String TAG = CpuUtils.class.getSimpleName();
 
-    public static boolean isCPU64(){
+    public static boolean isCPU64() {
         boolean result = false;
         String mProcessor = null;
-        List<String > list = null;
+        List<String> list = null;
         try {
             mProcessor = getFieldFromCpuinfo("Processor");
         } catch (IOException e) {
@@ -98,7 +98,7 @@ public class CpuUtils {
     /**
      * Gets the number of cores available in this device, across all processors.
      * Requires: Ability to peruse the filesystem at "/sys/devices/system/cpu"
-     * <p>
+     * <p/>
      * Source: http://stackoverflow.com/questions/7962155/
      *
      * @return The number of cores, or 1 if failed to get result

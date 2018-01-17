@@ -4,11 +4,12 @@
 
     <application
         android:allowBackup="true"
+        android:name="com.fadisu.cpurun.MyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.fadisu.cpurun.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

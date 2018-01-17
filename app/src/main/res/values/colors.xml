@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!-- 透明 -->
+    <color name="transparent">#00000000</color>
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+
+    <!-- 标题背景颜色 -->
+    <color name="title_bg">#205b96</color>
+    <!-- 标题菜单选中背景颜色 -->
+    <color name="title_selected_bg">#13375b</color>
+    <!-- 标题分隔线颜色 -->
+    <color name="title_divider_bg">#2c495d</color>
 </resources>

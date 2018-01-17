@@ -2,4 +2,29 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 字体类型(便于管理) -->
+    <dimen name="text_size_10SP">10.0sp</dimen>
+    <dimen name="text_size_11SP">11.0sp</dimen>
+    <dimen name="text_size_12SP">12.0sp</dimen>
+    <dimen name="text_size_13SP">13.0sp</dimen>
+    <dimen name="text_size_14SP">14.0sp</dimen>
+    <dimen name="text_size_15SP">15.0sp</dimen>
+    <dimen name="text_size_16SP">16.0sp</dimen>
+    <dimen name="text_size_17SP">17.0sp</dimen>
+    <dimen name="text_size_18SP">18.0sp</dimen>
+    <dimen name="text_size_19SP">19.0sp</dimen>
+    <dimen name="text_size_20SP">20.0sp</dimen>
+    <dimen name="text_size_21SP">21.0sp</dimen>
+    <dimen name="text_size_22SP">22.0sp</dimen>
+    <dimen name="text_size_23SP">23.0sp</dimen>
+    <dimen name="text_size_24SP">24.0sp</dimen>
+    <dimen name="text_size_25SP">25.0sp</dimen>
+    <dimen name="text_size_26SP">26.0sp</dimen>
+    <dimen name="text_size_27SP">27.0sp</dimen>
+    <dimen name="text_size_28SP">28.0sp</dimen>
+    <dimen name="text_size_29SP">29.0sp</dimen>
+    <dimen name="text_size_30SP">30.0sp</dimen>
+
+    <dimen name="item_height_list">64dp</dimen>
 </resources>

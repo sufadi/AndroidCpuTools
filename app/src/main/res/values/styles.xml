@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 首页RadioButton -->
+    <style name="main_title_radio">
+        <item name="android:gravity">bottom|center</item>
+        <item name="android:paddingTop">10.0dip</item>
+        <item name="android:paddingBottom">2.0dip</item>
+        <item name="android:paddingLeft">10.0dip</item>
+        <item name="android:paddingRight">10.0dip</item>
+        <item name="android:background">@drawable/title_selector</item>
+        <item name="android:drawablePadding">3dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

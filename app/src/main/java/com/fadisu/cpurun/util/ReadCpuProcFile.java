@@ -22,7 +22,7 @@ public class ReadCpuProcFile {
             Process.PROC_SPACE_TERM | Process.PROC_OUT_LONG  // 7: softirq time
     };
 
-    private static long mTotalCpuTime ;
+    private static long mTotalCpuTime;
     private static long mUserStart;
     private static long mSystemStart;
     private static long mIdleStart;

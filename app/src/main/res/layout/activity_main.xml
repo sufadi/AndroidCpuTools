@@ -1,24 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="com.fadisu.cpurun.MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_freq"
+    <HorizontalScrollView
+        android:id="@+id/main_title_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cpu_freq" />
+        android:background="@color/title_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_build_info"
+                    style="@style/main_title_radio"
+                    android:checked="true"
+                    android:text="@string/title_build" />
+
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="match_parent"
+                    android:background="@color/title_divider_bg" />
+
+                <RadioButton
+                    android:id="@+id/rb_more"
+                    style="@style/main_title_radio"
+                    android:text="@string/title_more" />
+            </RadioGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/main_fragment_root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
 
 </LinearLayout>
