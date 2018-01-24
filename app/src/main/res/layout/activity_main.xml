@@ -21,9 +21,19 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rb_build_info"
+                    android:id="@+id/rb_base_info"
                     style="@style/main_title_radio"
                     android:checked="true"
+                    android:text="@string/title_base_info" />
+
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="match_parent"
+                    android:background="@color/title_divider_bg" />
+
+                <RadioButton
+                    android:id="@+id/rb_build_info"
+                    style="@style/main_title_radio"
                     android:text="@string/title_build" />
 
                 <View

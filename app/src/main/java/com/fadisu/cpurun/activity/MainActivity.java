@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import com.fadisu.cpurun.R;
+import com.fadisu.cpurun.fragment.BaseInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
 import com.fadisu.cpurun.fragment.MoreFragment;
 
@@ -18,10 +19,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private static String currentFragmentTag;
 
-    private Fragment mBuildFragment;
     private Fragment mMoreFragmen;
+    private Fragment mBuildFragment;
+    private Fragment mBaseInfoFragment;
     private FragmentManager mFragmentManager;
 
+    private RadioButton mBaseRb;
     private RadioButton mMoreRb;
     private RadioButton mBuildInfoRb;
 
@@ -35,22 +38,31 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initLisener();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     private void initViews() {
         mMoreRb = (RadioButton) findViewById(R.id.rb_more);
+        mBaseRb = (RadioButton) findViewById(R.id.rb_base_info);
         mBuildInfoRb = (RadioButton) findViewById(R.id.rb_build_info);
     }
 
     private void initValues() {
         currentFragmentTag = MainActivity.class.getSimpleName();
 
-        mBuildFragment = new BuildFragment();
         mMoreFragmen = new MoreFragment();
+        mBuildFragment = new BuildFragment();
+        mBaseInfoFragment = new BaseInfoFragment();
         mFragmentManager = getSupportFragmentManager();
 
-        changeFrament(mBuildFragment, null, BuildFragment.class.getSimpleName());
+        changeFrament(mBaseInfoFragment, null, BaseInfoFragment.class.getSimpleName());
     }
 
     private void initLisener() {
+        mBaseRb.setOnClickListener(this);
         mMoreRb.setOnClickListener(this);
         mBuildInfoRb.setOnClickListener(this);
     }
@@ -80,6 +92,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.rb_base_info:
+                changeFrament(mBaseInfoFragment, null, BaseInfoFragment.class.getSimpleName());
+                break;
             case R.id.rb_build_info:
                 changeFrament(mBuildFragment, null, BuildFragment.class.getSimpleName());
                 break;
