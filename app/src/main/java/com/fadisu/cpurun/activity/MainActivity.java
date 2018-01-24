@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.fragment.BaseInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
+import com.fadisu.cpurun.fragment.CpuInfoFragment;
 import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
 import com.fadisu.cpurun.fragment.MoreFragment;
 
@@ -22,12 +23,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private Fragment mMoreFragmen;
     private Fragment mBuildFragment;
+    private Fragment mCpuInfoFragment;
     private Fragment mBaseInfoFragment;
     private Fragment mCpuRunTimeFragment;
     private FragmentManager mFragmentManager;
 
     private RadioButton mBaseRb;
     private RadioButton mMoreRb;
+    private RadioButton mCpuInfo;
     private RadioButton mCpuTimeRb;
     private RadioButton mBuildInfoRb;
 
@@ -50,6 +53,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void initViews() {
         mMoreRb = (RadioButton) findViewById(R.id.rb_more);
         mBaseRb = (RadioButton) findViewById(R.id.rb_base_info);
+        mCpuInfo = (RadioButton) findViewById(R.id.rb_cpu_info);
         mCpuTimeRb = (RadioButton) findViewById(R.id.rb_cpu_time);
         mBuildInfoRb = (RadioButton) findViewById(R.id.rb_build_info);
     }
@@ -59,6 +63,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         mMoreFragmen = new MoreFragment();
         mBuildFragment = new BuildFragment();
+        mCpuInfoFragment = new CpuInfoFragment();
         mBaseInfoFragment = new BaseInfoFragment();
         mCpuRunTimeFragment = new CpuRunTimeFragment();
         mFragmentManager = getSupportFragmentManager();
@@ -69,6 +74,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void initLisener() {
         mBaseRb.setOnClickListener(this);
         mMoreRb.setOnClickListener(this);
+        mCpuInfo.setOnClickListener(this);
         mCpuTimeRb.setOnClickListener(this);
         mBuildInfoRb.setOnClickListener(this);
     }
@@ -103,6 +109,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.rb_cpu_time:
                 changeFrament(mCpuRunTimeFragment, null, CpuRunTimeFragment.class.getSimpleName());
+                break;
+            case R.id.rb_cpu_info:
+                changeFrament(mCpuInfoFragment, null, CpuInfoFragment.class.getSimpleName());
                 break;
             case R.id.rb_build_info:
                 changeFrament(mBuildFragment, null, BuildFragment.class.getSimpleName());

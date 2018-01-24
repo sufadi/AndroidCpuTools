@@ -5,5 +5,6 @@
     <string name="title_base_info">基本信息</string>
     <string name="title_cpu_time">CPU 运行时间</string>
     <string name="title_build">Build信息</string>
+    <string name="title_cpu_info">CPU Info</string>
     <string name="title_more">更多</string>
 </resources>

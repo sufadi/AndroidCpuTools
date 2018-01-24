@@ -13,14 +13,14 @@ import android.widget.TextView;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
-import com.fadisu.cpurun.util.BuildHelper;
 import com.fadisu.cpurun.util.ProcCpuInfo;
+import com.fadisu.cpurun.util.ProcCpuStatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutView {
+public class CpuInfoFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 
@@ -65,16 +65,7 @@ public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutVi
     }
 
     private void initValues() {
-        result = new ArrayList<String>();
-        result.add("手机制造商:" + BuildHelper.getProduct());
-        result.add("系统定制商:" + BuildHelper.getBrand());
-        result.add("硬件制造商:" + BuildHelper.getManufacturer());
-        result.add("硬件名称:" + BuildHelper.getHardWare());
-        result.add("型号:" + BuildHelper.getMode());
-        result.add("Android 系统版本:" + BuildHelper.getAndroidVersion());
-        result.add("CPU 指令集:" + BuildHelper.getCpuAbi());
-        result.add("Processor:" + ProcCpuInfo.getProcessor());
-
+        result = ProcCpuInfo.getCpuInfo();
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);

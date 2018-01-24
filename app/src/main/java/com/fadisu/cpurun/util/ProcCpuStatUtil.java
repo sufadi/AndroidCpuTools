@@ -1,19 +1,18 @@
 package com.fadisu.cpurun.util;
 
 import android.os.Process;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CpuProcStatUtil analysis
+ * ProcCpuStatUtil analysis
  */
-public class CpuProcStatUtil {
+public class ProcCpuStatUtil {
 
-    private static final String TAG = CpuProcStatUtil.class.getSimpleName();
+    private static final String TAG = ProcCpuStatUtil.class.getSimpleName();
 
-    // CpuProcStatUtil probe
+    // ProcCpuStatUtil probe
     private static final int[] SYSTEM_CPU_FORMAT = new int[]{
             Process.PROC_SPACE_TERM | Process.PROC_COMBINE,
             Process.PROC_SPACE_TERM | Process.PROC_OUT_LONG, // 1: user time

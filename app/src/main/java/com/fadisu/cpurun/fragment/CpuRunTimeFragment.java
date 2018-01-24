@@ -13,8 +13,7 @@ import android.widget.TextView;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
-import com.fadisu.cpurun.util.BuildHelper;
-import com.fadisu.cpurun.util.CpuProcStatUtil;
+import com.fadisu.cpurun.util.ProcCpuStatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +64,7 @@ public class CpuRunTimeFragment extends Fragment implements CustomAdapter.Layout
     }
 
     private void initValues() {
-        result = CpuProcStatUtil.getCpuTime();
+        result = ProcCpuStatUtil.getCpuTime();
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);
