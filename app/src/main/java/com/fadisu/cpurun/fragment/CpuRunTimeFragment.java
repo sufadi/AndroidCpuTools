@@ -14,12 +14,13 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.BuildHelper;
+import com.fadisu.cpurun.util.CpuProcStatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class BuildFragment extends Fragment implements CustomAdapter.LayoutView {
+public class CpuRunTimeFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 
@@ -64,9 +65,7 @@ public class BuildFragment extends Fragment implements CustomAdapter.LayoutView 
     }
 
     private void initValues() {
-        result = new ArrayList<String>();
-        result.addAll(BuildHelper.getAllBuildInformation());
-
+        result = CpuProcStatUtil.getCpuTime();
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);

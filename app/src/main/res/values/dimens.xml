@@ -26,5 +26,6 @@
     <dimen name="text_size_29SP">29.0sp</dimen>
     <dimen name="text_size_30SP">30.0sp</dimen>
 
+    <dimen name="title_height_list">32dp</dimen>
     <dimen name="item_height_list">64dp</dimen>
 </resources>

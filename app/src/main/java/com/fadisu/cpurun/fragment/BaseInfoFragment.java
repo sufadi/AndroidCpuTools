@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutView{
+public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 

@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.fragment.BaseInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
+import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
 import com.fadisu.cpurun.fragment.MoreFragment;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -22,10 +23,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Fragment mMoreFragmen;
     private Fragment mBuildFragment;
     private Fragment mBaseInfoFragment;
+    private Fragment mCpuRunTimeFragment;
     private FragmentManager mFragmentManager;
 
     private RadioButton mBaseRb;
     private RadioButton mMoreRb;
+    private RadioButton mCpuTimeRb;
     private RadioButton mBuildInfoRb;
 
     @Override
@@ -47,6 +50,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void initViews() {
         mMoreRb = (RadioButton) findViewById(R.id.rb_more);
         mBaseRb = (RadioButton) findViewById(R.id.rb_base_info);
+        mCpuTimeRb = (RadioButton) findViewById(R.id.rb_cpu_time);
         mBuildInfoRb = (RadioButton) findViewById(R.id.rb_build_info);
     }
 
@@ -56,6 +60,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mMoreFragmen = new MoreFragment();
         mBuildFragment = new BuildFragment();
         mBaseInfoFragment = new BaseInfoFragment();
+        mCpuRunTimeFragment = new CpuRunTimeFragment();
         mFragmentManager = getSupportFragmentManager();
 
         changeFrament(mBaseInfoFragment, null, BaseInfoFragment.class.getSimpleName());
@@ -64,13 +69,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void initLisener() {
         mBaseRb.setOnClickListener(this);
         mMoreRb.setOnClickListener(this);
+        mCpuTimeRb.setOnClickListener(this);
         mBuildInfoRb.setOnClickListener(this);
     }
 
 
     /**
      * 设置显示的页面
-     *
+     * <p/>
      * fragment传入点击的按钮对应的Fragment对象
      * bundle参数
      * tag标识符
@@ -91,9 +97,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.rb_base_info:
                 changeFrament(mBaseInfoFragment, null, BaseInfoFragment.class.getSimpleName());
+                break;
+            case R.id.rb_cpu_time:
+                changeFrament(mCpuRunTimeFragment, null, CpuRunTimeFragment.class.getSimpleName());
                 break;
             case R.id.rb_build_info:
                 changeFrament(mBuildFragment, null, BuildFragment.class.getSimpleName());
