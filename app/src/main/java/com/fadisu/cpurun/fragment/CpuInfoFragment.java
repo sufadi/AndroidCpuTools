@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.ProcCpuInfo;
-import com.fadisu.cpurun.util.ProcCpuStatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +52,7 @@ public class CpuInfoFragment extends Fragment implements CustomAdapter.LayoutVie
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_build_info, container, false);
+        mView = inflater.inflate(R.layout.fragment_base, container, false);
         initViews();
         initValues();
         initListeners();
@@ -83,7 +82,7 @@ public class CpuInfoFragment extends Fragment implements CustomAdapter.LayoutVie
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_build_info, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_base, null);
             holder = new ViewHolder();
             convertView.setTag(holder);
 
