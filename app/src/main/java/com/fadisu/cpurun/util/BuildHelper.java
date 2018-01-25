@@ -100,9 +100,16 @@ public class BuildHelper {
         return Build.MANUFACTURER;
     }
 
-    // 硬件名称
+    // 平台信息
     public static String getHardWare() {
-        return Build.HARDWARE;
+        String result = Build.HARDWARE;
+        if (result.matches("qcom")) {
+            Log.d(TAG, "Qualcomm platform");
+            result = "高通平台(Qualcomm) - " + result;
+        } else if (result.matches("mt[0-9]*")) {
+            result = "MTK平台(MediaTek) - " + result;
+        }
+        return result;
     }
 
     // 型号

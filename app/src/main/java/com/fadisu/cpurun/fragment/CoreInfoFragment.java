@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutView {
+public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 
@@ -29,6 +29,7 @@ public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutVi
     private CustomAdapter<String> mCustomAdapter;
 
     private View mView;
+    private TextView mInfoTv;
     private ListView mListView;
 
     private Handler mHandler = new Handler() {
@@ -53,7 +54,7 @@ public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutVi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_base, container, false);
+        mView = inflater.inflate(R.layout.fragment_core, container, false);
         initViews();
         initValues();
         initListeners();
@@ -61,15 +62,18 @@ public class BaseInfoFragment extends Fragment implements CustomAdapter.LayoutVi
     }
 
     private void initViews() {
+        mInfoTv = (TextView) mView.findViewById(R.id.tv_info);
         mListView = (ListView) mView.findViewById(R.id.listview);
     }
 
     private void initValues() {
+        mInfoTv.setText(ProcCpuInfo.getArchitecture());
+
         result = new ArrayList<String>();
         result.add("手机制造商:" + BuildHelper.getProduct());
         result.add("系统定制商:" + BuildHelper.getBrand());
         result.add("硬件制造商:" + BuildHelper.getManufacturer());
-        result.add("硬件名称:" + BuildHelper.getHardWare());
+        result.add("平台信息:" + BuildHelper.getHardWare());
         result.add("型号:" + BuildHelper.getMode());
         result.add("Android 系统版本:" + BuildHelper.getAndroidVersion());
         result.add("CPU 指令集:" + BuildHelper.getCpuAbi());

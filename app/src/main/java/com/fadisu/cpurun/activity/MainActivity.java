@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import com.fadisu.cpurun.R;
-import com.fadisu.cpurun.fragment.BaseInfoFragment;
+import com.fadisu.cpurun.fragment.CoreInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
 import com.fadisu.cpurun.fragment.CpuInfoFragment;
 import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
@@ -64,11 +64,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mMoreFragmen = new MoreFragment();
         mBuildFragment = new BuildFragment();
         mCpuInfoFragment = new CpuInfoFragment();
-        mBaseInfoFragment = new BaseInfoFragment();
+        mBaseInfoFragment = new CoreInfoFragment();
         mCpuRunTimeFragment = new CpuRunTimeFragment();
         mFragmentManager = getSupportFragmentManager();
 
-        changeFrament(mBaseInfoFragment, null, BaseInfoFragment.class.getSimpleName());
+        changeFrament(mBaseInfoFragment, null, CoreInfoFragment.class.getSimpleName());
     }
 
     private void initLisener() {
@@ -105,7 +105,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rb_base_info:
-                changeFrament(mBaseInfoFragment, null, BaseInfoFragment.class.getSimpleName());
+                changeFrament(mBaseInfoFragment, null, CoreInfoFragment.class.getSimpleName());
                 break;
             case R.id.rb_cpu_time:
                 changeFrament(mCpuRunTimeFragment, null, CpuRunTimeFragment.class.getSimpleName());
