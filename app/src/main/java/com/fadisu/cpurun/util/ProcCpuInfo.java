@@ -116,68 +116,83 @@ public class ProcCpuInfo {
             int mCpuPartId = Integer.valueOf(mCpuPart, 16);
 
             switch (mCpuPartId) {
-                case 2336:
+                case 0x920:
                     result = "ARM" + " ARM920T";
                     break;
-                case 2342:
+                case 0x926:
                     result = "ARM" + " ARM926EJ";
                     break;
-                case 2870:
+                case 0xB36:
                     result = "ARM" + " ARM1136";
                     break;
-                case 2902:
+                case 0xB56:
                     result = "ARM" + " ARM1156";
                     break;
-                case 2934:
+                case 0xB76:
                     result = "ARM" + " ARM1176";
                     break;
-                case 3077:
+                case 0xC05:
                     result = "ARM" + " Cortex-A5";
                     break;
-                case 3079:
+                case 0xC07:
                     result = "ARM" + " Cortex-A7";
                     break;
-                case 3080:
+                case 0xC08:
                     result = "ARM" + " Cortex-A8";
                     break;
-                case 3081:
+                case 0xC09:
                     result = "ARM" + " Cortex-A9";
                     break;
-                case 3084:
+                case 0xC0C:
                     result = "ARM" + " Cortex-A12";
                     break;
-                case 3087:
+                case 0xC0F:
                     result = "ARM" + " Cortex-A15";
                     break;
-                case 3086:
+                case 0xC0E:
                     result = "ARM" + " Cortex-A17";
                     break;
-                case 3092:
+                case 0xc14:
                     result = "ARM" + " Cortex-R4";
                     break;
-                case 3093:
+                case 0xc15:
                     result = "ARM" + " Cortex-R5";
                     break;
-                case 3104:
+                case 0xc20:
                     result = "ARM" + " Cortex-M0";
                     break;
-                case 3105:
+                case 0xc21:
                     result = "ARM" + " Cortex-M1";
                     break;
-                case 3107:
+                case 0xc23:
                     result = "ARM" + " Cortex-M3";
                     break;
-                case 3108:
+                case 0xc24:
                     result = "ARM" + " Cortex-M4";
                     break;
-                case 3331:
+                case 0xD03:
                     result = "ARM" + " Cortex-A53";
                     break;
-                case 3335:
+                case 0xD07:
                     result = "ARM" + " Cortex-A57";
                     break;
+                case 0x8:
+                    result = "NVIDIA" + " Tegra K1";
+                    break;
+                case 0xf:
+                    result = "Qualcomm" + " Snapdragon S1/S2";
+                    break;
+                case 0x2d:
+                    result = "Qualcomm" + " Snapdragon S2/S3";
+                    break;
+                case 0x4d:
+                    result = "Qualcomm" + " Snapdragon S4";
+                    break;
+                case 0x6F:
+                    result = "Qualcomm" + " Snapdragon 200/400/600/800";
+                    break;
                 default:
-                    result = "ARM" + " 0x" + Integer.toHexString(mCpuPartId);
+                    result = "0x" + Integer.toHexString(mCpuPartId);
                     break;
             }
         } catch (IOException e) {
