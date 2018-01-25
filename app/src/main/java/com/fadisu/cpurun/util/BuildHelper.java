@@ -126,5 +126,15 @@ public class BuildHelper {
     public static String getCpuAbi() {
         return Build.CPU_ABI;
     }
+
+    public static boolean isCpu64() {
+        boolean result = false;
+
+        if (Build.CPU_ABI.contains("arm64")) {
+            result = true;
+        }
+
+        return result;
+    }
 }
 

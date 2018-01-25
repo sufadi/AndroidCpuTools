@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.BuildHelper;
+import com.fadisu.cpurun.util.CpuUtils;
 import com.fadisu.cpurun.util.ProcCpuInfo;
 
 import java.util.ArrayList;
@@ -70,14 +71,16 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
         mInfoTv.setText(ProcCpuInfo.getArchitecture());
 
         result = new ArrayList<String>();
-        result.add("手机制造商:" + BuildHelper.getProduct());
-        result.add("系统定制商:" + BuildHelper.getBrand());
-        result.add("硬件制造商:" + BuildHelper.getManufacturer());
-        result.add("平台信息:" + BuildHelper.getHardWare());
-        result.add("型号:" + BuildHelper.getMode());
-        result.add("Android 系统版本:" + BuildHelper.getAndroidVersion());
-        result.add("CPU 指令集:" + BuildHelper.getCpuAbi());
-        result.add("Processor:" + ProcCpuInfo.getProcessor());
+        result.add("手机制造商: " + BuildHelper.getProduct());
+        result.add("系统定制商: " + BuildHelper.getBrand());
+        result.add("硬件制造商: " + BuildHelper.getManufacturer());
+        result.add("平台信息: " + BuildHelper.getHardWare());
+        result.add("型号: " + BuildHelper.getMode());
+        result.add("Android 系统版本: " + BuildHelper.getAndroidVersion());
+        result.add("CPU 核数: " + CpuUtils.getNumCpuCores());
+        result.add("CPU 位数: " + (CpuUtils.isCpu64() ? "64 bit" : "32 bite"));
+        result.add("CPU 指令集: " + BuildHelper.getCpuAbi());
+        result.add("CPU Processor: " + ProcCpuInfo.getProcessor());
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

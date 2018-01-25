@@ -3,7 +3,6 @@ package com.fadisu.cpurun.util;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class ProcCpuInfo {
         return result;
     }
 
-    public static boolean isCPU64() {
+    public static boolean isCpu64() {
         boolean result = false;
         String mProcessor = null;
         try {
@@ -196,6 +195,8 @@ public class ProcCpuInfo {
                     break;
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

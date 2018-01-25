@@ -50,6 +50,14 @@ public class CpuUtils {
         }
     }
 
+    public static boolean isCpu64() {
+        boolean result = false;
+        if (BuildHelper.isCpu64() || ProcCpuInfo.isCpu64()) {
+            result = true;
+        }
+        return result;
+    }
+
     /**
      * Get cpu's current frequency
      * unit:KHZ
