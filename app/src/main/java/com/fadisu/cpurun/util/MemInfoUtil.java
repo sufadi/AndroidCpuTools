@@ -86,4 +86,29 @@ public class MemInfoUtil {
         return null;
     }
 
+    public static String getMemTotal() {
+        String result = null;
+
+        try {
+            result = getFieldFromMeminfo("MemTotal");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
+    public static String getMemAvailable() {
+        String result = null;
+
+        try {
+            result = getFieldFromMeminfo("MemAvailable");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 }

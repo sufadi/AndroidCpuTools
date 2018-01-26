@@ -15,6 +15,7 @@ import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.bean.ScreenInfo;
 import com.fadisu.cpurun.util.BuildHelper;
+import com.fadisu.cpurun.util.MemInfoUtil;
 import com.fadisu.cpurun.util.ProcCpuStatUtil;
 import com.fadisu.cpurun.util.PropInfoUtil;
 import com.fadisu.cpurun.util.ScreenUtil;
@@ -90,8 +91,10 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
 
         result.add(getString(R.string.sys_internal_storage) + SystemUtils.getRomTotalSize(mContext));
         result.add(getString(R.string.sys_available_internal_storage) + SystemUtils.getRomAvailableSize(mContext));
-        result.add(getString(R.string.sys_available_ram) + SystemUtils.getAvailMemory(mContext));
-        result.add(getString(R.string.sys_total_ram) + SystemUtils.getTotalMemory(mContext));
+        result.add(getString(R.string.sys_available_ram) + MemInfoUtil.getMemAvailable());
+        result.add(getString(R.string.sys_total_ram) + MemInfoUtil.getMemTotal());
+
+        result.add(getString(R.string.sys_root) + (SystemUtils.isRooted() ? getString(R.string.sys_root_yes) : getString(R.string.sys_root_no)));
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

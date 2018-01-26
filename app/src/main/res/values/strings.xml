@@ -30,6 +30,9 @@
     <string name="sys_opengl">OpenGL ES Version: </string>
     <string name="sys_kernel_architecture">Kernel Architecture: </string>
     <string name="sys_kernel_version">Kernel Version: </string>
+    <string name="sys_root">Root Access: </string>
+    <string name="sys_root_yes">Yes</string>
+    <string name="sys_root_no">No</string>
 
     <string name="sys_screen_real_metrics">Screen Real Metrics: </string>
     <string name="sys_inches_unit"> inches</string>

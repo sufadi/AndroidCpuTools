@@ -30,6 +30,9 @@
     <string name="sys_opengl">OpenGL ES 版本: </string>
     <string name="sys_kernel_architecture">内核架构: </string>
     <string name="sys_kernel_version">Kernel 版本: </string>
+    <string name="sys_root">Root 状态: </string>
+    <string name="sys_root_yes">是</string>
+    <string name="sys_root_no">否</string>
 
     <string name="sys_screen_real_metrics">屏幕分辨率: </string>
     <string name="sys_inches_unit"> 英寸</string>
