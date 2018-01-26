@@ -14,6 +14,7 @@ import com.fadisu.cpurun.fragment.BuildFragment;
 import com.fadisu.cpurun.fragment.CpuInfoFragment;
 import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
 import com.fadisu.cpurun.fragment.MoreFragment;
+import com.fadisu.cpurun.fragment.PropFragment;
 import com.fadisu.cpurun.fragment.SystemFragment;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -23,6 +24,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private static String currentFragmentTag;
 
     private Fragment mMoreFragmen;
+    private Fragment mPropFragment;
     private Fragment mBuildFragment;
     private Fragment mSystemFragment;
     private Fragment mCpuInfoFragment;
@@ -31,6 +33,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private FragmentManager mFragmentManager;
 
     private RadioButton mSysRb;
+    private RadioButton mPropRb;
     private RadioButton mBaseRb;
     private RadioButton mMoreRb;
     private RadioButton mCpuInfo;
@@ -55,6 +58,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initViews() {
         mMoreRb = (RadioButton) findViewById(R.id.rb_more);
+        mPropRb = (RadioButton) findViewById(R.id.rb_prop);
         mSysRb = (RadioButton) findViewById(R.id.rb_sys_info);
         mBaseRb = (RadioButton) findViewById(R.id.rb_base_info);
         mCpuInfo = (RadioButton) findViewById(R.id.rb_cpu_info);
@@ -66,6 +70,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         currentFragmentTag = MainActivity.class.getSimpleName();
 
         mMoreFragmen = new MoreFragment();
+        mPropFragment = new PropFragment();
         mBuildFragment = new BuildFragment();
         mSystemFragment = new SystemFragment();
         mCpuInfoFragment = new CpuInfoFragment();
@@ -78,6 +83,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initLisener() {
         mSysRb.setOnClickListener(this);
+        mPropRb.setOnClickListener(this);
         mBaseRb.setOnClickListener(this);
         mMoreRb.setOnClickListener(this);
         mCpuInfo.setOnClickListener(this);
@@ -110,6 +116,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.rb_prop:
+                changeFrament(mPropFragment, null, PropFragment.class.getSimpleName());
+                break;
             case R.id.rb_sys_info:
                 changeFrament(mSystemFragment, null, SystemFragment.class.getSimpleName());
                 break;

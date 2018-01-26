@@ -66,6 +66,15 @@
                     style="@style/main_title_radio"
                     android:text="@string/title_cpu_info" />
 
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="match_parent"
+                    android:background="@color/title_divider_bg" />
+
+                <RadioButton
+                    android:id="@+id/rb_prop"
+                    style="@style/main_title_radio"
+                    android:text="@string/title_prop" />
 
                 <View
                     android:layout_width="0.5dip"
@@ -76,6 +85,7 @@
                     android:id="@+id/rb_more"
                     style="@style/main_title_radio"
                     android:text="@string/title_more" />
+
             </RadioGroup>
         </LinearLayout>
     </HorizontalScrollView>
