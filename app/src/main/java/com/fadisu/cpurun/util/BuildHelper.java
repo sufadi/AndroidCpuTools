@@ -136,5 +136,10 @@ public class BuildHelper {
 
         return result;
     }
+
+    // 显示模块
+    public static String getDisplay() {
+        return Build.DISPLAY;
+    }
 }
 
