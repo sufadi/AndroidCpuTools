@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.BuildHelper;
+import com.fadisu.cpurun.util.ProcCpuStatUtil;
+import com.fadisu.cpurun.util.PropInfoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +75,7 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         result.add(getString(R.string.android_version) + BuildHelper.getAndroidVersion());
         result.add(getString(R.string.sys_dislpay_id) + BuildHelper.getDisplay());
         result.add(getString(R.string.sys_sdk) + BuildHelper.getCurSDK());
+        result.add(getString(R.string.sys_jvm) + PropInfoUtil.getJavaVM());
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

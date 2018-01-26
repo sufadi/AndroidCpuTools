@@ -25,6 +25,7 @@
     <string name="android_version">Android 系统版本: </string>
     <string name="sys_dislpay_id">显示模块: </string>
     <string name="sys_sdk">SDK 当前版本号: </string>
+    <string name="sys_jvm">Java 虚拟机: </string>
 
 
     <string name="more_version_code">\n 版本号：</string>

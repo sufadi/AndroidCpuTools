@@ -59,4 +59,13 @@ public class PropInfoUtil {
         return result;
     }
 
+    public static String getJavaVM() {
+        String result = null;
+        result = System.getProperty("java.vm.name");
+        if (result != null) {
+            result = result + System.getProperty("java.vm.version");
+        }
+
+        return result;
+    }
 }
