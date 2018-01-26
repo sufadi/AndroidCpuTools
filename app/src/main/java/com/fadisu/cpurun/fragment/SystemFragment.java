@@ -78,6 +78,7 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         result.add(getString(R.string.sys_sdk) + BuildHelper.getCurSDK());
         result.add(getString(R.string.sys_jvm) + PropInfoUtil.getJavaVM());
         result.add(getString(R.string.sys_opengl) + SystemUtils.getOpenGlVersion(mContext));
+        result.add(getString(R.string.sys_kernel_architecture) + PropInfoUtil.getKernelArchitecture());
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

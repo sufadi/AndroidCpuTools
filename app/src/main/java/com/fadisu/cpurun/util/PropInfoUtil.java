@@ -68,4 +68,8 @@ public class PropInfoUtil {
 
         return result;
     }
+
+    public static String getKernelArchitecture() {
+        return System.getProperty("os.arch");
+    }
 }
