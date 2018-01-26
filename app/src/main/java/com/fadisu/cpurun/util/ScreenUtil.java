@@ -9,6 +9,9 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.fadisu.cpurun.R;
+import com.fadisu.cpurun.bean.ScreenInfo;
+
 public class ScreenUtil {
 
     // 将px值转换为dip或dp值，保证尺寸大小不变
@@ -81,8 +84,8 @@ public class ScreenUtil {
      * @param mContext
      * @return
      */
-    public static String getRealMetrics(Context mContext) {
-        String result = null;
+    public static ScreenInfo getScreenInfo(Context mContext) {
+        ScreenInfo result = new ScreenInfo();
         int widthPixels;
         int heightPixels;
 
@@ -115,8 +118,21 @@ public class ScreenUtil {
             }
         }
 
-        result = widthPixels + " X " + heightPixels;
+        result.widthPixels = widthPixels;
+        result.heightPixels = heightPixels;
+        result.screenRealMetrics = widthPixels + " X " + heightPixels;
+        result.density = metrics.density;
+        result.density_default = metrics.DENSITY_DEFAULT;
+        result.densityDpi = metrics.densityDpi;
+        result.densityDpiStr = metrics.densityDpi + " dpi";
+        result.scaledDensity = metrics.scaledDensity;
+        result.xdpi = metrics.xdpi;
+        result.ydpi = metrics.ydpi;
+        result.size = (Math.sqrt(Math.pow(widthPixels, 2) + Math.pow(heightPixels, 2)) / metrics.densityDpi);
+        result.sizeStr = String.format("%.2f", result.size) + mContext.getResources().getString(R.string.sys_inches_unit);
 
         return result;
     }
+
+
 }

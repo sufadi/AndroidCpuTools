@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
+import com.fadisu.cpurun.bean.ScreenInfo;
 import com.fadisu.cpurun.util.BuildHelper;
 import com.fadisu.cpurun.util.ProcCpuStatUtil;
 import com.fadisu.cpurun.util.PropInfoUtil;
@@ -81,7 +82,11 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         result.add(getString(R.string.sys_opengl) + SystemUtils.getOpenGlVersion(mContext));
         result.add(getString(R.string.sys_kernel_architecture) + PropInfoUtil.getKernelArchitecture());
         result.add(getString(R.string.sys_kernel_version) + PropInfoUtil.getKernelVersion());
-        result.add(getString(R.string.sys_screen_real_metrics) + ScreenUtil.getRealMetrics(mContext));
+
+        ScreenInfo mScreenInfo = ScreenUtil.getScreenInfo(mContext);
+        result.add(getString(R.string.sys_screen_real_metrics) + mScreenInfo.screenRealMetrics);
+        result.add(getString(R.string.screen_density) + mScreenInfo.densityDpiStr);
+        result.add(getString(R.string.screen_size) + mScreenInfo.sizeStr);
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
