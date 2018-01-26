@@ -13,18 +13,13 @@ import android.widget.TextView;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
-import com.fadisu.cpurun.bean.ScreenInfo;
-import com.fadisu.cpurun.util.BuildHelper;
-import com.fadisu.cpurun.util.ProcCpuStatUtil;
-import com.fadisu.cpurun.util.PropInfoUtil;
-import com.fadisu.cpurun.util.ScreenUtil;
-import com.fadisu.cpurun.util.SystemUtils;
+import com.fadisu.cpurun.util.MemInfoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class SystemFragment extends Fragment implements CustomAdapter.LayoutView {
+public class MemInfoFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 
@@ -69,30 +64,7 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
     }
 
     private void initValues() {
-
-        result = new ArrayList<String>();
-        result.add(getString(R.string.phone_mode) + BuildHelper.getMode());
-        result.add(getString(R.string.phone_product) + BuildHelper.getProduct());
-        result.add(getString(R.string.phone_band) + BuildHelper.getBrand());
-        result.add(getString(R.string.phone_manufacturer) + BuildHelper.getManufacturer());
-        result.add(getString(R.string.android_version) + BuildHelper.getAndroidVersion());
-        result.add(getString(R.string.sys_dislpay_id) + BuildHelper.getDisplay());
-        result.add(getString(R.string.sys_sdk) + BuildHelper.getCurSDK());
-        result.add(getString(R.string.sys_jvm) + PropInfoUtil.getJavaVM());
-        result.add(getString(R.string.sys_opengl) + SystemUtils.getOpenGlVersion(mContext));
-        result.add(getString(R.string.sys_kernel_architecture) + PropInfoUtil.getKernelArchitecture());
-        result.add(getString(R.string.sys_kernel_version) + PropInfoUtil.getKernelVersion());
-
-        ScreenInfo mScreenInfo = ScreenUtil.getScreenInfo(mContext);
-        result.add(getString(R.string.sys_screen_real_metrics) + mScreenInfo.screenRealMetrics);
-        result.add(getString(R.string.screen_density) + mScreenInfo.densityDpiStr);
-        result.add(getString(R.string.screen_size) + mScreenInfo.sizeStr);
-
-        result.add(getString(R.string.sys_internal_storage) + SystemUtils.getRomTotalSize(mContext));
-        result.add(getString(R.string.sys_available_internal_storage) + SystemUtils.getRomAvailableSize(mContext));
-        result.add(getString(R.string.sys_available_ram) + SystemUtils.getAvailMemory(mContext));
-        result.add(getString(R.string.sys_total_ram) + SystemUtils.getTotalMemory(mContext));
-
+        result = MemInfoUtil.getMemInfo();
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);

@@ -9,6 +9,7 @@
     <string name="title_sys_info">Sys Info</string>
     <string name="title_cpu_time">CPU Run Time</string>
     <string name="title_prop">Prop Info</string>
+    <string name="title_meminfo">Memory Info</string>
 
     <string name="cpu_core_number">CPU core number: </string>
     <string name="cpu_bits">CPU bit: </string>
