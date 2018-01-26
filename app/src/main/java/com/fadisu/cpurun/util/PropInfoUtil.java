@@ -1,6 +1,7 @@
 package com.fadisu.cpurun.util;
 
 
+import android.os.Build;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -59,6 +60,11 @@ public class PropInfoUtil {
         return result;
     }
 
+    /**
+     * Java VM 虚拟机
+     *
+     * @return
+     */
     public static String getJavaVM() {
         String result = null;
         result = System.getProperty("java.vm.name");
@@ -69,7 +75,21 @@ public class PropInfoUtil {
         return result;
     }
 
+    /**
+     * 内核架构
+     *
+     * @return
+     */
     public static String getKernelArchitecture() {
         return System.getProperty("os.arch");
+    }
+
+    /**
+     * 内核版本
+     *
+     * @return
+     */
+    public static String getKernelVersion() {
+        return System.getProperty("os.version") + " (" + Build.VERSION.INCREMENTAL + ")";
     }
 }
