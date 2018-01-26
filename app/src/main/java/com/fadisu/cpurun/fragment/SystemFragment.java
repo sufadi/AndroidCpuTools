@@ -72,6 +72,7 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         result.add(getString(R.string.phone_manufacturer) + BuildHelper.getManufacturer());
         result.add(getString(R.string.android_version) + BuildHelper.getAndroidVersion());
         result.add(getString(R.string.sys_dislpay_id) + BuildHelper.getDisplay());
+        result.add(getString(R.string.sys_sdk) + BuildHelper.getCurSDK());
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

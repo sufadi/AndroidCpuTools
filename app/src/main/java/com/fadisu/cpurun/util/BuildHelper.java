@@ -141,5 +141,10 @@ public class BuildHelper {
     public static String getDisplay() {
         return Build.DISPLAY;
     }
+
+    // SDK 当前版本号
+    public static int getCurSDK() {
+        return Build.VERSION.SDK_INT;
+    }
 }
 
