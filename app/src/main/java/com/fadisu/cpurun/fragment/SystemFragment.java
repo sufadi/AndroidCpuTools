@@ -88,6 +88,9 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         result.add(getString(R.string.screen_density) + mScreenInfo.densityDpiStr);
         result.add(getString(R.string.screen_size) + mScreenInfo.sizeStr);
 
+        result.add(getString(R.string.sys_internal_storage) + SystemUtils.getRomTotalSize(mContext));
+        result.add(getString(R.string.sys_available_internal_storage) + SystemUtils.getRomAvailableSize(mContext));
+
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);

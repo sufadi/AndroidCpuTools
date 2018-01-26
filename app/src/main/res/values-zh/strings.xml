@@ -35,6 +35,11 @@
     <string name="screen_size">屏幕大小: </string>
     <string name="screen_density">屏幕密度: </string>
 
+    <string name="sys_total_ram">系统总内存: </string>
+    <string name="sys_available_ram">系统可用内存: </string>
+    <string name="sys_internal_storage">系统内部存储空间: </string>
+    <string name="sys_available_internal_storage">系统可用内部存储空间: </string>
+
     <string name="more_version_code">\n 版本号：</string>
     <string name="more_version_name">\n 版本名称：</string>
     <string name="more_source_code">\n 源码：\n </string>

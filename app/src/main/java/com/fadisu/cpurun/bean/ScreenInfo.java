@@ -30,7 +30,7 @@ public class ScreenInfo {
     // 每在 X 维屏幕英寸的确切物理像素
     public float xdpi;
 
-    // 每在Y维屏幕英寸的确切物理像素
+    // 每在 Y 维屏幕英寸的确切物理像素
     public float ydpi;
 
     //在屏幕中显示的参考密度
