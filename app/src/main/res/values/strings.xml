@@ -2,9 +2,24 @@
     <string name="app_name">CPU Tools</string>
     <string name="cpu_freq">CPU Freq</string>
 
-    <string name="title_base_info">基本信息</string>
-    <string name="title_cpu_time">CPU 运行时间</string>
-    <string name="title_build">Build信息</string>
+    <string name="title_more">More</string>
+    <string name="title_build">CPU Build Info</string>
     <string name="title_cpu_info">CPU Info</string>
-    <string name="title_more">更多</string>
+    <string name="title_base_info">Base Info</string>
+    <string name="title_sys_info">Sys Info</string>
+    <string name="title_cpu_time">CPU Run Time</string>
+
+    <string name="cpu_core_number">CPU core number: </string>
+    <string name="cpu_bits">CPU bit: </string>
+    <string name="cpu_bits_64">64 bit </string>
+    <string name="cpu_bits_32">32 bit </string>
+    <string name="cpu_abi">CPU abi: </string>
+    <string name="cpu_plateform">CPU platform: </string>
+    <string name="cpu_processor">CPU processor: </string>
+
+    <string name="phone_product">Phone product: </string>
+    <string name="phone_band">Phone band: </string>
+    <string name="phone_manufacturer">Phone manufacturer: </string>
+    <string name="phone_mode">Phone mode:  </string>
+    <string name="android_version">Android version: </string>
 </resources>

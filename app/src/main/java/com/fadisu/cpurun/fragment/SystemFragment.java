@@ -14,14 +14,12 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.BuildHelper;
-import com.fadisu.cpurun.util.CpuUtils;
-import com.fadisu.cpurun.util.ProcCpuInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutView {
+public class SystemFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 
@@ -30,7 +28,6 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
     private CustomAdapter<String> mCustomAdapter;
 
     private View mView;
-    private TextView mInfoTv;
     private ListView mListView;
 
     private Handler mHandler = new Handler() {
@@ -55,7 +52,7 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_core, container, false);
+        mView = inflater.inflate(R.layout.fragment_base, container, false);
         initViews();
         initValues();
         initListeners();
@@ -63,19 +60,17 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
     }
 
     private void initViews() {
-        mInfoTv = (TextView) mView.findViewById(R.id.tv_info);
         mListView = (ListView) mView.findViewById(R.id.listview);
     }
 
     private void initValues() {
-        mInfoTv.setText(ProcCpuInfo.getArchitecture());
 
         result = new ArrayList<String>();
-        result.add(getString(R.string.cpu_core_number) + CpuUtils.getNumCpuCores());
-        result.add(getString(R.string.cpu_bits) + (CpuUtils.isCpu64() ? getString(R.string.cpu_bits_64) : getString(R.string.cpu_bits_32)));
-        result.add(getString(R.string.cpu_abi) + BuildHelper.getCpuAbi());
-        result.add(getString(R.string.cpu_plateform) + BuildHelper.getHardWare());
-        result.add(getString(R.string.cpu_processor) + ProcCpuInfo.getProcessor());
+        result.add(getString(R.string.phone_mode) + BuildHelper.getMode());
+        result.add(getString(R.string.phone_product) + BuildHelper.getProduct());
+        result.add(getString(R.string.phone_band) + BuildHelper.getBrand());
+        result.add(getString(R.string.phone_manufacturer) + BuildHelper.getManufacturer());
+        result.add(getString(R.string.android_version) + BuildHelper.getAndroidVersion());
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
