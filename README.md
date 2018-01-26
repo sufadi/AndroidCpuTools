@@ -23,3 +23,18 @@ CPU 比较重要的参数
 /proc/cpuinfo 的数据
 
 ![CPU Info](https://raw.githubusercontent.com/sufadi/AndroidCpuTools/master/screenshot/CpuRuntime.png)
+
+### 5.系统Prop 信息
+
+- /init.rc
+- /default.prop
+- /system/build.prop
+
+
+![系统Prop 信息](https://raw.githubusercontent.com/sufadi/AndroidCpuTools/master/screenshot/propifno.png)
+
+### 6.系统内存信息
+
+/proc/meminfo
+
+![系统内存信息](https://raw.githubusercontent.com/sufadi/AndroidCpuTools/master/screenshot/meminfo.png)
