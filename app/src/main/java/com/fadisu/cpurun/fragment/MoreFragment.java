@@ -41,7 +41,10 @@ public class MoreFragment extends Fragment {
     private void initValues() {
         try {
             PackageInfo packageInfo = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0);
-            mInfoTv.setText("版本号:" + packageInfo.versionCode + "\n当前版本名:" + packageInfo.versionName);
+            mInfoTv.setText(getString(R.string.more_version_code) + packageInfo.versionCode
+                    + getString(R.string.more_version_name) + packageInfo.versionName
+                    + getString(R.string.more_source_code) + "https://github.com/sufadi/AndroidCpuTools"
+                    + getString(R.string.more_blog) + "http://blog.csdn.net/su749520/article/details/79026493");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

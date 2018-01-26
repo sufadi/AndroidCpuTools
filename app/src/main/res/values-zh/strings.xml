@@ -22,4 +22,9 @@
     <string name="phone_band">系统定制商: </string>
     <string name="phone_manufacturer">硬件制造商: </string>
     <string name="android_version">Android 系统版本: </string>
+
+    <string name="more_version_code">\n 版本号：</string>
+    <string name="more_version_name">\n 版本名称：</string>
+    <string name="more_source_code">\n 源码：\n </string>
+    <string name="more_blog">\n 博客：\n </string>
 </resources>
