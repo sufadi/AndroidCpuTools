@@ -16,6 +16,7 @@ import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.BuildHelper;
 import com.fadisu.cpurun.util.ProcCpuStatUtil;
 import com.fadisu.cpurun.util.PropInfoUtil;
+import com.fadisu.cpurun.util.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +77,7 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         result.add(getString(R.string.sys_dislpay_id) + BuildHelper.getDisplay());
         result.add(getString(R.string.sys_sdk) + BuildHelper.getCurSDK());
         result.add(getString(R.string.sys_jvm) + PropInfoUtil.getJavaVM());
+        result.add(getString(R.string.sys_opengl) + SystemUtils.getOpenGlVersion(mContext));
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

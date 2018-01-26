@@ -26,6 +26,7 @@
     <string name="sys_dislpay_id">Display: </string>
     <string name="sys_sdk">SDK: </string>
     <string name="sys_jvm">Java VM: </string>
+    <string name="sys_opengl"> OpenGL ES Version: </string>
 
     <string name="more_version_code">\n Version code：</string>
     <string name="more_version_name">\n Version Name：</string>
