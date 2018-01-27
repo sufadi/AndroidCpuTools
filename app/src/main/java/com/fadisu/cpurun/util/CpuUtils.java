@@ -104,6 +104,30 @@ public class CpuUtils {
     }
 
     /**
+     * 可调节 CPU 频率档位
+     *
+     * @return
+     */
+    public static List<Long> getCpuAvailableFrequencies() {
+        List<Long> result = new ArrayList<>();
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies"));
+            if( (line = br.readLine()) != null) {
+                String[] list = line.split("\\s+");
+                for (String value : list) {
+                    long freq = Long.parseLong(value);
+                    result.add(freq);
+                }
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
      * Get cpu's current frequency
      * unit:KHZ
      * 获取cpu当前频率,单位KHZ

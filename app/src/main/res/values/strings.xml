@@ -14,14 +14,15 @@
 
     <string name="cpu_core_number">CPU core number: </string>
     <string name="cpu_bits">CPU bit: </string>
-    <string name="cpu_bits_64">64 bit </string>
-    <string name="cpu_bits_32">32 bit </string>
+    <string name="cpu_bits_64">&#160;64 bit </string>
+    <string name="cpu_bits_32">&#160;32 bit </string>
     <string name="cpu_abi">CPU abi: </string>
     <string name="cpu_plateform">CPU platform: </string>
     <string name="cpu_processor">CPU processor: </string>
     <string name="cpu_max_freq">CPU Max Freq: </string>
     <string name="cpu_min_freq">CPU Min Freq: </string>
     <string name="cpu_hz">&#160;Hz </string>
+    <string name="cpu_available_frequencies">CPU Available Frequencies: </string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>

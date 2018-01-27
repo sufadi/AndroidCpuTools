@@ -22,6 +22,7 @@
     <string name="cpu_max_freq">CPU 最大频率: </string>
     <string name="cpu_min_freq">CPU 最小频率: </string>
     <string name="cpu_hz">&#160;Hz </string>
+    <string name="cpu_available_frequencies">可调节 CPU 频率档位: </string>
 
     <string name="phone_mode">本机型号:  </string>
     <string name="phone_product">手机制造商: </string>
