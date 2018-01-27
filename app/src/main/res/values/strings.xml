@@ -7,9 +7,10 @@
     <string name="title_cpu_info">CPU Info</string>
     <string name="title_base_info">Base Info</string>
     <string name="title_sys_info">Sys Info</string>
-    <string name="title_cpu_time">CPU Run Time</string>
+    <string name="title_cpu_time">CPU Time</string>
     <string name="title_prop">Prop Info</string>
-    <string name="title_meminfo">Memory Info</string>
+    <string name="title_meminfo">Memory</string>
+    <string name="title_display">Display</string>
 
     <string name="cpu_core_number">CPU core number: </string>
     <string name="cpu_bits">CPU bit: </string>
@@ -38,6 +39,11 @@
     <string name="sys_inches_unit"> inches</string>
     <string name="screen_size">Screen size: </string>
     <string name="screen_density">Screen density: </string>
+    <string name="gpu_freq_volt">GPU Freq and Volt:</string>
+    <string name="gl_renderer">GPU Renderer: </string>
+    <string name="gl_vendor">GPU Vendor: </string>
+    <string name="gl_version">GPU Version: </string>
+    <string name="gl_extensions">GPU Extensions: </string>
 
     <string name="sys_total_ram">Total RAM: </string>
     <string name="sys_available_ram">Available RAM: </string>

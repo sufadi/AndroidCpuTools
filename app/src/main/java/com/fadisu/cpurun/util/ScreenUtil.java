@@ -12,6 +12,12 @@ import android.view.WindowManager;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.bean.ScreenInfo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ScreenUtil {
 
     // 将px值转换为dip或dp值，保证尺寸大小不变
@@ -134,5 +140,20 @@ public class ScreenUtil {
         return result;
     }
 
+    public static List<String> getGpuFreqVolt() {
+        List<String> result = new ArrayList<>();
 
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/proc/gpufreq/gpufreq_opp_dump"));
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

@@ -10,6 +10,7 @@
     <string name="title_cpu_info">CPU Info 信息</string>
     <string name="title_prop">Prop 属性文件</string>
     <string name="title_meminfo">内存信息</string>
+    <string name="title_display">显示信息</string>
 
     <string name="cpu_core_number">CPU 核数: </string>
     <string name="cpu_bits">CPU 位数: </string>
@@ -38,6 +39,11 @@
     <string name="sys_inches_unit"> 英寸</string>
     <string name="screen_size">屏幕大小: </string>
     <string name="screen_density">屏幕密度: </string>
+    <string name="gpu_freq_volt">GPU 频率和电压信息: </string>
+    <string name="gl_renderer">GPU 渲染器: </string>
+    <string name="gl_vendor">GPU 供应商: </string>
+    <string name="gl_version">GPU 版本: </string>
+    <string name="gl_extensions">GPU 扩展名: </string>
 
     <string name="sys_total_ram">系统总内存: </string>
     <string name="sys_available_ram">系统可用内存: </string>

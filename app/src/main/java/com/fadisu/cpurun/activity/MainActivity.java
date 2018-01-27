@@ -13,6 +13,7 @@ import com.fadisu.cpurun.fragment.CoreInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
 import com.fadisu.cpurun.fragment.CpuInfoFragment;
 import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
+import com.fadisu.cpurun.fragment.DisplayFragment;
 import com.fadisu.cpurun.fragment.MemInfoFragment;
 import com.fadisu.cpurun.fragment.MoreFragment;
 import com.fadisu.cpurun.fragment.PropFragment;
@@ -28,6 +29,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Fragment mPropFragment;
     private Fragment mBuildFragment;
     private Fragment mSystemFragment;
+    private Fragment mDisplayFragment;
     private Fragment mCpuInfoFragment;
     private Fragment mMemInfoFragment;
     private Fragment mBaseInfoFragment;
@@ -41,6 +43,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private RadioButton mCpuInfo;
     private RadioButton mMeminfoRb;
     private RadioButton mCpuTimeRb;
+    private RadioButton mDisplayRb;
     private RadioButton mBuildInfoRb;
 
     @Override
@@ -66,6 +69,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mBaseRb = (RadioButton) findViewById(R.id.rb_base_info);
         mCpuInfo = (RadioButton) findViewById(R.id.rb_cpu_info);
         mMeminfoRb = (RadioButton) findViewById(R.id.rb_meminfo);
+        mDisplayRb = (RadioButton) findViewById(R.id.rb_display);
         mCpuTimeRb = (RadioButton) findViewById(R.id.rb_cpu_time);
         mBuildInfoRb = (RadioButton) findViewById(R.id.rb_build_info);
     }
@@ -77,6 +81,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mPropFragment = new PropFragment();
         mBuildFragment = new BuildFragment();
         mSystemFragment = new SystemFragment();
+        mDisplayFragment = new DisplayFragment();
         mMemInfoFragment = new MemInfoFragment();
         mCpuInfoFragment = new CpuInfoFragment();
         mBaseInfoFragment = new CoreInfoFragment();
@@ -93,6 +98,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mMoreRb.setOnClickListener(this);
         mCpuInfo.setOnClickListener(this);
         mCpuTimeRb.setOnClickListener(this);
+        mDisplayRb.setOnClickListener(this);
         mMeminfoRb.setOnClickListener(this);
         mBuildInfoRb.setOnClickListener(this);
     }
@@ -122,6 +128,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.rb_display:
+                changeFrament(mDisplayFragment, null, DisplayFragment.class.getSimpleName());
+                break;
             case R.id.rb_meminfo:
                 changeFrament(mMemInfoFragment, null, MemInfoFragment.class.getSimpleName());
                 break;

@@ -11,10 +11,10 @@ public class ScreenInfo {
     // 高
     public int heightPixels;
 
-    public String screenRealMetrics;
-
     // 宽
     public int widthPixels;
+
+    public String screenRealMetrics;
 
     // 显示器的逻辑密度
     public float density;
