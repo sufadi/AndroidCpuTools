@@ -128,6 +128,26 @@ public class CpuUtils {
     }
 
     /**
+     * CPU 调频策略
+     *
+     * @return
+     */
+    public static String getCpuGovernor() {
+        String result = null;
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"));
+            if ((line = br.readLine()) != null) {
+                result = line;
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
      * Get cpu's current frequency
      * unit:KHZ
      * 获取cpu当前频率,单位KHZ
