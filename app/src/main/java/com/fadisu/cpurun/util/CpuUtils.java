@@ -108,6 +108,26 @@ public class CpuUtils {
      *
      * @return
      */
+    public static String getCpuAvailableFrequenciesSimple() {
+        String result = null;
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies"));
+            if( (line = br.readLine()) != null) {
+                result = line;
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 可调节 CPU 频率档位
+     *
+     * @return
+     */
     public static List<Long> getCpuAvailableFrequencies() {
         List<Long> result = new ArrayList<>();
         try {
@@ -139,6 +159,49 @@ public class CpuUtils {
             BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"));
             if ((line = br.readLine()) != null) {
                 result = line;
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * CPU 支持的调频策略
+     *
+     * @return
+     */
+    public static String getCpuAvailableGovernorsSimple() {
+        String result = null;
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors"));
+            if( (line = br.readLine()) != null) {
+                result = line;
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * CPU 支持的调频策略
+     *
+     * @return
+     */
+    public static List<String> getCpuAvailableGovernors() {
+        List<String> result = new ArrayList<>();
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors"));
+            if( (line = br.readLine()) != null) {
+                String[] list = line.split("\\s+");
+                for (String value : list) {
+                    result.add(value);
+                }
             }
             br.close();
         } catch (IOException e) {

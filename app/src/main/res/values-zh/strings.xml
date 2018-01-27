@@ -24,6 +24,7 @@
     <string name="cpu_hz">&#160;Hz </string>
     <string name="cpu_available_frequencies">可调节 CPU 频率档位: </string>
     <string name="cpu_cur_governor">CPU 当前调频策略: </string>
+    <string name="cpu_available_governors">CPU 支持的调频策略: </string>
 
     <string name="phone_mode">本机型号:  </string>
     <string name="phone_product">手机制造商: </string>

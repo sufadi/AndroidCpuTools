@@ -24,6 +24,7 @@
     <string name="cpu_hz">&#160;Hz </string>
     <string name="cpu_available_frequencies">CPU Available Frequencies: </string>
     <string name="cpu_cur_governor">CPU Current Governor: </string>
+    <string name="cpu_available_governors">CPU Available Governors: </string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>
