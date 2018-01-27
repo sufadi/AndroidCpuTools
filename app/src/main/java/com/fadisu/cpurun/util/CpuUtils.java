@@ -50,10 +50,55 @@ public class CpuUtils {
         }
     }
 
+    /**
+     * 64 系统判断
+     *
+     * @return
+     */
     public static boolean isCpu64() {
         boolean result = false;
         if (BuildHelper.isCpu64() || ProcCpuInfo.isCpu64()) {
             result = true;
+        }
+        return result;
+    }
+
+    /**
+     * CPU 最大频率
+     *
+     * @return
+     */
+    public static long getCpuMaxFreq() {
+        long result = 0L;
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq"));
+            if ((line = br.readLine()) != null) {
+                result = Long.parseLong(line);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * CPU 最小频率
+     *
+     * @return
+     */
+    public static long getCpuMinFreq() {
+        long result = 0L;
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq"));
+            if ((line = br.readLine()) != null) {
+                result = Long.parseLong(line);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return result;
     }

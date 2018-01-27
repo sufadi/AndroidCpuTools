@@ -19,6 +19,9 @@
     <string name="cpu_abi">CPU abi: </string>
     <string name="cpu_plateform">CPU platform: </string>
     <string name="cpu_processor">CPU processor: </string>
+    <string name="cpu_max_freq">CPU Max Freq: </string>
+    <string name="cpu_min_freq">CPU Min Freq: </string>
+    <string name="cpu_hz">&#160;Hz </string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>
