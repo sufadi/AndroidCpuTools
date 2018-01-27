@@ -4,7 +4,7 @@
 
     <string name="title_more">更多</string>
     <string name="title_build">CPU Build 信息</string>
-    <string name="title_base_info">基本信息</string>
+    <string name="title_base_info">CPU 信息</string>
     <string name="title_sys_info">系统信息</string>
     <string name="title_cpu_time">CPU 运行时间</string>
     <string name="title_cpu_info">CPU Info 信息</string>
@@ -22,7 +22,7 @@
     <string name="cpu_max_freq">CPU 最大频率: </string>
     <string name="cpu_min_freq">CPU 最小频率: </string>
     <string name="cpu_hz">&#160;Hz </string>
-    <string name="cpu_available_frequencies">可调节 CPU 频率档位: </string>
+    <string name="cpu_available_frequencies">CPU 频率档位: </string>
     <string name="cpu_cur_governor">CPU 当前调频策略: </string>
     <string name="cpu_available_governors">CPU 支持的调频策略: </string>
 
