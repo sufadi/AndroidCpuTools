@@ -227,9 +227,17 @@ public class CpuUtils {
 
         try {
             for (int i = 0; i < mCpuCoreNumber; i++) {
-                br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu" + i + "/cpufreq/scaling_cur_freq"));
-                String line = br.readLine();
-                result.add(String.format(mContext.getResources().getString(R.string.cpu_cur_freq), i, line));
+                final String path = "/sys/devices/system/cpu/cpu" + i + "/cpufreq/scaling_cur_freq";
+                File mFile = new File(path);
+                if (mFile.exists()) {
+                    br = new BufferedReader(new FileReader(path));
+                    String line = br.readLine();
+                    if (line != null) {
+                        result.add(String.format(mContext.getResources().getString(R.string.cpu_cur_freq), i, line));
+                    }
+                } else {
+                    result.add(String.format(mContext.getResources().getString(R.string.cpu_stoped), i));
+                }
                 br.close();
             }
         } catch (Exception e) {
@@ -269,7 +277,6 @@ public class CpuUtils {
                             ("1".equals(line) ? mContext.getResources().getString(R.string.cpu_online_status_online) : mContext.getResources().getString(R.string.cpu_online_status_offline))));
                 }
 
-
                 br.close();
             }
         } catch (Exception e) {
@@ -283,7 +290,6 @@ public class CpuUtils {
                 }
             }
         }
-
 
         return result;
     }
