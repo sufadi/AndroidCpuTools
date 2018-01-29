@@ -330,4 +330,34 @@ public class CpuUtils {
         }
         return result;
     }
+
+    /**
+     * CPU 电压
+     *
+     * @return
+     */
+    public static List<String> getCpuVoltage() {
+        List<String> result = new ArrayList<>();
+        BufferedReader br = null;
+        try {
+            String line;
+            br = new BufferedReader(new FileReader("/proc/cpufreq/MT_CPU_DVFS_LL/cpufreq_oppidx"));
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+            }
+
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
 }

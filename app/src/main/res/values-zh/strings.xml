@@ -33,6 +33,7 @@
     <string name="cpu_online_status_online">开启</string>
     <string name="cpu_online_status_offline">关闭</string>
     <string name="cpu_stoped">CPU %1$d: 已经停止</string>
+    <string name="cpu_voltage">CPU 电压:</string>
 
     <string name="phone_mode">本机型号:  </string>
     <string name="phone_product">手机制造商: </string>
