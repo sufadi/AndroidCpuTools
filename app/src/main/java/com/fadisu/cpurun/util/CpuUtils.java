@@ -1,7 +1,10 @@
 package com.fadisu.cpurun.util;
 
 
+import android.content.Context;
 import android.util.Log;
+
+import com.fadisu.cpurun.R;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -113,7 +116,7 @@ public class CpuUtils {
         try {
             String line;
             BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies"));
-            if( (line = br.readLine()) != null) {
+            if ((line = br.readLine()) != null) {
                 result = line;
             }
             br.close();
@@ -133,7 +136,7 @@ public class CpuUtils {
         try {
             String line;
             BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies"));
-            if( (line = br.readLine()) != null) {
+            if ((line = br.readLine()) != null) {
                 String[] list = line.split("\\s+");
                 for (String value : list) {
                     long freq = Long.parseLong(value);
@@ -177,7 +180,7 @@ public class CpuUtils {
         try {
             String line;
             BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors"));
-            if( (line = br.readLine()) != null) {
+            if ((line = br.readLine()) != null) {
                 result = line;
             }
             br.close();
@@ -197,7 +200,7 @@ public class CpuUtils {
         try {
             String line;
             BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors"));
-            if( (line = br.readLine()) != null) {
+            if ((line = br.readLine()) != null) {
                 String[] list = line.split("\\s+");
                 for (String value : list) {
                     result.add(value);
@@ -213,58 +216,37 @@ public class CpuUtils {
     /**
      * Get cpu's current frequency
      * unit:KHZ
-     * 获取cpu当前频率,单位KHZ
+     * 获取cpu当前频率,单位 HZ
      *
      * @return
      */
-    public static List<Integer> getCpuCurFreq() {
-        List<Integer> results = new ArrayList<Integer>();
-        String freq = "";
-        FileReader fr = null;
-        try {
-            int cpuIndex = 0;
-            Integer lastFreq = 0;
-            while (true) {
-                File file = new File("/sys/devices/system/cpu/cpu" + cpuIndex + "/");
-                if (!file.exists()) {
-                    break;
+    public static List<String> getCpuCurFreq(Context mContext) {
+        List<String> result = new ArrayList<>();
+        int mCpuCoreNumber = getNumCpuCores();
+        BufferedReader br = null;
+        String mCurFreq = mContext.getResources().getString(R.string.cpu_cur_freq);
+
+        for (int i = 0; i < mCpuCoreNumber; i++) {
+            try {
+                String line;
+                br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu" + i + "/cpufreq/scaling_cur_freq"));
+                if ((line = br.readLine()) != null) {
+                    result.add(String.format(mCurFreq, i, line));
                 }
-                file = new File("/sys/devices/system/cpu/cpu" + cpuIndex + "/cpufreq/");
-                if (!file.exists()) {
-                    lastFreq = 0;
-                    results.add(0);
-                    cpuIndex++;
-                    continue;
-                }
-                file = new File("/sys/devices/system/cpu/cpu" + cpuIndex + "/cpufreq/scaling_cur_freq");
-                if (!file.exists()) {
-                    results.add(lastFreq);
-                    cpuIndex++;
-                    continue;
-                }
-                fr = new FileReader(
-                        "/sys/devices/system/cpu/cpu" + cpuIndex + "/cpufreq/scaling_cur_freq");
-                BufferedReader br = new BufferedReader(fr);
-                String text = br.readLine();
-                freq = text.trim();
-                lastFreq = Integer.valueOf(freq);
-                results.add(lastFreq);
-                fr.close();
-                cpuIndex++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fr != null) {
-                try {
-                    fr.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                br.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-        return results;
+
+        return result;
     }
 }

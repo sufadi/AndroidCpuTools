@@ -3,6 +3,10 @@
     package="com.fadisu.cpurun"
     android:versionName="sufadi@github.comV1.0.0">
 
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="24" />
+
     <application
         android:allowBackup="true"
         android:name="com.fadisu.cpurun.MyApplication"

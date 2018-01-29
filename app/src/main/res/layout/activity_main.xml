@@ -32,6 +32,16 @@
                     android:background="@color/title_divider_bg" />
 
                 <RadioButton
+                    android:id="@+id/rb_cpu_status"
+                    style="@style/main_title_radio"
+                    android:text="@string/title_cpu_status" />
+
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="match_parent"
+                    android:background="@color/title_divider_bg" />
+
+                <RadioButton
                     android:id="@+id/rb_sys_info"
                     style="@style/main_title_radio"
                     android:text="@string/title_sys_info" />

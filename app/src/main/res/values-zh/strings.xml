@@ -1,4 +1,5 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">CPU 工具</string>
     <string name="cpu_freq">CPU 频率</string>
 
@@ -11,6 +12,7 @@
     <string name="title_prop">Prop 属性文件</string>
     <string name="title_meminfo">内存信息</string>
     <string name="title_display">显示信息</string>
+    <string name="title_cpu_status">CPU 状态</string>
 
     <string name="cpu_core_number">CPU 核数: </string>
     <string name="cpu_bits">CPU 位数: </string>
@@ -25,6 +27,7 @@
     <string name="cpu_available_frequencies">CPU 频率档位: </string>
     <string name="cpu_cur_governor">CPU 当前调频策略: </string>
     <string name="cpu_available_governors">CPU 支持的调频策略: </string>
+    <string name="cpu_cur_freq">CPU %1$d : 当前的频率 %2$s Hz</string>
 
     <string name="phone_mode">本机型号:  </string>
     <string name="phone_product">手机制造商: </string>
