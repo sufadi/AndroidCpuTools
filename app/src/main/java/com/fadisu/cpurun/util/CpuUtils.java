@@ -295,7 +295,7 @@ public class CpuUtils {
     }
 
     /**
-     * CPU 场景
+     * CPU 场景配置文件
      *
      * @return
      */

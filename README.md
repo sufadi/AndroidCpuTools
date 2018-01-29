@@ -43,3 +43,7 @@ CPU 比较重要的参数
 ### 7.显示信息
 
 ![显示信息](http://img.blog.csdn.net/20180127124900406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3U3NDk1MjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+### 8.CPU 场景频率配置
+
+![CPU 场景调频配置文件](http://img.blog.csdn.net/20180129194916925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3U3NDk1MjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
