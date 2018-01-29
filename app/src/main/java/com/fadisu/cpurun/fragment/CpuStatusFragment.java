@@ -91,7 +91,6 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
                     if (null != result) {
                         result.clear();
                         result.addAll(CpuUtils.getCpuCurFreq(mContext));
-                        result.add(getString(R.string.cpu_voltage));
                         result.addAll(CpuUtils.getCpuVoltage());
                         mHandler.sendEmptyMessage(UPDATE_UI);
                     }
