@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutView {
+public class CpuVoltageFragment extends Fragment implements CustomAdapter.LayoutView {
 
     public static final int UPDATE_UI = 0;
 
@@ -67,7 +66,7 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
     }
 
     private void initValues() {
-        result = CpuUtils.getCpuCurFreq(mContext);
+        result = CpuUtils.getCpuVoltage();
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);
@@ -90,7 +89,7 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
 
                     if (null != result) {
                         result.clear();
-                        result.addAll(CpuUtils.getCpuCurFreq(mContext));
+                        result.addAll(CpuUtils.getCpuVoltage());
                         mHandler.sendEmptyMessage(UPDATE_UI);
                     }
 

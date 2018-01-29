@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <string name="app_name">CPU Tools</string>
     <string name="cpu_freq">CPU Freq</string>
 
@@ -14,6 +14,7 @@
     <string name="title_display">Display</string>
     <string name="title_cpu_status">CPU status</string>
     <string name="title_cpu_scene_freq">CPU Scene Of  Frequency</string>
+    <string name="title_cpu_voltage">CPU Voltage</string>
 
     <string name="cpu_core_number">CPU core number: </string>
     <string name="cpu_bits">CPU bit: </string>
@@ -33,7 +34,6 @@
     <string name="cpu_online_status_online">Online</string>
     <string name="cpu_online_status_offline">Offline</string>
     <string name="cpu_stoped">CPU %1$d: Stopped</string>
-    <string name="cpu_voltage">CPU Voltage:</string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>

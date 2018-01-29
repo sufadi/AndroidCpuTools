@@ -8,9 +8,9 @@
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
         android:drawableStart="@mipmap/logo_arm_cortex"
         android:gravity="center"
-        android:drawablePadding="5dp"
         android:padding="10dp" />
 
     <ListView
