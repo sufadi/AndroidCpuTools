@@ -81,6 +81,7 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
         result.add(getString(R.string.cpu_max_freq) + CpuUtils.getCpuMaxFreq() + getString(R.string.cpu_hz));
         result.add(getString(R.string.cpu_available_governors) + CpuUtils.getCpuAvailableGovernorsSimple());
         result.add(getString(R.string.cpu_available_frequencies) + CpuUtils.getCpuAvailableFrequenciesSimple());
+        result.addAll(CpuUtils.getCpuOnlineStatus(mContext));
 
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);

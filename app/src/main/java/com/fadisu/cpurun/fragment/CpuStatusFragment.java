@@ -59,7 +59,6 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
         initViews();
         initValues();
         initListeners();
-        startTask();
         return mView;
     }
 
@@ -68,8 +67,6 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
     }
 
     private void initValues() {
-        isRun = true;
-
         result = CpuUtils.getCpuCurFreq(mContext);
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
@@ -86,14 +83,14 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
             public void run() {
                 while (isRun) {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
                     if (null != result) {
                         result.clear();
-                        result = CpuUtils.getCpuCurFreq(mContext);
+                        result.addAll(CpuUtils.getCpuCurFreq(mContext));
                         mHandler.sendEmptyMessage(UPDATE_UI);
                     }
 
@@ -104,6 +101,13 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
         mThread.start();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        isRun = true;
+
+        startTask();
+    }
 
     @Override
     public void onStop() {

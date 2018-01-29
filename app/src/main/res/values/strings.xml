@@ -28,6 +28,10 @@
     <string name="cpu_cur_governor">CPU Current Governor: </string>
     <string name="cpu_available_governors">CPU Available Governors: </string>
     <string name="cpu_cur_freq">CPU %1$d : Current Freq %2$s Hz</string>
+    <string name="cpu_online_status">CPU %1$d Online Status: %2$s</string>
+    <string name="cpu_online_status_online">Online</string>
+    <string name="cpu_online_status_offline">OffLine</string>
+    <string name="cpu_stoped">Stopped</string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>

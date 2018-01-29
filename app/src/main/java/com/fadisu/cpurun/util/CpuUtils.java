@@ -224,28 +224,66 @@ public class CpuUtils {
         List<String> result = new ArrayList<>();
         int mCpuCoreNumber = getNumCpuCores();
         BufferedReader br = null;
-        String mCurFreq = mContext.getResources().getString(R.string.cpu_cur_freq);
 
-        for (int i = 0; i < mCpuCoreNumber; i++) {
-            try {
-                String line;
+        try {
+            for (int i = 0; i < mCpuCoreNumber; i++) {
                 br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu" + i + "/cpufreq/scaling_cur_freq"));
-                if ((line = br.readLine()) != null) {
-                    result.add(String.format(mCurFreq, i, line));
-                }
+                String line = br.readLine();
+                result.add(String.format(mContext.getResources().getString(R.string.cpu_cur_freq), i, line));
                 br.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
+
+
+        return result;
+    }
+
+    /**
+     * Get cpu's current frequency
+     * unit:KHZ
+     * 获取cpu当前频率,单位 HZ
+     *
+     * @return
+     */
+    public static List<String> getCpuOnlineStatus(Context mContext) {
+        List<String> result = new ArrayList<>();
+        int mCpuCoreNumber = getNumCpuCores();
+        BufferedReader br = null;
+
+        try {
+            for (int i = 0; i < mCpuCoreNumber; i++) {
+                br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu" + i + "/online"));
+                String line = br.readLine();
+                if (line != null) {
+                    result.add(String.format(mContext.getResources().getString(R.string.cpu_online_status), i,
+                            ("1".equals(line) ? mContext.getResources().getString(R.string.cpu_online_status_online) : mContext.getResources().getString(R.string.cpu_online_status_offline))));
+                }
+
+
+                br.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
 
         return result;
     }

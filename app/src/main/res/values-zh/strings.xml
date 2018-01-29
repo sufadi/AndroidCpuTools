@@ -28,6 +28,10 @@
     <string name="cpu_cur_governor">CPU 当前调频策略: </string>
     <string name="cpu_available_governors">CPU 支持的调频策略: </string>
     <string name="cpu_cur_freq">CPU %1$d : 当前的频率 %2$s Hz</string>
+    <string name="cpu_online_status">CPU %1$d 开关状态: %2$s</string>
+    <string name="cpu_online_status_online">开启</string>
+    <string name="cpu_online_status_offline">关闭</string>
+    <string name="cpu_stoped">已经停止</string>
 
     <string name="phone_mode">本机型号:  </string>
     <string name="phone_product">手机制造商: </string>
