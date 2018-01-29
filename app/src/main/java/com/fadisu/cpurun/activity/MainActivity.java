@@ -13,6 +13,7 @@ import com.fadisu.cpurun.fragment.CoreInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
 import com.fadisu.cpurun.fragment.CpuInfoFragment;
 import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
+import com.fadisu.cpurun.fragment.CpuSceneFragment;
 import com.fadisu.cpurun.fragment.CpuStatusFragment;
 import com.fadisu.cpurun.fragment.DisplayFragment;
 import com.fadisu.cpurun.fragment.MemInfoFragment;
@@ -35,6 +36,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Fragment mMemInfoFragment;
     private Fragment mBaseInfoFragment;
     private Fragment mCpuStatusFragment;
+    private Fragment mCpuSceneFragment;
     private Fragment mCpuRunTimeFragment;
     private FragmentManager mFragmentManager;
 
@@ -48,6 +50,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private RadioButton mCpuTimeRb;
     private RadioButton mDisplayRb;
     private RadioButton mBuildInfoRb;
+    private RadioButton mCpuSceneFreq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mCpuTimeRb = (RadioButton) findViewById(R.id.rb_cpu_time);
         mCpuStatus = (RadioButton) findViewById(R.id.rb_cpu_status);
         mBuildInfoRb = (RadioButton) findViewById(R.id.rb_build_info);
+        mCpuSceneFreq = (RadioButton) findViewById(R.id.rb_scene_freq);
     }
 
     private void initValues() {
@@ -89,6 +93,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mMemInfoFragment = new MemInfoFragment();
         mCpuInfoFragment = new CpuInfoFragment();
         mBaseInfoFragment = new CoreInfoFragment();
+        mCpuSceneFragment = new CpuSceneFragment();
         mCpuStatusFragment = new CpuStatusFragment();
         mCpuRunTimeFragment = new CpuRunTimeFragment();
         mFragmentManager = getSupportFragmentManager();
@@ -107,6 +112,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mMeminfoRb.setOnClickListener(this);
         mCpuStatus.setOnClickListener(this);
         mBuildInfoRb.setOnClickListener(this);
+        mCpuSceneFreq.setOnClickListener(this);
     }
 
 
@@ -134,6 +140,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.rb_scene_freq:
+                changeFrament(mCpuSceneFragment, null, CpuSceneFragment.class.getSimpleName());
+                break;
             case R.id.rb_cpu_status:
                 changeFrament(mCpuStatusFragment, null, CpuStatusFragment.class.getSimpleName());
                 break;

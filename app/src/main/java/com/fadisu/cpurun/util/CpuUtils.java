@@ -293,4 +293,41 @@ public class CpuUtils {
 
         return result;
     }
+
+    /**
+     * CPU 场景
+     *
+     * @return
+     */
+    public static List<String> getCpuSceneInfo() {
+        List<String> result = new ArrayList<>();
+        BufferedReader br = null;
+        try {
+            String line;
+            br = new BufferedReader(new FileReader("/system/vendor/etc/perfservscntbl.txt"));
+            result.add("/system/vendor/etc/perfservscntbl.txt");
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+            }
+
+            result.add("/system/vendor/etc/perf_whitelist_cfg.xml");
+            br = new BufferedReader(new FileReader("/system/vendor/etc/perf_whitelist_cfg.xml"));
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+            }
+
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
 }

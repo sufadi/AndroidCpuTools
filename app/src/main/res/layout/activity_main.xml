@@ -52,6 +52,16 @@
                     android:background="@color/title_divider_bg" />
 
                 <RadioButton
+                    android:id="@+id/rb_scene_freq"
+                    style="@style/main_title_radio"
+                    android:text="@string/title_cpu_scene_freq" />
+
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="match_parent"
+                    android:background="@color/title_divider_bg" />
+
+                <RadioButton
                     android:id="@+id/rb_display"
                     style="@style/main_title_radio"
                     android:text="@string/title_display" />
