@@ -5,6 +5,7 @@ import android.os.Build;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +53,8 @@ public class PropInfoUtil {
                 }
             */
             br.close();
+        } catch (FileNotFoundException e) {
+            result.add(e.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

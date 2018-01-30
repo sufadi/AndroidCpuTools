@@ -317,6 +317,8 @@ public class CpuUtils {
             }
 
             br.close();
+        } catch (FileNotFoundException e) {
+            result.add(e.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -347,6 +349,8 @@ public class CpuUtils {
             }
 
             br.close();
+        } catch (FileNotFoundException e) {
+            result.add(e.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
