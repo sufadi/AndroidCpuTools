@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,16 +82,13 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
             @Override
             public void run() {
                 while (isRun) {
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    List<String> temp = new ArrayList<>();
+                    temp.add(mContext.getString(R.string.cpu_usage) + ProcCpuStatUtil.getCpuUsage());
+                    temp.addAll(CpuUtils.getCpuCurFreq(mContext));
 
-                    if (null != result) {
+                    if (null != temp) {
                         result.clear();
-                        result.add(mContext.getString(R.string.cpu_usage) + ProcCpuStatUtil.getCpuUsage());
-                        result.addAll(CpuUtils.getCpuCurFreq(mContext));
+                        result.addAll(temp);
                         mHandler.sendEmptyMessage(UPDATE_UI);
                     }
 
