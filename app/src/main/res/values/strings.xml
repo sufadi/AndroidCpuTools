@@ -15,6 +15,7 @@
     <string name="title_cpu_status">CPU status</string>
     <string name="title_cpu_scene_freq">CPU Scene Of  Frequency</string>
     <string name="title_cpu_voltage">CPU Voltage</string>
+    <string name="title_temperature">Temperature</string>
 
     <string name="cpu_core_number">CPU core number: </string>
     <string name="cpu_bits">CPU bit: </string>

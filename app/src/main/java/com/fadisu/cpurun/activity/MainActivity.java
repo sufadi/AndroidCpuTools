@@ -21,6 +21,7 @@ import com.fadisu.cpurun.fragment.MemInfoFragment;
 import com.fadisu.cpurun.fragment.MoreFragment;
 import com.fadisu.cpurun.fragment.PropFragment;
 import com.fadisu.cpurun.fragment.SystemFragment;
+import com.fadisu.cpurun.fragment.TemperatureFragment;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -39,7 +40,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Fragment mCpuStatusFragment;
     private Fragment mCpuSceneFragment;
     private Fragment mCpuRunTimeFragment;
-    private  Fragment mCpuVoltageFragment;
+    private Fragment mCpuVoltageFragment;
+    private Fragment mTemperatureFragment;
     private FragmentManager mFragmentManager;
 
     private RadioButton mSysRb;
@@ -54,6 +56,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private RadioButton mBuildInfoRb;
     private RadioButton mCpuSceneFreq;
     private RadioButton mCpuVoltageRb;
+    private RadioButton mTemperatureRb;
 
 
     @Override
@@ -85,6 +88,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mBuildInfoRb = (RadioButton) findViewById(R.id.rb_build_info);
         mCpuSceneFreq = (RadioButton) findViewById(R.id.rb_scene_freq);
         mCpuVoltageRb = (RadioButton) findViewById(R.id.rb_cpu_voltage);
+        mTemperatureRb = (RadioButton) findViewById(R.id.rb_temperature);
     }
 
     private void initValues() {
@@ -103,6 +107,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mCpuRunTimeFragment = new CpuRunTimeFragment();
         mFragmentManager = getSupportFragmentManager();
         mCpuVoltageFragment = new CpuVoltageFragment();
+        mTemperatureFragment = new TemperatureFragment();
 
         changeFrament(mBaseInfoFragment, null, CoreInfoFragment.class.getSimpleName());
     }
@@ -120,6 +125,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mBuildInfoRb.setOnClickListener(this);
         mCpuSceneFreq.setOnClickListener(this);
         mCpuVoltageRb.setOnClickListener(this);
+        mTemperatureRb.setOnClickListener(this);
     }
 
 
@@ -147,6 +153,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.rb_temperature:
+                changeFrament(mTemperatureFragment, null, TemperatureFragment.class.getSimpleName());
+                break;
             case R.id.rb_cpu_voltage:
                 changeFrament(mCpuVoltageFragment, null, CpuVoltageFragment.class.getSimpleName());
                 break;
