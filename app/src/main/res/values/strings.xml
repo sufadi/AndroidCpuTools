@@ -35,6 +35,7 @@
     <string name="cpu_online_status_online">Online</string>
     <string name="cpu_online_status_offline">Offline</string>
     <string name="cpu_stoped">CPU %1$d: Stopped</string>
+    <string name="cpu_usage">CPU Usage:</string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>

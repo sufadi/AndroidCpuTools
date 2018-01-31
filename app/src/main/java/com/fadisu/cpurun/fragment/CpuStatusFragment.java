@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.CpuUtils;
+import com.fadisu.cpurun.util.ProcCpuStatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +91,7 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
 
                     if (null != result) {
                         result.clear();
+                        result.add(mContext.getString(R.string.cpu_usage) + ProcCpuStatUtil.getCpuUsage());
                         result.addAll(CpuUtils.getCpuCurFreq(mContext));
                         mHandler.sendEmptyMessage(UPDATE_UI);
                     }
