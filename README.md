@@ -46,3 +46,6 @@ CPU 比较重要的参数
 ### 8.系统获取 CPU 电压
 
 ![Android 系统获取 CPU 电压](http://img.blog.csdn.net/20180129202757300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3U3NDk1MjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+### 9.温度
+![温度](http://img.blog.csdn.net/20180131114659734?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3U3NDk1MjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)

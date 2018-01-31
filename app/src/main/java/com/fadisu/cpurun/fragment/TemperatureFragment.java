@@ -88,9 +88,12 @@ public class TemperatureFragment extends Fragment implements CustomAdapter.Layou
                     }
 
                     if (null != result) {
-                        result.clear();
-                        result.addAll(ThermalInfoUtil.getThermalInfo());
-                        mHandler.sendEmptyMessage(UPDATE_UI);
+                        List<String> temp = ThermalInfoUtil.getThermalInfo();
+                        if (temp != null && !temp.isEmpty()) {
+                            result.clear();
+                            result.addAll(temp);
+                            mHandler.sendEmptyMessage(UPDATE_UI);
+                        }
                     }
 
                 }
