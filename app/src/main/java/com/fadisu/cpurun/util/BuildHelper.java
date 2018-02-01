@@ -1,12 +1,12 @@
 package com.fadisu.cpurun.util;
 
 
+import android.os.Build;
+import android.util.Log;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import android.os.Build;
-import android.util.Log;
 
 public class BuildHelper {
     private static final String TAG = BuildHelper.class.getSimpleName();

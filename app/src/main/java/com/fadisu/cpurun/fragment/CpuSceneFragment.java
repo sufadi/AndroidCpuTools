@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.util.CpuUtils;
-import com.fadisu.cpurun.util.ProcCpuStatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,10 +74,6 @@ public class CpuSceneFragment extends Fragment implements CustomAdapter.LayoutVi
         mCustomAdapter.setLayoutView(this);
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -95,5 +90,9 @@ public class CpuSceneFragment extends Fragment implements CustomAdapter.LayoutVi
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

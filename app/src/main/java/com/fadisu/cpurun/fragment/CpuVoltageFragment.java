@@ -84,7 +84,7 @@ public class CpuVoltageFragment extends Fragment implements CustomAdapter.Layout
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                     }
 
                     if (null != result) {
@@ -118,10 +118,6 @@ public class CpuVoltageFragment extends Fragment implements CustomAdapter.Layout
         super.onStop();
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -138,5 +134,9 @@ public class CpuVoltageFragment extends Fragment implements CustomAdapter.Layout
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

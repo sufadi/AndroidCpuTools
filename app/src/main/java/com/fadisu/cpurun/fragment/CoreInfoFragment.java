@@ -91,10 +91,6 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
         mCustomAdapter.setLayoutView(this);
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -111,5 +107,9 @@ public class CoreInfoFragment extends Fragment implements CustomAdapter.LayoutVi
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

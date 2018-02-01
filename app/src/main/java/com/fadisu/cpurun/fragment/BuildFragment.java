@@ -76,10 +76,6 @@ public class BuildFragment extends Fragment implements CustomAdapter.LayoutView 
         mCustomAdapter.setLayoutView(this);
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -96,5 +92,9 @@ public class BuildFragment extends Fragment implements CustomAdapter.LayoutView 
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

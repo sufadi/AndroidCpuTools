@@ -16,7 +16,6 @@ import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.bean.ScreenInfo;
 import com.fadisu.cpurun.util.BuildHelper;
 import com.fadisu.cpurun.util.MemInfoUtil;
-import com.fadisu.cpurun.util.ProcCpuStatUtil;
 import com.fadisu.cpurun.util.PropInfoUtil;
 import com.fadisu.cpurun.util.ScreenUtil;
 import com.fadisu.cpurun.util.SystemUtils;
@@ -105,10 +104,6 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         mCustomAdapter.setLayoutView(this);
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -125,5 +120,9 @@ public class SystemFragment extends Fragment implements CustomAdapter.LayoutView
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

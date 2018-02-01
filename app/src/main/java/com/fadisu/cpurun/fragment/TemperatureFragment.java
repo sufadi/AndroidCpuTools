@@ -84,7 +84,7 @@ public class TemperatureFragment extends Fragment implements CustomAdapter.Layou
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                     }
 
                     if (null != result) {
@@ -121,10 +121,6 @@ public class TemperatureFragment extends Fragment implements CustomAdapter.Layou
         super.onStop();
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -141,5 +137,9 @@ public class TemperatureFragment extends Fragment implements CustomAdapter.Layou
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

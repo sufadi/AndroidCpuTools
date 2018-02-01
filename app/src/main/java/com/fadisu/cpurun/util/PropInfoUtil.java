@@ -2,7 +2,6 @@ package com.fadisu.cpurun.util;
 
 
 import android.os.Build;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,9 +14,9 @@ import java.util.List;
 /**
  * 属性文件
  * /init.rc
- * <p/>
+ * <p>
  * /default.prop
- * <p/>
+ * <p>
  * /system/build.prop
  */
 public class PropInfoUtil {

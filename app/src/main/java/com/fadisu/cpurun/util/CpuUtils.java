@@ -14,7 +14,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CpuUtils {
@@ -24,7 +23,7 @@ public class CpuUtils {
     /**
      * Gets the number of cores available in this device, across all processors.
      * Requires: Ability to peruse the filesystem at "/sys/devices/system/cpu"
-     * <p/>
+     * <p>
      * Source: http://stackoverflow.com/questions/7962155/
      *
      * @return The number of cores, or 1 if failed to get result

@@ -8,9 +8,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.RadioButton;
 
+import com.fadisu.cpurun.MyApplication;
 import com.fadisu.cpurun.R;
-import com.fadisu.cpurun.fragment.CoreInfoFragment;
 import com.fadisu.cpurun.fragment.BuildFragment;
+import com.fadisu.cpurun.fragment.CoreInfoFragment;
 import com.fadisu.cpurun.fragment.CpuInfoFragment;
 import com.fadisu.cpurun.fragment.CpuRunTimeFragment;
 import com.fadisu.cpurun.fragment.CpuSceneFragment;
@@ -58,7 +59,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private RadioButton mCpuVoltageRb;
     private RadioButton mTemperatureRb;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +67,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initViews();
         initValues();
         initLisener();
+
+        MyApplication.startService(this);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        MyApplication.stopService(this);
         finish();
     }
 
@@ -128,10 +131,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mTemperatureRb.setOnClickListener(this);
     }
 
-
     /**
      * 设置显示的页面
-     * <p/>
+     * <p>
      * fragment传入点击的按钮对应的Fragment对象
      * bundle参数
      * tag标识符
@@ -194,4 +196,5 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
     }
+
 }

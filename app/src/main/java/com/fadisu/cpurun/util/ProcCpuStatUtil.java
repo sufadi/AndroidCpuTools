@@ -43,17 +43,6 @@ public class ProcCpuStatUtil {
         return result;
     }
 
-    public static class CpuRateInfo {
-        // CPU 运行总时间
-        double totalCpuTime;
-
-        // CPU 空闲时间
-        double idleTime;
-
-        // CPU 非空闲时间
-        double nonIdleTime;
-    }
-
     public static CpuRateInfo getCpuRateInfo() {
         CpuRateInfo mCpuRateInfo = new CpuRateInfo();
         long[] sysCpu = new long[7];
@@ -78,7 +67,7 @@ public class ProcCpuStatUtil {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         CpuRateInfo mCpuRateInfo2 = getCpuRateInfo();
@@ -86,6 +75,17 @@ public class ProcCpuStatUtil {
         double usage = ((mCpuRateInfo2.nonIdleTime - mCpuRateInfo1.nonIdleTime) / (mCpuRateInfo2.totalCpuTime - mCpuRateInfo1.totalCpuTime)) * 100;
         result = String.valueOf((int) usage) + "%";
         return result;
+    }
+
+    public static class CpuRateInfo {
+        // CPU 运行总时间
+        double totalCpuTime;
+
+        // CPU 空闲时间
+        double idleTime;
+
+        // CPU 非空闲时间
+        double nonIdleTime;
     }
 
 }

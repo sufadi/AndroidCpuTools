@@ -74,10 +74,6 @@ public class CpuInfoFragment extends Fragment implements CustomAdapter.LayoutVie
         mCustomAdapter.setLayoutView(this);
     }
 
-    class ViewHolder {
-        TextView tv_info;
-    }
-
     @Override
     public <T> View setView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -94,5 +90,9 @@ public class CpuInfoFragment extends Fragment implements CustomAdapter.LayoutVie
         holder.tv_info.setText(result.get(position));
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView tv_info;
     }
 }

@@ -1,12 +1,12 @@
 package com.fadisu.cpurun.adapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CustomAdapter<T> extends BaseAdapter {
 
@@ -29,10 +29,6 @@ public class CustomAdapter<T> extends BaseAdapter {
         }
     }
 
-    public interface LayoutView {
-        public <T> View setView(int position, View convertView, ViewGroup parent);
-    }
-
     public void setLayoutView(LayoutView layoutView) {
         mLayoutView = layoutView;
     }
@@ -41,13 +37,13 @@ public class CustomAdapter<T> extends BaseAdapter {
         return mObjects;
     }
 
+    public int getSelectPosition() {
+        return selectPosition;
+    }
+
     public void setSelectPosition(int position) {
         selectPosition = position;
         notifyDataSetChanged();
-    }
-
-    public int getSelectPosition() {
-        return selectPosition;
     }
 
     public void updateData(ArrayList<T> objects) {
@@ -94,6 +90,10 @@ public class CustomAdapter<T> extends BaseAdapter {
         } else {
             return null;
         }
+    }
+
+    public interface LayoutView {
+        public <T> View setView(int position, View convertView, ViewGroup parent);
     }
 
 }

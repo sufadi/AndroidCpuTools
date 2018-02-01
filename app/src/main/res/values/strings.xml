@@ -30,7 +30,7 @@
     <string name="cpu_available_frequencies">CPU Available Frequencies: </string>
     <string name="cpu_cur_governor">CPU Current Governor: </string>
     <string name="cpu_available_governors">CPU Available Governors: </string>
-    <string name="cpu_cur_freq">CPU %1$d : Current Freq %2$s Hz</string>
+    <string name="cpu_cur_freq">CPU %1$d : Freq %2$s Hz</string>
     <string name="cpu_online_status">CPU %1$d Online Status: %2$s</string>
     <string name="cpu_online_status_online">Online</string>
     <string name="cpu_online_status_offline">Offline</string>
