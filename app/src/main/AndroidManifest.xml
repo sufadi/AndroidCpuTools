@@ -7,6 +7,8 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="24" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     <application
         android:name="com.fadisu.cpurun.MyApplication"
         android:allowBackup="true"

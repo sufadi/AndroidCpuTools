@@ -11,6 +11,7 @@ import android.util.Log;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.util.CpuUtils;
 import com.fadisu.cpurun.util.ProcCpuStatUtil;
+import com.fadisu.cpurun.util.ThermalInfoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,7 @@ public class CpuMsgService extends Service {
                 while (isRun) {
                     List<String> result = new ArrayList<>();
                     result.add(mContext.getString(R.string.cpu_usage) + ProcCpuStatUtil.getCpuUsage());
+                    result.add(ThermalInfoUtil.getCpuTemparature());
                     result.addAll(CpuUtils.getCpuCurFreq(mContext));
                     if (null != mICpuMsgService) {
                         try {

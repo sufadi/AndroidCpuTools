@@ -65,7 +65,7 @@ public class ProcCpuStatUtil {
         CpuRateInfo mCpuRateInfo1 = getCpuRateInfo();
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             //e.printStackTrace();
         }

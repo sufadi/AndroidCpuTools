@@ -73,4 +73,37 @@ public class ThermalInfoUtil {
         return result;
     }
 
+    public static String getCpuTemparature() {
+        String result = null;
+
+        BufferedReader br = null;
+        String line = null;
+        String type = null;
+        String temp = null;
+        try {
+            br = new BufferedReader(new FileReader("/sys/class/thermal/thermal_zone1/type"));
+            line = br.readLine();
+
+            if (line != null) {
+                type = line;
+            }
+
+            br = new BufferedReader(new FileReader("/sys/class/thermal/thermal_zone1/temp"));
+            line = br.readLine();
+            if (line != null) {
+                long temperature = Long.parseLong(line);
+                if (temperature < 0) {
+                    temp = "Unknow";
+                } else {
+                    temp = (float) (temperature / 1000.0) + "°C";
+                }
+
+                result = type + " : " + temp;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }
