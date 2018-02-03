@@ -15,4 +15,7 @@
     <!-- 标题分隔线颜色 -->
     <color name="title_divider_bg">#2c495d</color>
     <color name="float_bg">#80000000</color>
+
+    <color name="item_title_color">#cc000000</color>
+    <color name="item_content_color">#33000000</color>
 </resources>

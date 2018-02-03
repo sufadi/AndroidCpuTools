@@ -28,4 +28,11 @@
 
     <dimen name="title_height_list">32dp</dimen>
     <dimen name="item_height_list">64dp</dimen>
+
+    <dimen name="item_title_size">16sp</dimen>
+    <dimen name="item_content_size">12sp</dimen>
+    <dimen name="group_item_margin_list">16dp</dimen>
+    <dimen name="item_margin_list">24dp</dimen>
+    <dimen name="item_image_height">40dp</dimen>
+    <dimen name="item_image__width">40dp</dimen>
 </resources>

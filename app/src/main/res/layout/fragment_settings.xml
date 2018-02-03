@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_cpu_governor_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height_list"
+        android:layout_marginLeft="@dimen/item_margin_list"
+        android:layout_marginRight="@dimen/item_margin_list"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_cpu_governor_title"
+            android:textColor="@color/item_title_color"
+            android:textSize="@dimen/item_title_size" />
+
+        <TextView
+            android:id="@+id/tv_cpu_governor_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_cpu_governor_content"
+            android:textColor="@color/item_content_color"
+            android:textSize="@dimen/item_content_size" />
+    </LinearLayout>
+
+</LinearLayout>

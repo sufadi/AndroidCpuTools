@@ -189,6 +189,21 @@ public class CpuUtils {
         return result;
     }
 
+    public static String[] getCpuAvailableGovernorsList() {
+        String result[] = null;
+        try {
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors"));
+            if ((line = br.readLine()) != null) {
+                result = line.split("\\s+");
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /**
      * CPU 支持的调频策略
      *
