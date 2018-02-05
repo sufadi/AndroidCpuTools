@@ -5,7 +5,7 @@ This library is pre-built by MediaTek internal.
 
 WHAT IT DOES?
 =============
-libperfservicenative.so contains native API for PerfService.
+libsetBrightnessValueBg.so contains native API for PerfService.
 User can use these API to control CPU core, CPU freq and GPU freq
 
 HOW IT WAS BUILT?
@@ -23,7 +23,7 @@ and the following libs from MediaTek:
 
 HOW TO USE IT?
 ==============
-Native program can load API from libperfservicenative.so. 
+Native program can load API from libsetBrightnessValueBg.so.
 This library provide IPC to access Performance Service.
 
 All the source code of this library were written by MediaTek co..

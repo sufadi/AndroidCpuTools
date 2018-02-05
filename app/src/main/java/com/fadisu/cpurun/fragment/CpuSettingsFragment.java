@@ -16,6 +16,8 @@ import com.fadisu.cpurun.util.CpuUtils;
 
 public class CpuSettingsFragment extends Fragment implements View.OnClickListener {
 
+    private static final String TAG = CpuSettingsFragment.class.getSimpleName();
+
     private Context mContext;
 
     private final static String[] GOVERNORS = CpuUtils.getCpuAvailableGovernorsList();
@@ -72,4 +74,6 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
         });
         builder.show();
     }
+
+
 }

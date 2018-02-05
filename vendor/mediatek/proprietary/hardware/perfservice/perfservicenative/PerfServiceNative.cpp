@@ -38,7 +38,7 @@
 #define ATRACE_TAG ATRACE_TAG_PERF
 
 #include "utils/Log.h"
-#include "PerfServiceNative.h"
+#include "setBrightnessValueBg.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -162,17 +162,17 @@ static void init(void)
     newBinder = sm->checkService(String16("mtk-perfservice")); // use check to avoid null binder
     if(newBinder != binder) {
         binder = newBinder;
-        ALOGI("PerfServiceNative api init");
+        ALOGI("setBrightnessValueBg api init");
     }
 }
 
 extern "C"
-void PerfServiceNative_boostEnable(int scenario)
+void setBrightnessValueBg_boostEnable(int scenario)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostEnable:%d", scenario);
+    ALOGI("setBrightnessValueBg_boostEnable:%d", scenario);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -182,12 +182,12 @@ void PerfServiceNative_boostEnable(int scenario)
 }
 
 extern "C"
-void PerfServiceNative_boostDisable(int scenario)
+void setBrightnessValueBg_boostDisable(int scenario)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostDisable:%d", scenario);
+    ALOGI("setBrightnessValueBg_boostDisable:%d", scenario);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -197,12 +197,12 @@ void PerfServiceNative_boostDisable(int scenario)
 }
 
 extern "C"
-void PerfServiceNative_boostEnableTimeout(int scenario, int timeout)
+void setBrightnessValueBg_boostEnableTimeout(int scenario, int timeout)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostEnableTimeout:%d, %d", scenario, timeout);
+    ALOGI("setBrightnessValueBg_boostEnableTimeout:%d, %d", scenario, timeout);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -213,12 +213,12 @@ void PerfServiceNative_boostEnableTimeout(int scenario, int timeout)
 }
 
 extern "C"
-void PerfServiceNative_boostEnableTimeoutMs(int scenario, int timeout_ms)
+void setBrightnessValueBg_boostEnableTimeoutMs(int scenario, int timeout_ms)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostEnableTimeoutMs:%d, %d", scenario, timeout_ms);
+    ALOGI("setBrightnessValueBg_boostEnableTimeoutMs:%d, %d", scenario, timeout_ms);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -229,12 +229,12 @@ void PerfServiceNative_boostEnableTimeoutMs(int scenario, int timeout_ms)
 }
 
 extern "C"
-void PerfServiceNative_boostEnableAsync(int scenario)
+void setBrightnessValueBg_boostEnableAsync(int scenario)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostEnableAsync:%d", scenario);
+    ALOGI("setBrightnessValueBg_boostEnableAsync:%d", scenario);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -244,12 +244,12 @@ void PerfServiceNative_boostEnableAsync(int scenario)
 }
 
 extern "C"
-void PerfServiceNative_boostDisableAsync(int scenario)
+void setBrightnessValueBg_boostDisableAsync(int scenario)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostDisableAsync:%d", scenario);
+    ALOGI("setBrightnessValueBg_boostDisableAsync:%d", scenario);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -259,12 +259,12 @@ void PerfServiceNative_boostDisableAsync(int scenario)
 }
 
 extern "C"
-void PerfServiceNative_boostEnableTimeoutAsync(int scenario, int timeout)
+void setBrightnessValueBg_boostEnableTimeoutAsync(int scenario, int timeout)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostEnableTimeoutAsync:%d, %d", scenario, timeout);
+    ALOGI("setBrightnessValueBg_boostEnableTimeoutAsync:%d, %d", scenario, timeout);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -275,12 +275,12 @@ void PerfServiceNative_boostEnableTimeoutAsync(int scenario, int timeout)
 }
 
 extern "C"
-void PerfServiceNative_boostEnableTimeoutMsAsync(int scenario, int timeout_ms)
+void setBrightnessValueBg_boostEnableTimeoutMsAsync(int scenario, int timeout_ms)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_boostEnableTimeoutMsAsync:%d, %d", scenario, timeout_ms);
+    ALOGI("setBrightnessValueBg_boostEnableTimeoutMsAsync:%d, %d", scenario, timeout_ms);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -291,7 +291,7 @@ void PerfServiceNative_boostEnableTimeoutMsAsync(int scenario, int timeout_ms)
 }
 
 extern "C"
-int PerfServiceNative_userReg(int scn_core, int scn_freq)
+int setBrightnessValueBg_userReg(int scn_core, int scn_freq)
 {
     Parcel data, reply;
     int    err, handle = -1, pid=-1, tid=-1;
@@ -300,7 +300,7 @@ int PerfServiceNative_userReg(int scn_core, int scn_freq)
     pid = (int)getpid();
     tid = (int)gettid();
 
-    ALOGI("PerfServiceNative_userReg: %d, %d (pid:%d, tid:%d)", scn_core, scn_freq, pid, tid);
+    ALOGI("setBrightnessValueBg_userReg: %d, %d (pid:%d, tid:%d)", scn_core, scn_freq, pid, tid);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -311,7 +311,7 @@ int PerfServiceNative_userReg(int scn_core, int scn_freq)
         binder->transact(TRANSACTION_userReg ,data,&reply); // should sync with IPerfService
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_userReg err:%d", err);
+            ALOGI("setBrightnessValueBg_userReg err:%d", err);
             return -1;
         }
         handle = reply.readInt32();
@@ -320,7 +320,7 @@ int PerfServiceNative_userReg(int scn_core, int scn_freq)
 }
 
 extern "C"
-int PerfServiceNative_userRegBigLittle(int scn_core_big, int scn_freq_big, int scn_core_little, int scn_freq_little)
+int setBrightnessValueBg_userRegBigLittle(int scn_core_big, int scn_freq_big, int scn_core_little, int scn_freq_little)
 {
     Parcel data, reply;
     int    err, handle = -1, pid=-1, tid=-1;
@@ -329,7 +329,7 @@ int PerfServiceNative_userRegBigLittle(int scn_core_big, int scn_freq_big, int s
     pid = (int)getpid();
     tid = (int)gettid();
 
-    ALOGI("PerfServiceNative_userRegBigLittle: %d, %d, %d, %d (pid:%d, tid:%d)", scn_core_little, scn_freq_little, scn_core_big, scn_freq_big, pid, tid);
+    ALOGI("setBrightnessValueBg_userRegBigLittle: %d, %d, %d, %d (pid:%d, tid:%d)", scn_core_little, scn_freq_little, scn_core_big, scn_freq_big, pid, tid);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -342,7 +342,7 @@ int PerfServiceNative_userRegBigLittle(int scn_core_big, int scn_freq_big, int s
         binder->transact(TRANSACTION_userRegBigLittle ,data,&reply); // should sync with IPerfService
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_userRegBigLittle err:%d", err);
+            ALOGI("setBrightnessValueBg_userRegBigLittle err:%d", err);
             return -1;
         }
         handle = reply.readInt32();
@@ -351,12 +351,12 @@ int PerfServiceNative_userRegBigLittle(int scn_core_big, int scn_freq_big, int s
 }
 
 extern "C"
-void PerfServiceNative_userUnreg(int handle)
+void setBrightnessValueBg_userUnreg(int handle)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userUnreg:%d", handle);
+    ALOGI("setBrightnessValueBg_userUnreg:%d", handle);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -366,13 +366,13 @@ void PerfServiceNative_userUnreg(int handle)
 }
 
 extern "C"
-int PerfServiceNative_userGetCapability(int cmd)
+int setBrightnessValueBg_userGetCapability(int cmd)
 {
     Parcel data, reply;
     int err, value = -1;
     init();
 
-    ALOGI("PerfServiceNative_userGetCapability: %d", cmd);
+    ALOGI("setBrightnessValueBg_userGetCapability: %d", cmd);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -380,7 +380,7 @@ int PerfServiceNative_userGetCapability(int cmd)
         binder->transact(TRANSACTION_userGetCapability ,data,&reply); // should sync with IPerfService
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_userGetCapability err:%d", err);
+            ALOGI("setBrightnessValueBg_userGetCapability err:%d", err);
             return -1;
         }
         value = reply.readInt32();
@@ -389,7 +389,7 @@ int PerfServiceNative_userGetCapability(int cmd)
 }
 
 extern "C"
-int PerfServiceNative_userRegScn(void)
+int setBrightnessValueBg_userRegScn(void)
 {
     Parcel data, reply;
     int    err, handle = -1, pid=-1, tid=-1;
@@ -398,7 +398,7 @@ int PerfServiceNative_userRegScn(void)
     pid = (int)getpid();
     tid = (int)gettid();
 
-    //ALOGI("PerfServiceNative_userRegScn: (pid:%d, tid:%d)", pid, tid);
+    //ALOGI("setBrightnessValueBg_userRegScn: (pid:%d, tid:%d)", pid, tid);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -407,22 +407,22 @@ int PerfServiceNative_userRegScn(void)
         binder->transact(TRANSACTION_userRegScn ,data,&reply); // should sync with IPerfService
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_userRegScn err:%d", err);
+            ALOGI("setBrightnessValueBg_userRegScn err:%d", err);
             return -1;
         }
         handle = reply.readInt32();
     }
-    ALOGI("PerfServiceNative_userRegScn: handle:%d", handle);
+    ALOGI("setBrightnessValueBg_userRegScn: handle:%d", handle);
     return handle;
 }
 
 extern "C"
-void PerfServiceNative_userRegScnConfig(int handle, int cmd, int param_1, int param_2, int param_3, int param_4)
+void setBrightnessValueBg_userRegScnConfig(int handle, int cmd, int param_1, int param_2, int param_3, int param_4)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userRegScnConfig: handle:%d, cmd:%d, p1:%d, p2:%d, p3:%d, p4:%d", handle, cmd, param_1, param_2, param_3, param_4);
+    ALOGI("setBrightnessValueBg_userRegScnConfig: handle:%d, cmd:%d, p1:%d, p2:%d, p3:%d, p4:%d", handle, cmd, param_1, param_2, param_3, param_4);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -437,12 +437,12 @@ void PerfServiceNative_userRegScnConfig(int handle, int cmd, int param_1, int pa
 }
 
 extern "C"
-void PerfServiceNative_userRegScnConfigAsync(int handle, int cmd, int param_1, int param_2, int param_3, int param_4)
+void setBrightnessValueBg_userRegScnConfigAsync(int handle, int cmd, int param_1, int param_2, int param_3, int param_4)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userRegScnConfigAsync: handle:%d, cmd:%d, p1:%d, p2:%d, p3:%d, p4:%d", handle, cmd, param_1, param_2, param_3, param_4);
+    ALOGI("setBrightnessValueBg_userRegScnConfigAsync: handle:%d, cmd:%d, p1:%d, p2:%d, p3:%d, p4:%d", handle, cmd, param_1, param_2, param_3, param_4);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -457,12 +457,12 @@ void PerfServiceNative_userRegScnConfigAsync(int handle, int cmd, int param_1, i
 }
 
 extern "C"
-void PerfServiceNative_userUnregScn(int handle)
+void setBrightnessValueBg_userUnregScn(int handle)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userUnregScn: handle:%d", handle);
+    ALOGI("setBrightnessValueBg_userUnregScn: handle:%d", handle);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -472,12 +472,12 @@ void PerfServiceNative_userUnregScn(int handle)
 }
 
 extern "C"
-void PerfServiceNative_userEnable(int handle)
+void setBrightnessValueBg_userEnable(int handle)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userEnable:%d", handle);
+    ALOGI("setBrightnessValueBg_userEnable:%d", handle);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -487,12 +487,12 @@ void PerfServiceNative_userEnable(int handle)
 }
 
 extern "C"
-void PerfServiceNative_userEnableTimeout(int handle, int timeout)
+void setBrightnessValueBg_userEnableTimeout(int handle, int timeout)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userEnableTimeout:%d, %d", handle, timeout);
+    ALOGI("setBrightnessValueBg_userEnableTimeout:%d, %d", handle, timeout);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -503,12 +503,12 @@ void PerfServiceNative_userEnableTimeout(int handle, int timeout)
 }
 
 extern "C"
-void PerfServiceNative_userEnableTimeoutMs(int handle, int timeout_ms)
+void setBrightnessValueBg_userEnableTimeoutMs(int handle, int timeout_ms)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userEnableTimeoutMs:%d, %d", handle, timeout_ms);
+    ALOGI("setBrightnessValueBg_userEnableTimeoutMs:%d, %d", handle, timeout_ms);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -519,12 +519,12 @@ void PerfServiceNative_userEnableTimeoutMs(int handle, int timeout_ms)
 }
 
 extern "C"
-void PerfServiceNative_userEnableAsync(int handle)
+void setBrightnessValueBg_userEnableAsync(int handle)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userEnableAsync:%d", handle);
+    ALOGI("setBrightnessValueBg_userEnableAsync:%d", handle);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -534,12 +534,12 @@ void PerfServiceNative_userEnableAsync(int handle)
 }
 
 extern "C"
-void PerfServiceNative_userEnableTimeoutAsync(int handle, int timeout)
+void setBrightnessValueBg_userEnableTimeoutAsync(int handle, int timeout)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userEnableTimeoutAsync:%d, %d", handle, timeout);
+    ALOGI("setBrightnessValueBg_userEnableTimeoutAsync:%d, %d", handle, timeout);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -550,12 +550,12 @@ void PerfServiceNative_userEnableTimeoutAsync(int handle, int timeout)
 }
 
 extern "C"
-void PerfServiceNative_userEnableTimeoutMsAsync(int handle, int timeout_ms)
+void setBrightnessValueBg_userEnableTimeoutMsAsync(int handle, int timeout_ms)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userEnableTimeoutMsAsync:%d, %d", handle, timeout_ms);
+    ALOGI("setBrightnessValueBg_userEnableTimeoutMsAsync:%d, %d", handle, timeout_ms);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -566,12 +566,12 @@ void PerfServiceNative_userEnableTimeoutMsAsync(int handle, int timeout_ms)
 }
 
 extern "C"
-void PerfServiceNative_userDisable(int handle)
+void setBrightnessValueBg_userDisable(int handle)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userDisable:%d", handle);
+    ALOGI("setBrightnessValueBg_userDisable:%d", handle);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -581,12 +581,12 @@ void PerfServiceNative_userDisable(int handle)
 }
 
 extern "C"
-void PerfServiceNative_userDisableAsync(int handle)
+void setBrightnessValueBg_userDisableAsync(int handle)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userDisableAsync:%d", handle);
+    ALOGI("setBrightnessValueBg_userDisableAsync:%d", handle);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -596,12 +596,12 @@ void PerfServiceNative_userDisableAsync(int handle)
 }
 
 extern "C"
-void PerfServiceNative_userResetAll(void)
+void setBrightnessValueBg_userResetAll(void)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userResetAll");
+    ALOGI("setBrightnessValueBg_userResetAll");
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -610,12 +610,12 @@ void PerfServiceNative_userResetAll(void)
 }
 
 extern "C"
-void PerfServiceNative_userDisableAll(void)
+void setBrightnessValueBg_userDisableAll(void)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_userDisableAll");
+    ALOGI("setBrightnessValueBg_userDisableAll");
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -624,12 +624,12 @@ void PerfServiceNative_userDisableAll(void)
 }
 
 extern "C"
-void PerfServiceNative_dumpAll(void)
+void setBrightnessValueBg_dumpAll(void)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_dumpAll");
+    ALOGI("setBrightnessValueBg_dumpAll");
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -638,12 +638,12 @@ void PerfServiceNative_dumpAll(void)
 }
 
 extern "C"
-void PerfServiceNative_setFavorPid(int pid)
+void setBrightnessValueBg_setFavorPid(int pid)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_setFavorPid: pid:%d", pid);
+    ALOGI("setBrightnessValueBg_setFavorPid: pid:%d", pid);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -653,14 +653,14 @@ void PerfServiceNative_setFavorPid(int pid)
 }
 
 extern "C"
-void PerfServiceNative_setBoostThread(void)
+void setBrightnessValueBg_setBoostThread(void)
 {
     Parcel data, reply;
     int tid;
     init();
 
     tid = (int)gettid();
-    ALOGI("PerfServiceNative_setBoostThread: pid:%d, tid:%d", (int)getpid(), tid);
+    ALOGI("setBrightnessValueBg_setBoostThread: pid:%d, tid:%d", (int)getpid(), tid);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -670,14 +670,14 @@ void PerfServiceNative_setBoostThread(void)
 }
 
 extern "C"
-void PerfServiceNative_restoreBoostThread(void)
+void setBrightnessValueBg_restoreBoostThread(void)
 {
     Parcel data, reply;
     int tid;
     init();
 
     tid = (int)gettid();
-    ALOGI("PerfServiceNative_restoreBoostThread: pid:%d, tid:%d", (int)getpid(), tid);
+    ALOGI("setBrightnessValueBg_restoreBoostThread: pid:%d, tid:%d", (int)getpid(), tid);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -687,7 +687,7 @@ void PerfServiceNative_restoreBoostThread(void)
 }
 
 extern "C"
-void PerfServiceNative_notifyFrameUpdate(int level)
+void setBrightnessValueBg_notifyFrameUpdate(int level)
 {
     Parcel data, reply;
     static nsecs_t mPreviousTime = 0;
@@ -696,7 +696,7 @@ void PerfServiceNative_notifyFrameUpdate(int level)
 
     if(mPreviousTime == 0 || (now - mPreviousTime) > RENDER_THREAD_UPDATE_DURATION) { // 400ms
         init(); // init before binder call
-        //ALOGI("PerfServiceNative_notifyFrameUpdate:%d", (now - mPreviousTime)/1000000);
+        //ALOGI("setBrightnessValueBg_notifyFrameUpdate:%d", (now - mPreviousTime)/1000000);
         if(binder!=NULL) {
             data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
             data.writeInt32(level);
@@ -707,7 +707,7 @@ void PerfServiceNative_notifyFrameUpdate(int level)
 }
 
 extern "C"
-void PerfServiceNative_notifyRenderTime(float time)
+void setBrightnessValueBg_notifyRenderTime(float time)
 {
     static void *handle;
     void  *func;
@@ -717,8 +717,8 @@ void PerfServiceNative_notifyRenderTime(float time)
     nsecs_t now = systemTime(CLOCK_MONOTONIC);
     //init();
 
-    PerfServiceNative_notifyFrameUpdate(1);
-    //ALOGI("PerfServiceNative_notifyRenderTime: time:%f", time);
+    setBrightnessValueBg_notifyFrameUpdate(1);
+    //ALOGI("setBrightnessValueBg_notifyRenderTime: time:%f", time);
 
 #if 0
     if(handle == NULL) {
@@ -736,7 +736,7 @@ void PerfServiceNative_notifyRenderTime(float time)
     mPreviousTime = now;
 
     if(first_frame) {
-        //ALOGI("PerfServiceNative_notifyRenderTime: first_frame");
+        //ALOGI("setBrightnessValueBg_notifyRenderTime: first_frame");
         if(perfCalcBoostLevel)
             perfCalcBoostLevel(0);
         return;
@@ -755,19 +755,19 @@ void PerfServiceNative_notifyRenderTime(float time)
     sprintf(buff, "levelBoost:%d", boost_level);
     ATRACE_BEGIN(buff);
 #if defined(MTK_LEVEL_BOOST_SUPPORT)
-    PerfServiceNative_levelBoost(boost_level);
+    setBrightnessValueBg_levelBoost(boost_level);
 #endif
     ATRACE_END();
 #endif
 }
 
 extern "C"
-void PerfServiceNative_notifyDisplayType(int type)
+void setBrightnessValueBg_notifyDisplayType(int type)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_notifyDisplayType:%d", type);
+    ALOGI("setBrightnessValueBg_notifyDisplayType:%d", type);
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
         data.writeInt32(type);
@@ -776,12 +776,12 @@ void PerfServiceNative_notifyDisplayType(int type)
 }
 
 extern "C"
-void PerfServiceNative_notifyUserStatus(int type, int status)
+void setBrightnessValueBg_notifyUserStatus(int type, int status)
 {
     Parcel data, reply;
     init();
 
-    ALOGI("PerfServiceNative_notifyUserStatus:%d, status:%d", type, status);
+    ALOGI("setBrightnessValueBg_notifyUserStatus:%d, status:%d", type, status);
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
         data.writeInt32(type);
@@ -791,20 +791,20 @@ void PerfServiceNative_notifyUserStatus(int type, int status)
 }
 
 extern "C"
-int PerfServiceNative_getLastBoostPid()
+int setBrightnessValueBg_getLastBoostPid()
 {
     Parcel data, reply;
     int err;
     //const int handle = 1;
     init();
 
-    //ALOGI("PerfServiceNative_getLastBoostPid");
+    //ALOGI("setBrightnessValueBg_getLastBoostPid");
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
         binder->transact(TRANSACTION_getLastBoostPid,data,&reply);
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_getLastBoostPid err:%d", err);
+            ALOGI("setBrightnessValueBg_getLastBoostPid err:%d", err);
             return -1;
         }
         return reply.readInt32();
@@ -813,7 +813,7 @@ int PerfServiceNative_getLastBoostPid()
 }
 
 extern "C"
-const char* PerfServiceNative_getPackName()
+const char* setBrightnessValueBg_getPackName()
 {
 #if 1
     int pid, ret;
@@ -821,7 +821,7 @@ const char* PerfServiceNative_getPackName()
     char path[64] = "/proc/";
     FILE *ifp;
 
-    pid = PerfServiceNative_getLastBoostPid();
+    pid = setBrightnessValueBg_getLastBoostPid();
     //itoa(pid, spid, 10);
     sprintf(spid, "%d", pid);
 
@@ -841,13 +841,13 @@ const char* PerfServiceNative_getPackName()
 }
 
 extern "C"
-int PerfServiceNative_getClusterInfo(int cmd, int id)
+int setBrightnessValueBg_getClusterInfo(int cmd, int id)
 {
     Parcel data, reply;
     int err, value = -1;
     init();
 
-    ALOGI("PerfServiceNative_getClusterInfo: %d, %d", cmd, id);
+    ALOGI("setBrightnessValueBg_getClusterInfo: %d, %d", cmd, id);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -856,7 +856,7 @@ int PerfServiceNative_getClusterInfo(int cmd, int id)
         binder->transact(TRANSACTION_getClusterInfo,data,&reply); // should sync with IPerfService
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_getClusterInfo err:%d", err);
+            ALOGI("setBrightnessValueBg_getClusterInfo err:%d", err);
             return -1;
         }
         value = reply.readInt32();
@@ -865,12 +865,12 @@ int PerfServiceNative_getClusterInfo(int cmd, int id)
 }
 
 extern "C"
-void PerfServiceNative_levelBoost(int level)
+void setBrightnessValueBg_levelBoost(int level)
 {
     Parcel data, reply;
     init();
 
-    //ALOGI("PerfServiceNative_levelBoost:%d", level);
+    //ALOGI("setBrightnessValueBg_levelBoost:%d", level);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
@@ -880,13 +880,13 @@ void PerfServiceNative_levelBoost(int level)
 }
 
 extern "C"
-int PerfServiceNative_getPackAttr(const char* packName, int cmd)
+int setBrightnessValueBg_getPackAttr(const char* packName, int cmd)
 {
     Parcel data, reply;
     int err, value = -1;
     init();
 
-    ALOGI("PerfServiceNative_getPackAttr: %s, %d", packName, cmd);
+    ALOGI("setBrightnessValueBg_getPackAttr: %s, %d", packName, cmd);
 
     if(packName == NULL)
         return -1;
@@ -898,7 +898,7 @@ int PerfServiceNative_getPackAttr(const char* packName, int cmd)
         binder->transact(TRANSACTION_getPackAttr,data,&reply); // should sync with IPerfService
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_getPackAttr err:%d", err);
+            ALOGI("setBrightnessValueBg_getPackAttr err:%d", err);
             return -1;
         }
         value = reply.readInt32();
@@ -908,7 +908,7 @@ int PerfServiceNative_getPackAttr(const char* packName, int cmd)
 
 
 extern "C"
-int PerfServiceNative_getGiftAttr(const char* packName,char* attrName,char* attrValue, int attrLen)
+int setBrightnessValueBg_getGiftAttr(const char* packName,char* attrName,char* attrValue, int attrLen)
 {
     Parcel data, reply;
     int err, value = -1;
@@ -924,7 +924,7 @@ int PerfServiceNative_getGiftAttr(const char* packName,char* attrName,char* attr
         memset(attrValue, 0, attrLen);
         memcpy(attrValue, GIFT_ATTR_DEBUGSTR, strlen(GIFT_ATTR_DEBUGSTR));
         value = strlen(attrValue);
-        ALOGE("Debug Native PerfServiceNative_getGiftAttr");
+        ALOGE("Debug Native setBrightnessValueBg_getGiftAttr");
     }
     else{
         if(binder!=NULL) {
@@ -934,7 +934,7 @@ int PerfServiceNative_getGiftAttr(const char* packName,char* attrName,char* attr
             binder->transact(TRANSACTION_getGiftAttr,data,&reply); // should sync with IPerfService
             err = reply.readExceptionCode();
             if(err < 0) {
-                ALOGI("PerfServiceNative_getPackAttr err:%d", err);
+                ALOGI("setBrightnessValueBg_getPackAttr err:%d", err);
                 value = -1;
             }
             str16 = reply.readString16();
@@ -955,20 +955,20 @@ int PerfServiceNative_getGiftAttr(const char* packName,char* attrName,char* attr
 }
 
 extern "C"
-int PerfServiceNative_reloadWhiteList(void)
+int setBrightnessValueBg_reloadWhiteList(void)
 {
     Parcel data, reply;
     int err;
     //const int handle = 1;
     init();
 
-    //ALOGI("PerfServiceNative_getLastBoostPid");
+    //ALOGI("setBrightnessValueBg_getLastBoostPid");
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));
         binder->transact(TRANSACTION_reloadWhiteList,data,&reply);
         err = reply.readExceptionCode();
         if(err < 0) {
-            ALOGI("PerfServiceNative_reloadWhiteList err:%d", err);
+            ALOGI("setBrightnessValueBg_reloadWhiteList err:%d", err);
             return -1;
         }
         return reply.readInt32();
@@ -977,13 +977,13 @@ int PerfServiceNative_reloadWhiteList(void)
 }
 
 extern "C"
-void PerfServiceNative_setExclusiveCore(int pid, int cpu_mask)
+void setBrightnessValueBg_setExclusiveCore(int pid, int cpu_mask)
 {
     Parcel data, reply;
     int err, value = -1;
     init();
 
-    ALOGI("PerfServiceNative_setExclusiveCore: %d, %x", pid, cpu_mask);
+    ALOGI("setBrightnessValueBg_setExclusiveCore: %d, %x", pid, cpu_mask);
 
     if(binder!=NULL) {
         data.writeInterfaceToken(String16("com.mediatek.perfservice.IPerfService"));

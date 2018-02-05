@@ -14,64 +14,64 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_PERFSERVICENATIVE_H
-#define ANDROID_PERFSERVICENATIVE_H
+#ifndef ANDROID_setBrightnessValueBg_H
+#define ANDROID_setBrightnessValueBg_H
 
 __BEGIN_DECLS
 
 #include "perfservice_types.h"
 
-extern void PerfServiceNative_boostEnable(int scenario);
-extern void PerfServiceNative_boostDisable(int scenario);
-extern void PerfServiceNative_boostEnableTimeout(int scenario, int timeout);
-extern void PerfServiceNative_boostEnableTimeoutMs(int scenario, int timeout);
-extern void PerfServiceNative_boostEnableAsync(int scenario);
-extern void PerfServiceNative_boostDisableAsync(int scenario);
-extern void PerfServiceNative_boostEnableTimeoutAsync(int scenario, int timeout);
-extern void PerfServiceNative_boostEnableTimeoutMsAsync(int scenario, int timeout);
+extern void setBrightnessValueBg_boostEnable(int scenario);
+extern void setBrightnessValueBg_boostDisable(int scenario);
+extern void setBrightnessValueBg_boostEnableTimeout(int scenario, int timeout);
+extern void setBrightnessValueBg_boostEnableTimeoutMs(int scenario, int timeout);
+extern void setBrightnessValueBg_boostEnableAsync(int scenario);
+extern void setBrightnessValueBg_boostDisableAsync(int scenario);
+extern void setBrightnessValueBg_boostEnableTimeoutAsync(int scenario, int timeout);
+extern void setBrightnessValueBg_boostEnableTimeoutMsAsync(int scenario, int timeout);
 
-extern int  PerfServiceNative_userReg(int scn_core, int scn_freq);
-extern int  PerfServiceNative_userRegBigLittle(int scn_core_big, int scn_freq_big, int scn_core_little, int scn_freq_little);
-extern void PerfServiceNative_userUnreg(int handle);
+extern int  setBrightnessValueBg_userReg(int scn_core, int scn_freq);
+extern int  setBrightnessValueBg_userRegBigLittle(int scn_core_big, int scn_freq_big, int scn_core_little, int scn_freq_little);
+extern void setBrightnessValueBg_userUnreg(int handle);
 
-extern int  PerfServiceNative_userGetCapability(int cmd);
+extern int  setBrightnessValueBg_userGetCapability(int cmd);
 
-extern int  PerfServiceNative_userRegScn();
-extern void PerfServiceNative_userRegScnConfig(int handle, int cmd, int param_1, int param_2, int param_3, int param_4);
-extern void PerfServiceNative_userRegScnConfigAsync(int handle, int cmd, int param_1, int param_2, int param_3, int param_4);
-extern void PerfServiceNative_userUnregScn(int handle);
+extern int  setBrightnessValueBg_userRegScn();
+extern void setBrightnessValueBg_userRegScnConfig(int handle, int cmd, int param_1, int param_2, int param_3, int param_4);
+extern void setBrightnessValueBg_userRegScnConfigAsync(int handle, int cmd, int param_1, int param_2, int param_3, int param_4);
+extern void setBrightnessValueBg_userUnregScn(int handle);
 
-extern void PerfServiceNative_userEnable(int handle);
-extern void PerfServiceNative_userEnableTimeout(int handle, int timeout);
-extern void PerfServiceNative_userEnableTimeoutMs(int handle, int timeout);
-extern void PerfServiceNative_userEnableAsync(int handle);
-extern void PerfServiceNative_userEnableTimeoutAsync(int handle, int timeout);
-extern void PerfServiceNative_userEnableTimeoutMsAsync(int handle, int timeout);
-extern void PerfServiceNative_userDisable(int handle);
-extern void PerfServiceNative_userDisableAsync(int handle);
+extern void setBrightnessValueBg_userEnable(int handle);
+extern void setBrightnessValueBg_userEnableTimeout(int handle, int timeout);
+extern void setBrightnessValueBg_userEnableTimeoutMs(int handle, int timeout);
+extern void setBrightnessValueBg_userEnableAsync(int handle);
+extern void setBrightnessValueBg_userEnableTimeoutAsync(int handle, int timeout);
+extern void setBrightnessValueBg_userEnableTimeoutMsAsync(int handle, int timeout);
+extern void setBrightnessValueBg_userDisable(int handle);
+extern void setBrightnessValueBg_userDisableAsync(int handle);
 
-extern void PerfServiceNative_userResetAll(void);
-extern void PerfServiceNative_userDisableAll(void);
+extern void setBrightnessValueBg_userResetAll(void);
+extern void setBrightnessValueBg_userDisableAll(void);
 
-extern void PerfServiceNative_dumpAll(void);
+extern void setBrightnessValueBg_dumpAll(void);
 
-extern void PerfServiceNative_setFavorPid(int pid);
-extern void PerfServiceNative_setBoostThread(void);
-extern void PerfServiceNative_restoreBoostThread(void);
-extern void PerfServiceNative_notifyFrameUpdate(int level);
-extern void PerfServiceNative_notifyRenderTime(float time);
-extern void PerfServiceNative_notifyDisplayType(int type);
-extern void PerfServiceNative_notifyUserStatus(int type, int status);
-extern const char* PerfServiceNative_getPackName();
-extern int PerfServiceNative_getLastBoostPid();
+extern void setBrightnessValueBg_setFavorPid(int pid);
+extern void setBrightnessValueBg_setBoostThread(void);
+extern void setBrightnessValueBg_restoreBoostThread(void);
+extern void setBrightnessValueBg_notifyFrameUpdate(int level);
+extern void setBrightnessValueBg_notifyRenderTime(float time);
+extern void setBrightnessValueBg_notifyDisplayType(int type);
+extern void setBrightnessValueBg_notifyUserStatus(int type, int status);
+extern const char* setBrightnessValueBg_getPackName();
+extern int setBrightnessValueBg_getLastBoostPid();
 
-extern int PerfServiceNative_getClusterInfo(int cmd, int id);
-extern void PerfServiceNative_levelBoost(int level);
-extern int PerfServiceNative_getPackAttr(const char* packName, int cmd);
-extern int PerfServiceNative_getGiftAttr(const char* packName, char* attrName, char* attrValue, int attrLen);
-extern int PerfServiceNative_reloadWhiteList(void);
-extern void PerfServiceNative_setExclusiveCore(int pid, int cpu_mask);
+extern int setBrightnessValueBg_getClusterInfo(int cmd, int id);
+extern void setBrightnessValueBg_levelBoost(int level);
+extern int setBrightnessValueBg_getPackAttr(const char* packName, int cmd);
+extern int setBrightnessValueBg_getGiftAttr(const char* packName, char* attrName, char* attrValue, int attrLen);
+extern int setBrightnessValueBg_reloadWhiteList(void);
+extern void setBrightnessValueBg_setExclusiveCore(int pid, int cpu_mask);
 
 __END_DECLS
 
-#endif // ANDROID_PERFSERVICENATIVE_H
+#endif // ANDROID_setBrightnessValueBg_H

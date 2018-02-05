@@ -40,8 +40,8 @@ LOCAL_PRELINK_MODULE := false
 LOCAL_C_INCLUDES += $(JNI_H_INCLUDE) \
 					$(LOCAL_PATH) \
 
-LOCAL_SRC_FILES := PerfServiceNative.cpp
-LOCAL_MODULE := libperfservicenative
+LOCAL_SRC_FILES := setBrightnessValueBg.cpp
+LOCAL_MODULE := libsetBrightnessValueBg
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_OWNER := mtk
 include $(MTK_SHARED_LIBRARY)

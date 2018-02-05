@@ -6,10 +6,15 @@ package com.mediatek.perfservice;
 public interface IPerfServiceWrapper {
 
     public static final int SCN_NONE       = 0;
+
+    // 切换应用
     public static final int SCN_APP_SWITCH = 1; /* apply for both launch/exit */
+
     public static final int SCN_PACKAGE_SWITCH  = 2;
     public static final int SCN_GAME_LAUNCH     = 3;
     public static final int SCN_APP_LAUNCH      = 4;
+
+    // 旋转应用
     public static final int SCN_APP_ROTATE      = 5;
     public static final int SCN_APP_TOUCH       = 6;
     public static final int SCN_SW_FRAME_UPDATE = 7;
@@ -65,6 +70,7 @@ public interface IPerfServiceWrapper {
 
     // 获取内存频率级别
     public static final int CMD_GET_MEM_FREQ_LEVEL_COUNT        = 4;
+
     public static final int CMD_GET_PERF_INDEX_MIN              = 5;
     public static final int CMD_GET_PERF_INDEX_MAX              = 6;
     public static final int CMD_GET_PERF_NORMALIZED_INDEX_MAX   = 7;
@@ -106,14 +112,14 @@ public interface IPerfServiceWrapper {
     public static final int CMD_SET_GPU_FREQ_MAX            = 9;
 
     // 设置图形模式，参数1个：DRAM模式：0-默认模式，1-低功耗模式，2-还是默认模式，3-高性能模式
+    public static final int CMD_SET_VCORE                   = 10;
+
+    // 设置关屏模式，一个参数，模式值。0-关屏无效，1-关屏有效，2-关屏暂停，打开恢复
     //enum {
     //    SCREEN_OFF_DISABLE      = 0,
     //            SCREEN_OFF_ENABLE       = 1,
     //            SCREEN_OFF_WAIT_RESTORE = 2,
     //};
-    public static final int CMD_SET_VCORE                   = 10;
-
-    // 设置关屏模式，一个参数，模式值。0-关屏无效，1-关屏有效，2-关屏暂停，打开恢复
     public static final int CMD_SET_SCREEN_OFF_STATE        = 11;
 
     // 设置高速频率，一个参数
@@ -124,14 +130,32 @@ public interface IPerfServiceWrapper {
 
     // 设置above speed hispeed，一个参数
     public static final int CMD_SET_CPUFREQ_ABOVE_HISPEED_DELAY = 14;
+
+    // 设置CPU簇的最少核数
     public static final int CMD_SET_CLUSTER_CPU_CORE_MIN    = 15;
+
+    // 设置CPU簇的最多核数
     public static final int CMD_SET_CLUSTER_CPU_CORE_MAX    = 16;
+
+    // 设置CPU簇的最低频率值
     public static final int CMD_SET_CLUSTER_CPU_FREQ_MIN    = 17;
+
+    // 设置CPU簇的最高频率值
     public static final int CMD_SET_CLUSTER_CPU_FREQ_MAX    = 18;
+
+    // 设置root簇
     public static final int CMD_SET_ROOT_CLUSTER            = 19;
+
+    // 设置CPU温度的最高阈值
     public static final int CMD_SET_CPU_UP_THRESHOLD        = 20;
+
+    // 设置CPU温度的最低阈值
     public static final int CMD_SET_CPU_DOWN_THRESHOLD      = 21;
+
+    // 设置性能优化的索引值
     public static final int CMD_SET_PERF_INDEX              = 22;
+
+    // 设置普通性能优化的索引值
     public static final int CMD_SET_NORMALIZED_PERF_INDEX   = 23;
     public static final int CMD_SET_PPM_MODE                = 24;
     public static final int CMD_SET_RUSH_BOOST_ENABLED      = 25;

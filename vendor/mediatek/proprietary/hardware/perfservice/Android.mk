@@ -38,12 +38,12 @@ LOCAL_PATH:= $(call my-dir)
 ifneq ($(wildcard $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z)),)
 
 include $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z)/Android.mk \
-        $(LOCAL_PATH)/perfservicenative/Android.mk \
+        $(LOCAL_PATH)/setBrightnessValueBg/Android.mk \
         $(LOCAL_PATH)/perf_native_test/Android.mk
 
 else # mt[xxxx] folder exist
 
-include $(LOCAL_PATH)/perfservicenative/Android.mk \
+include $(LOCAL_PATH)/setBrightnessValueBg/Android.mk \
         $(LOCAL_PATH)/perf_native_test/Android.mk
         
 endif # mt[xxxx] folder not exist

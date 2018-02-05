@@ -7,9 +7,9 @@
 #include <errno.h>
 #include <dlfcn.h>
 
-#include "PerfServiceNative.h"
+#include "setBrightnessValueBg.h"
 
-#define LIB_FULL_NAME "libperfservicenative.so"
+#define LIB_FULL_NAME "libsetBrightnessValueBg.so"
 
 void (*perfBoostEnable)(int) = NULL;
 void (*perfBoostDisable)(int) = NULL;
@@ -189,7 +189,7 @@ static int load_api(void)
 
 	handle = dlopen(LIB_FULL_NAME, RTLD_NOW);
 
-	func = dlsym(handle, "PerfServiceNative_boostEnable");
+	func = dlsym(handle, "setBrightnessValueBg_boostEnable");
 	perfBoostEnable = (ena)(func);
 
 	if (perfBoostEnable == NULL) {
@@ -198,7 +198,7 @@ static int load_api(void)
 		return 0;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_boostDisable");
+	func = dlsym(handle, "setBrightnessValueBg_boostDisable");
 	perfBoostDisable = (disa)(func);
 
 	if (perfBoostDisable == NULL) {
@@ -207,7 +207,7 @@ static int load_api(void)
 		return 0;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_boostEnableTimeout");
+	func = dlsym(handle, "setBrightnessValueBg_boostEnableTimeout");
 	perfBoostEnableTimeout = (ena_timeout)(func);
 
 	if (perfBoostEnableTimeout == NULL) {
@@ -216,7 +216,7 @@ static int load_api(void)
 		return -1;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_userReg");
+	func = dlsym(handle, "setBrightnessValueBg_userReg");
 	perfUserScnReg = (user_reg)(func);
 
 	if (perfUserScnReg == NULL) {
@@ -225,7 +225,7 @@ static int load_api(void)
 		return -1;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_userRegBigLittle");
+	func = dlsym(handle, "setBrightnessValueBg_userRegBigLittle");
 	perfUserScnRegBigLittle = (user_reg_big_little)(func);
 
 	if (perfUserScnRegBigLittle == NULL) {
@@ -234,7 +234,7 @@ static int load_api(void)
 		return -1;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_userUnreg");
+	func = dlsym(handle, "setBrightnessValueBg_userUnreg");
 	perfUserScnUnreg = (user_unreg)(func);
 
 	if (perfUserScnUnreg == NULL) {
@@ -243,7 +243,7 @@ static int load_api(void)
 		return -1;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_userEnable");
+	func = dlsym(handle, "setBrightnessValueBg_userEnable");
 	perfUserScnEnable = (user_enable)(func);
 
 	if (perfUserScnEnable == NULL) {
@@ -252,7 +252,7 @@ static int load_api(void)
 		return -1;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_userDisable");
+	func = dlsym(handle, "setBrightnessValueBg_userDisable");
 	perfUserScnDisable = (user_disable)(func);
 
 	if (perfUserScnDisable == NULL) {
@@ -261,7 +261,7 @@ static int load_api(void)
 		return -1;
 	}
 
-	func = dlsym(handle, "PerfServiceNative_userEnableTimeout");
+	func = dlsym(handle, "setBrightnessValueBg_userEnableTimeout");
 	perfUserScnEnableTimeout = (user_enable_timeout)(func);
 
 	if (perfUserScnEnableTimeout == NULL) {

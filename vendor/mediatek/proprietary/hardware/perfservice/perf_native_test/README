@@ -15,7 +15,7 @@ It needs the following libs from AOSP:
 2.  libdl.so
 
 and the following libs from MediaTek:
-1.  libperfservicenative.so
+1.  libsetBrightnessValueBg.so
 
 HOW TO USE IT?
 ==============
