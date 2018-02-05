@@ -52,6 +52,7 @@ import com.mediatek.am.AMEventHookData.AfterActivityStopped;
 import com.mediatek.am.AMEventHookData.BeforeActivitySwitch;
 import com.mediatek.am.AMEventHookData.StartProcess;
 
+// Android7.1/frameworks\base\core\java\com\mediatek\perfservice
 public class PerfServiceWrapper implements IPerfServiceWrapper {
 
     private static final String TAG = "PerfServiceWrapper";

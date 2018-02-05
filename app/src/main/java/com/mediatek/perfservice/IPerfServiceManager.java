@@ -58,6 +58,7 @@ package com.mediatek.perfservice;
 //import android.util.Log;
 //import static junit.framework.Assert.*;
 
+// Android7.1/frameworks\base\core\java\com\mediatek\perfservice
 public interface IPerfServiceManager {
 
     public void systemReady();

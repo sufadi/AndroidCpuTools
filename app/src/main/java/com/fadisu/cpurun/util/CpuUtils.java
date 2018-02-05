@@ -21,6 +21,13 @@ public class CpuUtils {
     private static final String TAG = CpuUtils.class.getSimpleName();
 
     /**
+     * It's also good way to get cpu core number
+     */
+    public static int getCPUCoreNum() {
+        return Runtime.getRuntime().availableProcessors();
+    }
+
+    /**
      * Gets the number of cores available in this device, across all processors.
      * Requires: Ability to peruse the filesystem at "/sys/devices/system/cpu"
      * <p>
