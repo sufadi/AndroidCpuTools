@@ -1,0 +1,38 @@
+Config file of MTK performance feature.
+
+
+WHAT IT DOES?
+=============
+perfcontable.txt is a feature to add new items to control drivers using PerfService.
+User can add control item into this table to do performance tuning
+
+HOW IT WAS BUILT?
+==================
+N/A
+
+HOW TO USE IT?
+==============
+Please fill in each line in perfcontable.txt with
+cmd name, cmd ID, entry, compare, max value, min value, normal value, sport value
+
+1. cmd name:
+		this command can be used by perfservscntbl.txt and perfservapplist.txt
+2. cmd id:
+		cmd id can be used by useregister scenario in native and framework space
+		CMD NAME AND CMD ID IS 1-1 MAPPING, PLEASE CHECK IF IT WILL RUIN THE CMDS IN perfservice_types.h
+3. entry:
+		sysfs or procfs to control
+4. compare:
+		less--> small value has higher priority
+		more--> big value has higher priority
+5. max value:
+		maximun value that driver support
+6. min value:
+		minimun value that driver support
+7. normal value(option):
+		normal mode default setting. System will use the boot value in the entry(3.) if user not fill in.
+8. sport value(option):
+		sport mode default setting. System will use the boot value in the entry(3.) if user not fill in.
+
+
+All the source code of this library were written by MediaTek co..

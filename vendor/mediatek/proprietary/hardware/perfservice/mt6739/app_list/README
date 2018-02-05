@@ -1,0 +1,17 @@
+Config file of MTK performance feature.
+
+
+WHAT IT DOES?
+=============
+perfservapplist.txt lists application white list.
+Use this config file can force more cpu online.
+
+HOW IT WAS BUILT?
+==================
+N/A
+
+HOW TO USE IT?
+==============
+Set application package name and its own cpu number.
+
+All the source code of this library were written by MediaTek co..

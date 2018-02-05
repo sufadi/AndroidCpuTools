@@ -1,0 +1,29 @@
+library of MTK performance feature native API.
+
+This library is pre-built by MediaTek internal.
+
+
+WHAT IT DOES?
+=============
+libperfservicenative.so contains native API for PerfService.
+User can use these API to control CPU core, CPU freq and GPU freq
+
+HOW IT WAS BUILT?
+==================
+It needs the following libs from AOSP:
+1.  liblog.so
+2.  libnativehelper.so
+3.  libdl.so
+4.  libbinder.so
+5.  libcutils.so
+6.  libutils.so
+  
+and the following libs from MediaTek:
+1.  libperfservice.so
+
+HOW TO USE IT?
+==============
+Native program can load API from libperfservicenative.so. 
+This library provide IPC to access Performance Service.
+
+All the source code of this library were written by MediaTek co..

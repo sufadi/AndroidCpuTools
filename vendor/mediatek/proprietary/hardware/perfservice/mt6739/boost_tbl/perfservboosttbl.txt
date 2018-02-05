@@ -1,0 +1,2 @@
+CMD_SET_BOOST_PROCESS_PID, audioserver, usb_call_dl, SETFUNC_RT_RR, 1
+CMD_SET_BOOST_PROCESS_PID, audioserver, usb_call_ul, SETFUNC_RT_RR, 1

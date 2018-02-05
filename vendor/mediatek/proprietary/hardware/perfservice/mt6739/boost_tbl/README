@@ -1,0 +1,17 @@
+Config file of MTK performance feature.
+
+
+WHAT IT DOES?
+=============
+perfservboosttbl.txt lists process name.
+Use this config file can change schedule policy of specific process.
+
+HOW IT WAS BUILT?
+==================
+N/A
+
+HOW TO USE IT?
+==============
+Set process name and its own schedule policy.
+
+All the source code of this library were written by MediaTek co..

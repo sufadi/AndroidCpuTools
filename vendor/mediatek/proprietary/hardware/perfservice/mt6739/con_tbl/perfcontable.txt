@@ -1,0 +1,28 @@
+#CAUTION:
+#CMD NAME AND CMD ID IS 1-1 MAPPING, PLEASE CHECK IF IT WILL RUIN THE CMDS IN perfservice_types.h
+#
+#cmd name,                cmd ID, entry,             compare, max value, min value, normal value, sport value
+CMD_SET_CPUFREQ_HISPEED_FREQ, 12, /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq, more, 2340000, 0
+CMD_SET_CPUFREQ_MIN_SAMPLE_TIME, 13, /sys/devices/system/cpu/cpufreq/interactive/min_sample_time, more, 800000, 0
+CMD_SET_CPUFREQ_ABOVE_HISPEED_DELAY, 14, /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay, less, 200000, 0
+CMD_SET_ROOT_CLUSTER, 19, /proc/ppm/root_cluster, more, 2, -1
+CMD_SET_CPU_UP_THRESHOLD, 20, /proc/hps/up_threshold, less, 100, 0, 95, 80
+CMD_SET_CPU_DOWN_THRESHOLD, 21, /proc/hps/down_threshold, less, 100, 0, 85, 60
+CMD_SET_VCORE_BW_THRES, 45, /proc/fliperfs/cg_threshold, less, 12800, 400, 4000, 500
+CMD_SET_VCORE_BW_ENABLED, 46, /proc/fliperfs/cg_enable, more, 1, 0, 1, 1
+CMD_SET_VCORE_MIN, 47, /proc/fliperfs/perf, less, 3, 0, -1, 0
+CMD_SET_FG_BOOST_VALUE, 50, /proc/perfmgr/eas/perfserv_fg_boost, more, 3000, -100
+CMD_SET_STUNE_THRESH, 51, /sys/devices/system/cpu/eas/stune_task_thresh, less, 100, 0
+CMD_SET_RBOOST_THRESH, 54, /proc/hps/rush_boost_threshold, less, 0, 100, 98, 90
+CMD_SET_PPM_LL_to_ALL_CAP_HOLD_TIME, 55, /proc/ppm/policy/hica_settings/LL_ONLY_to_ALL/capacity_hold_time, less, 1, 5, 4, 1
+CMD_SET_SCHED_MODE, 56, /sys/devices/system/cpu/eas/enable, less, 2, 0, 2
+CMD_SET_GED_BENCHMARK_ON, 57, /sys/module/ged/parameters/gx_3D_benchmark_on, more, 1, 0, 0, 1
+CMD_SET_GX_BOOST, 58, /sys/module/ged/parameters/gx_force_cpu_boost, more, 1, 0, 0, 0
+CMD_SET_ROOT_BOOST_VALUE, 60, /dev/stune/schedtune.boost, more, 100, 0, 0, 0
+CMD_SET_TA_BOOST_VALUE, 62, /proc/perfmgr/eas/perfserv_ta_boost, more, 3000, -100, 0, 100
+CMD_SET_BG_BOOST_VALUE, 63, /proc/perfmgr/eas/perfserv_bg_boost, more, 3000, -100
+CMD_SET_SMART_FORCE_ISOLATE, 64, /proc/perfmgr/smart/smart_force_isolate, more, 1, 0
+CMD_SET_FPSGO_ENABLE, 65, /sys/kernel/debug/fpsgo/common/fpsgo_game_enable, less, 1, 0, 1, 0
+CMD_SET_FBT_SWITCH, 66, /proc/fbt_cpu/switch_fbt, more, 1, 0, 1
+CMD_SET_SCHED_LB_ENABLE, 68, /sys/devices/system/cpu/sched/lb_enhance_enable, more, 1, 0
+CMD_SET_FSTB_FORCE_VAG, 71, /sys/kernel/debug/fpsgo/fstb/fstb_tune_force_vag, more, 1, 0, 0

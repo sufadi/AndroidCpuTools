@@ -1,0 +1,24 @@
+Test program of MTK performance feature.
+
+This binary is pre-built by MediaTek internal.
+
+
+WHAT IT DOES?
+=============
+perf_native_test contains test program for libperfservice.so.
+It can also dump so debug information.
+
+HOW IT WAS BUILT?
+==================
+It needs the following libs from AOSP:
+1.  libc.so
+2.  libdl.so
+
+and the following libs from MediaTek:
+1.  libperfservicenative.so
+
+HOW TO USE IT?
+==============
+Refer to online usage manual
+
+All the source code of this library were written by MediaTek co..

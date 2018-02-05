@@ -1,0 +1,17 @@
+Config file of MTK performance feature.
+
+
+WHAT IT DOES?
+=============
+perfservscntbl.txt lists scenario config.
+Use this config file can customize scenario setting.
+
+HOW IT WAS BUILT?
+==================
+N/A
+
+HOW TO USE IT?
+==============
+Set scenario and its own setting.
+
+All the source code of this library were written by MediaTek co..
