@@ -69,17 +69,28 @@ public interface IPerfServiceManager {
     public void boostEnableTimeoutMs(int scenario, int timeout_ms);
     public void notifyAppState(String packName, String className, int state, int pid);
 
+    // 注册用户场景,可以指定几个核和多高的频率
     public int  userReg(int scn_core, int scn_freq, int pid, int tid);
+
+    // 指定调度大小核
     public int  userRegBigLittle(int scn_core_big, int scn_freq_big, int scn_core_little, int scn_freq_little, int pid, int tid);
+
+    // 退出进程之前反注册
     public void userUnreg(int handle);
 
     public int  userGetCapability(int cmd);
 
     public int  userRegScn(int pid, int tid);
+
+    // 用这个函数去真正指定配置
     public void userRegScnConfig(int handle, int cmd, int param_1, int param_2, int param_3, int param_4);
     public void userUnregScn(int handle);
 
+
+    // 激活用户场景
     public void userEnable(int handle);
+
+    // 指定激活的超时时间
     public void userEnableTimeout(int handle, int timeout);
     public void userEnableTimeoutMs(int handle, int timeout_ms);
     public void userEnableAsync(int handle);

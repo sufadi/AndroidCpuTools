@@ -51,10 +51,19 @@ public interface IPerfServiceWrapper {
     public static final int PERF_MODE_NORMAL = 0;
     public static final int PERF_MODE_SPORTS = 1;
 
+    // 获取CPU频率级别
     public static final int CMD_GET_CPU_FREQ_LEVEL_COUNT        = 0;
+
+    // 获取小核CPU频率级别
     public static final int CMD_GET_CPU_FREQ_LITTLE_LEVEL_COUNT = 1;
+
+    // 获取大核CPU频率级别
     public static final int CMD_GET_CPU_FREQ_BIG_LEVEL_COUNT    = 2;
+
+    // 获取GPU频率级别
     public static final int CMD_GET_GPU_FREQ_LEVEL_COUNT        = 3;
+
+    // 获取内存频率级别
     public static final int CMD_GET_MEM_FREQ_LEVEL_COUNT        = 4;
     public static final int CMD_GET_PERF_INDEX_MIN              = 5;
     public static final int CMD_GET_PERF_INDEX_MAX              = 6;
@@ -66,20 +75,54 @@ public interface IPerfServiceWrapper {
     public static final int CMD_GET_FOREGROUND_TYPE             = 12;
 
     // should align with perfservice_types.h
+    // 设置最少核数.参数1个 - param_1：核数
     public static final int CMD_SET_CPU_CORE_MIN            = 0;
+
+    // 设置最大核数.参数1个 - param_1：核数
     public static final int CMD_SET_CPU_CORE_MAX            = 1;
+
+    // 设置最少大小核数.参数2个 - param_1：大核数，param_2:小核数
     public static final int CMD_SET_CPU_CORE_BIG_LITTLE_MIN = 2;
+
+    // 设置最大大小核数.参数2个 - param_1：大核数，param_2:小核数
     public static final int CMD_SET_CPU_CORE_BIG_LITTLE_MAX = 3;
+
+    // 设置最小频率
     public static final int CMD_SET_CPU_FREQ_MIN            = 4;
+
+    // 设置最大频率
     public static final int CMD_SET_CPU_FREQ_MAX            = 5;
+
+    // 设置最低大小核频率.参数2个 - param_1：大核频率，param_2:小核频率
     public static final int CMD_SET_CPU_FREQ_BIG_LITTLE_MIN = 6;
+
+    // 设置最高大小核频率.参数2个 - param_1：大核频率，param_2:小核频率
     public static final int CMD_SET_CPU_FREQ_BIG_LITTLE_MAX = 7;
+
+    // 设置 GPU 最小频率
     public static final int CMD_SET_GPU_FREQ_MIN            = 8;
+
+    // 设置 GPU 最大频率
     public static final int CMD_SET_GPU_FREQ_MAX            = 9;
+
+    // 设置图形模式，参数1个：DRAM模式：0-默认模式，1-低功耗模式，2-还是默认模式，3-高性能模式
+    //enum {
+    //    SCREEN_OFF_DISABLE      = 0,
+    //            SCREEN_OFF_ENABLE       = 1,
+    //            SCREEN_OFF_WAIT_RESTORE = 2,
+    //};
     public static final int CMD_SET_VCORE                   = 10;
+
+    // 设置关屏模式，一个参数，模式值。0-关屏无效，1-关屏有效，2-关屏暂停，打开恢复
     public static final int CMD_SET_SCREEN_OFF_STATE        = 11;
+
+    // 设置高速频率，一个参数
     public static final int CMD_SET_CPUFREQ_HISPEED_FREQ    = 12;
+
+    // 设置最小采样值，一个参数
     public static final int CMD_SET_CPUFREQ_MIN_SAMPLE_TIME = 13;
+
+    // 设置above speed hispeed，一个参数
     public static final int CMD_SET_CPUFREQ_ABOVE_HISPEED_DELAY = 14;
     public static final int CMD_SET_CLUSTER_CPU_CORE_MIN    = 15;
     public static final int CMD_SET_CLUSTER_CPU_CORE_MAX    = 16;
