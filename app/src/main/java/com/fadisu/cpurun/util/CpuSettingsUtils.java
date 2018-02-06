@@ -77,6 +77,7 @@ public class CpuSettingsUtils {
     public static final int VCORE_POWERSAVE = 1;
     public static final int VCORE_DEFAULT_2 = 2;
     public static final int VCORE_PERF = 3;
+
     public void setCpuVcoreMode(int minCpuNumber, int maxCpuFreq, int mode) {
         userDisableIfNeed();
 
@@ -96,6 +97,7 @@ public class CpuSettingsUtils {
     /**
      * CPU 频率设置
      * 效果：维持最高频率为设定值，但是CPU场景调频不受控制，场景比如切换应用时，默认是开核升频率，暗屏失效
+     *
      * @param minCpuNumber
      * @param maxCpuFreq
      * @param freq
@@ -117,6 +119,7 @@ public class CpuSettingsUtils {
     }
 
     /**
+     * CPU mode freq settings
      *
      * @param minCpuNumber
      * @param maxCpuFreq
@@ -141,12 +144,12 @@ public class CpuSettingsUtils {
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MAX, freqMax, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
 
                 if (screenOffEnable) {
-                    mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle,mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                    mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
                 }
 
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 
-                Log.d(TAG, "setCpuFreq freqMin = " + freqMin + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
+                Log.d(TAG, "setCpu minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mode = " + mode + ", freqMin = " + freqMin + ", freqMax = " + freqMax + ", coreMin = " + coreMin + ", coreMax = " + coreMax + ", mCurPerfHandle = " + mCurPerfHandle);
             }
         }
     }
@@ -155,7 +158,7 @@ public class CpuSettingsUtils {
      * 默认灭屏持续生效
      */
     public void screenOffEnable() {
-        mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle,mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+        mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
     }
 
     /**

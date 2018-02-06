@@ -23,14 +23,14 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     private static final String TAG = CpuSettingsFragment.class.getSimpleName();
 
     private List<String> mVcoreList;
-    private List<Long> mFreqMinList;
-    private List<Long> mFreqMaxList;
+    private List<Integer> mFreqMinList;
+    private List<Integer> mFreqMaxList;
     private List<Integer> mCoreMinList;
     private List<Integer> mCoreMaxList;
     private List<String> mScreenOffEnableList;
 
-    private ArrayAdapter<Long> mFreqMinAdapter;
-    private ArrayAdapter<Long> mFreqMaxAdapter;
+    private ArrayAdapter<Integer> mFreqMinAdapter;
+    private ArrayAdapter<Integer> mFreqMaxAdapter;
     private ArrayAdapter<String> mVcoreAdapter;
     private ArrayAdapter<Integer> mCoreMinAdapter;
     private ArrayAdapter<Integer> mCoreMaxAdapter;
@@ -93,13 +93,13 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
         mCoreMaxAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_dropdown_item, mCoreMaxList);
         sp_cpu_core_max.setAdapter(mCoreMaxAdapter);
 
-        mFreqMinList = CpuUtils.getCpuAvailableFrequencies();
+        mFreqMinList = CpuUtils.getCpuFreqList();
         Collections.sort(mFreqMinList);
-        mFreqMinAdapter = new ArrayAdapter<Long>(mContext, android.R.layout.simple_spinner_dropdown_item, mFreqMinList);
+        mFreqMinAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_dropdown_item, mFreqMinList);
         sp_cpu_freq_min.setAdapter(mFreqMinAdapter);
 
-        mFreqMaxList = CpuUtils.getCpuAvailableFrequencies();
-        mFreqMaxAdapter = new ArrayAdapter<Long>(mContext, android.R.layout.simple_spinner_dropdown_item, mFreqMaxList);
+        mFreqMaxList = CpuUtils.getCpuFreqList();
+        mFreqMaxAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_dropdown_item, mFreqMaxList);
         sp_cpu_freq_max.setAdapter(mFreqMaxAdapter);
 
         mScreenOffEnableList = getScreenOffEnableList(mContext);
@@ -116,10 +116,43 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_yes:
+                startCpuSettings();
                 break;
             case R.id.btn_no:
+                stopCpuSettings();
                 break;
         }
+    }
+
+    private void startCpuSettings() {
+        String vcoreStr = (String) sp_cpu_vcore.getSelectedItem();
+        int vcoreMode = 0;
+        if (mContext.getString(R.string.settings_cpu_vcore_default).equals(vcoreStr)) {
+            vcoreMode = CpuSettingsUtils.VCORE_DEFAULT;
+        } else if (mContext.getString(R.string.settings_cpu_vcore_powersave).equals(vcoreStr)) {
+            vcoreMode = CpuSettingsUtils.VCORE_POWERSAVE;
+        } else if (mContext.getString(R.string.settings_cpu_vcore_perf).equals(vcoreStr)) {
+            vcoreMode = CpuSettingsUtils.VCORE_PERF;
+        }
+
+        int coreMin = (int) sp_cpu_core_min.getSelectedItem();
+        int coreMax = (int) sp_cpu_core_max.getSelectedItem();
+        int freqMin = (int) sp_cpu_freq_min.getSelectedItem();
+        int freqMax = (int) sp_cpu_freq_max.getSelectedItem();
+
+        String screenOffStr = (String) sp_screenof_enable.getSelectedItem();
+        boolean isScreenOffEnable = false;
+        if (mContext.getString(R.string.settings_screenoff_enable_yes).equals(screenOffStr)) {
+            isScreenOffEnable = true;
+        } else {
+            isScreenOffEnable = false;
+        }
+
+        mCpuSettingsUtils.setCpu(coreMax, freqMax, vcoreMode, freqMin, freqMax, coreMin, coreMax, isScreenOffEnable);
+    }
+
+    private void stopCpuSettings() {
+        mCpuSettingsUtils.userUnreg();
     }
 
     private ArrayList<String> getScreenOffEnableList(Context mContext) {
@@ -147,7 +180,7 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
 
     private ArrayList<Integer> getCoreMaxList() {
         ArrayList<Integer> result = new ArrayList<>();
-        for (int i = mCpuSettingsUtils.CPU_NUMBER; i >0; i--) {
+        for (int i = mCpuSettingsUtils.CPU_NUMBER; i > 0; i--) {
             result.add(i);
         }
         return result;
