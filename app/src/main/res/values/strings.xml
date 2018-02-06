@@ -75,6 +75,9 @@
     <string name="more_source_code">\n Source_code：\n </string>
     <string name="more_blog">\n Blog：\n </string>
 
-    <string name="settings_cpu_governor_title">CPU 调频策略</string>
-    <string name="settings_cpu_governor_content">CPU 调频策略</string>
+    <string name="settings_cpu_governor_title">CPU Vcore Mode</string>
+    <string name="settings_cpu_governor_content">CPU Vcore Mode</string>
+    <string name="settings_cpu_vcore_default">CPU Default</string>
+    <string name="settings_cpu_vcore_powersave">CPU PowerSave</string>
+    <string name="settings_cpu_vcore_perf">CPU Performance</string>
 </resources>

@@ -24,6 +24,7 @@ import com.fadisu.cpurun.fragment.MoreFragment;
 import com.fadisu.cpurun.fragment.PropFragment;
 import com.fadisu.cpurun.fragment.SystemFragment;
 import com.fadisu.cpurun.fragment.TemperatureFragment;
+import com.fadisu.cpurun.util.CpuSettingsUtils;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -78,6 +79,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onBackPressed() {
         super.onBackPressed();
         MyApplication.stopService(this);
+        CpuSettingsUtils.getInstance(this).userUnreg();
         finish();
     }
 
