@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -149,6 +150,8 @@ public class CpuUtils {
                     result.add(freq);
                 }
             }
+
+
             br.close();
         } catch (IOException e) {
             e.printStackTrace();

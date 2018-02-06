@@ -82,6 +82,13 @@
     <string name="settings_cpu_vcore_default">CPU Default</string>
     <string name="settings_cpu_vcore_powersave">CPU PowerSave</string>
     <string name="settings_cpu_vcore_perf">CPU Performance</string>
-    <string name="settings_cpu_freq_title">CPU Freq Settings</string>
-    <string name="settings_cpu_freq_content">CPU Freq Settings</string>
+    <string name="settings_cpu_freq_max_title">CPU Max Freq Settings</string>
+    <string name="settings_cpu_freq_min_title">>CPU Min Freq Settings</string>
+    <string name="settings_cpu_core_max_title">>CPU Max Core Settings</string>
+    <string name="settings_cpu_core_min_title">>CPU Min Core Settings</string>
+    <string name="settings_ok">CPU Enable Settings</string>
+    <string name="settings_no">CPU Disable Settings</string>
+    <string name="settings_screenoff_enable">CPU Settings Enable When Screen Off </string>
+    <string name="settings_screenoff_enable_yes">Enable</string>
+    <string name="settings_screenoff_enable_no">Disable</string>
 </resources>

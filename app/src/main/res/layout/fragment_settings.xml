@@ -1,56 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="@dimen/activity_vertical_margin"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/ll_cpu_governor_content"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_height_list"
-        android:layout_marginLeft="@dimen/item_margin_list"
-        android:layout_marginRight="@dimen/item_margin_list"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="@string/settings_cpu_governor_title"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_cpu_governor_title"
-            android:textColor="@color/item_title_color"
-            android:textSize="@dimen/item_title_size" />
-
-        <TextView
-            android:id="@+id/tv_cpu_governor_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_cpu_governor_content"
-            android:textColor="@color/item_content_color"
-            android:textSize="@dimen/item_content_size" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_cpu_freq"
+    <Spinner
+        android:id="@+id/sp_cpu_vcore"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_height_list"
-        android:layout_marginLeft="@dimen/item_margin_list"
-        android:layout_marginRight="@dimen/item_margin_list"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+    </Spinner>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_cpu_freq_title"
-            android:textColor="@color/item_title_color"
-            android:textSize="@dimen/item_title_size" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_cpu_core_min_title"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
 
-        <TextView
-            android:id="@+id/tv_cpu_freq"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_cpu_freq_content"
-            android:textColor="@color/item_content_color"
-            android:textSize="@dimen/item_content_size" />
-    </LinearLayout>
+    <Spinner
+        android:id="@+id/sp_cpu_core_min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_cpu_core_max_title"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
+
+    <Spinner
+        android:id="@+id/sp_cpu_core_max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_cpu_freq_min_title"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
+
+    <Spinner
+        android:id="@+id/sp_cpu_freq_min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_cpu_freq_max_title"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
+
+    <Spinner
+        android:id="@+id/sp_cpu_freq_max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_screenoff_enable"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
+
+    <Spinner
+        android:id="@+id/sp_screenof_enable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <Button
+        android:id="@+id/btn_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_ok"/>
+
+    <Button
+        android:id="@+id/btn_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_no"/>
 
 </LinearLayout>

@@ -1,33 +1,55 @@
 package com.fadisu.cpurun.fragment;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.util.CpuSettingsUtils;
 import com.fadisu.cpurun.util.CpuUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class CpuSettingsFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = CpuSettingsFragment.class.getSimpleName();
+
+    private List<String> mVcoreList;
+    private List<Long> mFreqMinList;
+    private List<Long> mFreqMaxList;
+    private List<Integer> mCoreMinList;
+    private List<Integer> mCoreMaxList;
+    private List<String> mScreenOffEnableList;
+
+    private ArrayAdapter<Long> mFreqMinAdapter;
+    private ArrayAdapter<Long> mFreqMaxAdapter;
+    private ArrayAdapter<String> mVcoreAdapter;
+    private ArrayAdapter<Integer> mCoreMinAdapter;
+    private ArrayAdapter<Integer> mCoreMaxAdapter;
+    private ArrayAdapter<String> mScreenOffEnableMaxAdapter;
 
     private Context mContext;
     private CpuSettingsUtils mCpuSettingsUtils;
 
     private View mView;
-    private TextView tv_cpu_freq;
-    private TextView tv_cpu_governor_content;
 
-    private LinearLayout ll_cpu_freq;
-    private LinearLayout ll_cpu_governor_content;
+    private Button btn_no;
+    private Button btn_yes;
+
+    private Spinner sp_cpu_vcore;
+    private Spinner sp_cpu_core_min;
+    private Spinner sp_cpu_core_max;
+    private Spinner sp_cpu_freq_min;
+    private Spinner sp_cpu_freq_max;
+    private Spinner sp_screenof_enable;
 
     @Override
     public void onAttach(Context context) {
@@ -45,84 +67,89 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     }
 
     private void initViews() {
-        tv_cpu_freq = (TextView) mView.findViewById(R.id.tv_cpu_freq);
-        tv_cpu_governor_content = (TextView) mView.findViewById(R.id.tv_cpu_governor_content);
+        btn_no = (Button) mView.findViewById(R.id.btn_no);
+        btn_yes = (Button) mView.findViewById(R.id.btn_yes);
 
-        ll_cpu_freq = (LinearLayout) mView.findViewById(R.id.ll_cpu_freq);
-        ll_cpu_governor_content = (LinearLayout) mView.findViewById(R.id.ll_cpu_governor_content);
+        sp_cpu_vcore = (Spinner) mView.findViewById(R.id.sp_cpu_vcore);
+        sp_cpu_core_min = (Spinner) mView.findViewById(R.id.sp_cpu_core_min);
+        sp_cpu_core_max = (Spinner) mView.findViewById(R.id.sp_cpu_core_max);
+        sp_cpu_freq_min = (Spinner) mView.findViewById(R.id.sp_cpu_freq_min);
+        sp_cpu_freq_max = (Spinner) mView.findViewById(R.id.sp_cpu_freq_max);
+        sp_screenof_enable = (Spinner) mView.findViewById(R.id.sp_screenof_enable);
     }
 
     private void initValues() {
         mCpuSettingsUtils = CpuSettingsUtils.getInstance(mContext);
-        tv_cpu_governor_content.setText(mContext.getString(R.string.settings_cpu_vcore_default));
 
-        tv_cpu_freq.setText(CpuUtils.getCpuAvailableFrequenciesSimple());
+        mVcoreList = getVcoreList(mContext);
+        mVcoreAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_dropdown_item, mVcoreList);
+        sp_cpu_vcore.setAdapter(mVcoreAdapter);
+
+        mCoreMinList = getCoreMinList();
+        mCoreMinAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_dropdown_item, mCoreMinList);
+        sp_cpu_core_min.setAdapter(mCoreMinAdapter);
+
+        mCoreMaxList = getCoreMaxList();
+        mCoreMaxAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_dropdown_item, mCoreMaxList);
+        sp_cpu_core_max.setAdapter(mCoreMaxAdapter);
+
+        mFreqMinList = CpuUtils.getCpuAvailableFrequencies();
+        Collections.sort(mFreqMinList);
+        mFreqMinAdapter = new ArrayAdapter<Long>(mContext, android.R.layout.simple_spinner_dropdown_item, mFreqMinList);
+        sp_cpu_freq_min.setAdapter(mFreqMinAdapter);
+
+        mFreqMaxList = CpuUtils.getCpuAvailableFrequencies();
+        mFreqMaxAdapter = new ArrayAdapter<Long>(mContext, android.R.layout.simple_spinner_dropdown_item, mFreqMaxList);
+        sp_cpu_freq_max.setAdapter(mFreqMaxAdapter);
+
+        mScreenOffEnableList = getScreenOffEnableList(mContext);
+        mScreenOffEnableMaxAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_dropdown_item, mScreenOffEnableList);
+        sp_screenof_enable.setAdapter(mScreenOffEnableMaxAdapter);
     }
 
     private void initListeners() {
-        ll_cpu_freq.setOnClickListener(this);
-        ll_cpu_governor_content.setOnClickListener(this);
+        btn_no.setOnClickListener(this);
+        btn_yes.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ll_cpu_governor_content:
-                showVcoreModeDialog();
+            case R.id.btn_yes:
                 break;
-            case R.id.ll_cpu_freq:
-                showCpuFreqDialog();
+            case R.id.btn_no:
                 break;
         }
     }
 
-    private void showVcoreModeDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-
-        final String[] GOVERNORS = new String[]{mContext.getString(R.string.settings_cpu_vcore_default)
-                ,mContext.getString(R.string.settings_cpu_vcore_powersave)
-                ,mContext.getString(R.string.settings_cpu_vcore_default)
-                ,mContext.getString(R.string.settings_cpu_vcore_perf)};
-
-        builder.setItems(GOVERNORS, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case CpuSettingsUtils.VCORE_DEFAULT:
-                    case CpuSettingsUtils.VCORE_DEFAULT_2:
-                        mCpuSettingsUtils.setCpuVcoreMode(CpuSettingsUtils.CPU_NUMBER, CpuSettingsUtils.MAX_CPU_FREQ, CpuSettingsUtils.VCORE_DEFAULT);
-                        break;
-                    case CpuSettingsUtils.VCORE_POWERSAVE:
-                        mCpuSettingsUtils.setCpuVcoreMode(CpuSettingsUtils.CPU_NUMBER, CpuSettingsUtils.MIN_CPU_FREQ, CpuSettingsUtils.VCORE_POWERSAVE);
-                        break;
-                    case CpuSettingsUtils.VCORE_PERF:
-                        mCpuSettingsUtils.setCpuVcoreMode(CpuSettingsUtils.CPU_NUMBER, CpuSettingsUtils.MAX_CPU_FREQ, CpuSettingsUtils.VCORE_PERF);
-                        break;
-                }
-
-                tv_cpu_governor_content.setText(GOVERNORS[which]);
-            }
-        });
-        builder.show();
+    private ArrayList<String> getScreenOffEnableList(Context mContext) {
+        ArrayList<String> result = new ArrayList<>();
+        result.add(mContext.getString(R.string.settings_screenoff_enable_no));
+        result.add(mContext.getString(R.string.settings_screenoff_enable_yes));
+        return result;
     }
 
-    private void showCpuFreqDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-
-        final String[] list = CpuUtils.getCpuAFreqList();
-
-        builder.setItems(list, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                int freq = Integer.parseInt(list[which]);
-                mCpuSettingsUtils.setCpuFreq(CpuSettingsUtils.CPU_NUMBER, freq, freq);
-
-                tv_cpu_freq.setText(list[which]);
-            }
-        });
-        builder.show();
+    private ArrayList<String> getVcoreList(Context mContext) {
+        ArrayList<String> result = new ArrayList<>();
+        result.add(mContext.getString(R.string.settings_cpu_vcore_default));
+        result.add(mContext.getString(R.string.settings_cpu_vcore_powersave));
+        result.add(mContext.getString(R.string.settings_cpu_vcore_perf));
+        return result;
     }
 
+    private ArrayList<Integer> getCoreMinList() {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= mCpuSettingsUtils.CPU_NUMBER; i++) {
+            result.add(i);
+        }
+        return result;
+    }
+
+    private ArrayList<Integer> getCoreMaxList() {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = mCpuSettingsUtils.CPU_NUMBER; i >0; i--) {
+            result.add(i);
+        }
+        return result;
+    }
 }

@@ -82,6 +82,13 @@
     <string name="settings_cpu_vcore_default">CPU 默认模式</string>
     <string name="settings_cpu_vcore_powersave">CPU 低功耗模式</string>
     <string name="settings_cpu_vcore_perf">CPU 高性能模式</string>
-    <string name="settings_cpu_freq_title">CPU 频率设置</string>
-    <string name="settings_cpu_freq_content">CPU 频率设置</string>
+    <string name="settings_cpu_freq_max_title">CPU 最大频率设置</string>
+    <string name="settings_cpu_freq_min_title">CPU 最小频率设置</string>
+    <string name="settings_cpu_core_max_title">CPU 最大核数设置</string>
+    <string name="settings_cpu_core_min_title">CPU 最小核数设置</string>
+    <string name="settings_ok">CPU 启用设置</string>
+    <string name="settings_no">CPU 取消设置</string>
+    <string name="settings_screenoff_enable">息屏后CPU设置是否失效</string>
+    <string name="settings_screenoff_enable_yes">不失效</string>
+    <string name="settings_screenoff_enable_no">失效</string>
 </resources>

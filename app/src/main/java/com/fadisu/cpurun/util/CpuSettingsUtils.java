@@ -45,7 +45,7 @@ public class CpuSettingsUtils {
     /**
      * CPU 核数和频率全开，达到瞬间性能最优
      */
-    private static void perfBoost(Context mContext) {
+    public static void perfBoost(Context mContext) {
         final PerfServiceWrapper mPerfServiceWrapper = new PerfServiceWrapper(mContext);
         if (null != mPerfServiceWrapper) {
             final int mPerfHandle = mPerfServiceWrapper.userReg(CPU_NUMBER, MAX_CPU_FREQ);
@@ -112,6 +112,41 @@ public class CpuSettingsUtils {
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 
                 Log.d(TAG, "setCpuFreq freq = " + freq + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param minCpuNumber
+     * @param maxCpuFreq
+     * @param mode
+     * @param freqMin
+     * @param freqMax
+     * @param coreMin
+     * @param coreMax
+     */
+    public void setCpu(int minCpuNumber, int maxCpuFreq, int mode, int freqMin, int freqMax, int coreMin, int coreMax, boolean screenOffEnable) {
+        userDisableIfNeed();
+        if (null != mPerfServiceWrapper) {
+            mCurPerfHandle = mPerfServiceWrapper.userReg(minCpuNumber, maxCpuFreq);
+
+            if (PERFHANDLE_ERROR_CODE != mCurPerfHandle) {
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_VCORE, mode, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_CORE_MIN, coreMin, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_CORE_MAX, coreMax, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MIN, freqMin, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MAX, freqMax, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+
+                if (screenOffEnable) {
+                    mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle,mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                }
+
+                mPerfServiceWrapper.userEnable(mCurPerfHandle);
+
+                Log.d(TAG, "setCpuFreq freqMin = " + freqMin + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
             }
         }
     }
