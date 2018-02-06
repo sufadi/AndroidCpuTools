@@ -80,4 +80,6 @@
     <string name="settings_cpu_vcore_default">CPU 默认模式</string>
     <string name="settings_cpu_vcore_powersave">CPU 低功耗模式</string>
     <string name="settings_cpu_vcore_perf">CPU 高性能模式</string>
+    <string name="settings_cpu_freq_title">CPU 频率设置</string>
+    <string name="settings_cpu_freq_content">CPU 频率设置</string>
 </resources>

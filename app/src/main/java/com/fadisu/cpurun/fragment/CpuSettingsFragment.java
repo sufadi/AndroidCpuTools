@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.util.CpuSettingsUtils;
+import com.fadisu.cpurun.util.CpuUtils;
 
 public class CpuSettingsFragment extends Fragment implements View.OnClickListener {
 
@@ -22,7 +23,10 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     private CpuSettingsUtils mCpuSettingsUtils;
 
     private View mView;
+    private TextView tv_cpu_freq;
     private TextView tv_cpu_governor_content;
+
+    private LinearLayout ll_cpu_freq;
     private LinearLayout ll_cpu_governor_content;
 
     @Override
@@ -41,7 +45,10 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     }
 
     private void initViews() {
+        tv_cpu_freq = (TextView) mView.findViewById(R.id.tv_cpu_freq);
         tv_cpu_governor_content = (TextView) mView.findViewById(R.id.tv_cpu_governor_content);
+
+        ll_cpu_freq = (LinearLayout) mView.findViewById(R.id.ll_cpu_freq);
         ll_cpu_governor_content = (LinearLayout) mView.findViewById(R.id.ll_cpu_governor_content);
     }
 
@@ -51,6 +58,7 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     }
 
     private void initListeners() {
+        ll_cpu_freq.setOnClickListener(this);
         ll_cpu_governor_content.setOnClickListener(this);
     }
 
@@ -59,6 +67,9 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
         switch (view.getId()) {
             case R.id.ll_cpu_governor_content:
                 showVcoreModeDialog();
+                break;
+            case R.id.ll_cpu_freq:
+                showCpuFreqDialog();
                 break;
         }
     }
@@ -89,6 +100,21 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
                 }
 
                 tv_cpu_governor_content.setText(GOVERNORS[which]);
+            }
+        });
+        builder.show();
+    }
+
+    private void showCpuFreqDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+
+        final String[] list = CpuUtils.getCpuAFreqList();
+
+        builder.setItems(list, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tv_cpu_freq.setText(list[which]);
             }
         });
         builder.show();
