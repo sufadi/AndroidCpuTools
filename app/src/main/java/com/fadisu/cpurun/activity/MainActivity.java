@@ -30,6 +30,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    private boolean isFloatWindowVisible;
+
     private static String currentFragmentTag;
 
     private Fragment mMoreFragmen;
@@ -206,6 +208,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 changeFrament(mMoreFragmen, null, MoreFragment.class.getSimpleName());
                 break;
         }
+    }
+
+    public void setFloatWindowVisible(boolean visible) {
+        this.isFloatWindowVisible = visible;
+    }
+
+    public boolean isFloatWindowVisible() {
+        return isFloatWindowVisible;
     }
 
 }

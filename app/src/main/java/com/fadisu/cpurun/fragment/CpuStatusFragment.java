@@ -1,5 +1,6 @@
 package com.fadisu.cpurun.fragment;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fadisu.cpurun.R;
+import com.fadisu.cpurun.activity.MainActivity;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.service.CpuMsgService;
 import com.fadisu.cpurun.service.ICpuMsgCallBack;
@@ -48,6 +50,7 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
 
     private Context mContext;
     private List<String> result;
+    private MainActivity mMainActivity;
     private CustomAdapter<String> mCustomAdapter;
 
     private View mView;
@@ -85,6 +88,12 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
             Log.d("CpuMsgService", "onServiceDisconnected");
         }
     };
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mMainActivity = (MainActivity) activity;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -130,6 +139,12 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
         mCustomAdapter = new CustomAdapter<String>(result);
         mListView.setAdapter(mCustomAdapter);
         mHandler.sendEmptyMessage(UPDATE_UI);
+
+        if (mMainActivity.isFloatWindowVisible()) {
+            mFloatBtn.setText(getString(R.string.title_float_window_close));
+        } else {
+            mFloatBtn.setText(getString(R.string.title_float_window_open));
+        }
     }
 
     private void initListeners() {
@@ -267,10 +282,14 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
         mParams.format = PixelFormat.TRANSPARENT;
 
         mWm.addView(mResultTv, mParams);
+
+        mMainActivity.setFloatWindowVisible(true);
     }
 
     private void hideFloatWindow() {
         mWm.removeView(mResultTv);
+
+        mMainActivity.setFloatWindowVisible(false);
     }
 
     private static final int REQUEST_CODE = 1;
