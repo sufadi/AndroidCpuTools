@@ -84,7 +84,8 @@ public class CpuSettingsUtils {
             mCurPerfHandle = mPerfServiceWrapper.userReg(minCpuNumber, maxCpuFreq);
 
             if (PERFHANDLE_ERROR_CODE != mCurPerfHandle) {
-                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_VCORE, VCORE_POWERSAVE, mode, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_VCORE, mode, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                // screenOffEnable();
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 
                 Log.d(TAG, "setCpuVcoreMode mode = " + mode + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
@@ -92,7 +93,35 @@ public class CpuSettingsUtils {
         }
     }
 
+    /**
+     * CPU 频率设置
+     *
+     * @param minCpuNumber
+     * @param maxCpuFreq
+     * @param freq
+     */
+    public void setCpuFreq(int minCpuNumber, int maxCpuFreq, int freq) {
+        userDisableIfNeed();
 
+        if (null != mPerfServiceWrapper) {
+            mCurPerfHandle = mPerfServiceWrapper.userReg(minCpuNumber, maxCpuFreq);
+
+            if (PERFHANDLE_ERROR_CODE != mCurPerfHandle) {
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MAX, freq, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                // screenOffEnable();
+                mPerfServiceWrapper.userEnable(mCurPerfHandle);
+
+                Log.d(TAG, "setCpuFreq freq = " + freq + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
+            }
+        }
+    }
+
+    /**
+     * 默认灭屏持续生效
+     */
+    public void screenOffEnable() {
+        mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle,mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+    }
 
     /**
      * 取消之前的设置

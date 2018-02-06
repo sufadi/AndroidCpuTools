@@ -55,6 +55,8 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     private void initValues() {
         mCpuSettingsUtils = CpuSettingsUtils.getInstance(mContext);
         tv_cpu_governor_content.setText(mContext.getString(R.string.settings_cpu_vcore_default));
+
+        tv_cpu_freq.setText(CpuUtils.getCpuAvailableFrequenciesSimple());
     }
 
     private void initListeners() {
@@ -114,6 +116,9 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                int freq = Integer.parseInt(list[which]);
+                mCpuSettingsUtils.setCpuFreq(CpuSettingsUtils.CPU_NUMBER, freq, freq);
+
                 tv_cpu_freq.setText(list[which]);
             }
         });
