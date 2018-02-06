@@ -24,12 +24,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
 import com.fadisu.cpurun.service.CpuMsgService;
 import com.fadisu.cpurun.service.ICpuMsgCallBack;
 import com.fadisu.cpurun.service.ICpuMsgService;
+import com.fadisu.cpurun.util.CustomToast;
 import com.fadisu.cpurun.util.ProcCpuInfo;
 
 import java.lang.ref.WeakReference;
@@ -293,6 +295,8 @@ public class CpuStatusFragment extends Fragment implements CustomAdapter.LayoutV
         Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
         intent.setData(Uri.parse("package:" + mContext.getPackageName()));
         startActivityForResult(intent, REQUEST_CODE);
+
+        CustomToast.showToast(mContext, mContext.getString(R.string.toast_float_tip), Toast.LENGTH_LONG);
     }
 
 }

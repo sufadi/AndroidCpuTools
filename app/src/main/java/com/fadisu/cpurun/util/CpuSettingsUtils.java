@@ -95,7 +95,7 @@ public class CpuSettingsUtils {
 
     /**
      * CPU 频率设置
-     *
+     * 效果：维持最高频率为设定值，但是CPU场景调频不受控制，场景比如切换应用时，默认是开核升频率，暗屏失效
      * @param minCpuNumber
      * @param maxCpuFreq
      * @param freq
@@ -138,7 +138,9 @@ public class CpuSettingsUtils {
      */
     public void userUnreg() {
         if (mCurPerfHandle != PERFHANDLE_ERROR_CODE) {
+            mPerfServiceWrapper.userDisable(mCurPerfHandle);
             mPerfServiceWrapper.userUnreg(mCurPerfHandle);
+            Log.d(TAG, "userUnreg  mCurPerfHandle = " + mCurPerfHandle);
         }
     }
 }
