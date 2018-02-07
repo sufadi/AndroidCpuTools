@@ -15,3 +15,168 @@ HOW TO USE IT?
 Set scenario and its own setting.
 
 All the source code of this library were written by MediaTek co..
+
+
+
+/frameworks/base/core/java/com/mediatek/perfservice/IPerfServiceWrapper.java
+/vendor/mediatek/proprietary/hardware/perfservice/perfservicenative/perfservice_types.h
+enum {
+//一般在大小核架构上不使用. 6753/6752/6735/6735M适用，6750/6755/6797/6757不适用.
+CMD_SET_CPU_CORE_MIN = 0,----->最少(base)cpu个数.
+CMD_SET_CPU_CORE_MAX = 1,----->最多(limit)的cpu个数.
+
+//适用于6750/6755/6797/6757平台等大小核平台.
+CMD_SET_CPU_CORE_BIG_LITTLE_MIN = 2,----->L 跟LL 的最少(base)个数.
+CMD_SET_CPU_CORE_BIG_LITTLE_MAX = 3,----->L 跟LL 的最多(limit)个数.
+//一般在大小核架构上不使用. 6753/6752/6735/6735M适用，6750/6755/6797/6757不适用.
+CMD_SET_CPU_FREQ_MIN = 4,----->最小(base)CPU 频率.
+CMD_SET_CPU_FREQ_MAX = 5,----->最大(limit)CPU 频率.
+
+//适用于6750/6755/6797/6757平台等大小核平台.
+CMD_SET_CPU_FREQ_BIG_LITTLE_MIN = 6,----->L跟LL的最小(base)频率.
+CMD_SET_CPU_FREQ_BIG_LITTLE_MAX = 7,----->L跟LL的最大(limit)频率.
+
+//获取/d/ged/hal/total_gpu_freq_level_count节点，可以知道系统有多少级GPU 频率.
+//而最高频率就是total_gpu_freq_level_count - 1.
+//譬如针对6750T total_gpu_freq_level_count等于3，
+//所以设定最高频率时，为3-1 = 2，次高频率是2-1 = 1，依次递减，为0代表取消.
+CMD_SET_GPU_FREQ_MIN = 8,----->GPU 最小频率(base)
+CMD_SET_GPU_FREQ_MAX = 9,----->GPU 最大频率(limit)
+
+
+CMD_SET_VCORE = 10,---->VCORE FS水位(set_vcore_level(level); // 0: default mode, 1: low power mode, 2: just make mode, 3: performance mode)
+CMD_SET_SCREEN_OFF_STATE = 11,---->灭屏的行为，默认为0代表灭屏后就会不生效，1带代表灭屏后依旧生效，2代表灭屏不生效，亮屏可以恢复.
+CMD_SET_CPUFREQ_HISPEED_FREQ = 12,---->修改DVFS interactive governor hispeed
+CMD_SET_CPUFREQ_MIN_SAMPLE_TIME = 13,---->修改DVFS interactive governor min_sample_time
+CMD_SET_CPUFREQ_ABOVE_HISPEED_DELAY = 14,---->修改DVFS interactive governor above_hispeed_delay
+
+//如下几个命令跟CMD_SET_CPU_CORE_BIG_LITTLE_MIN(MAX)有重叠.
+//如果单独设置一个Cluster，建议使用下面的命令，如果同时设置2个cluster，强烈建议使用CMD_SET_CPU_CORE_BIG_LITTLE_MIN(MAX).
+CMD_SET_CLUSTER_CPU_CORE_MIN = 15,----->指定CLUSTER对应的CPU最少颗数，譬如1 2，代表L(cluster1)最少2个核.
+CMD_SET_CLUSTER_CPU_CORE_MAX = 16,----->指定CLUSTER对应的CPU最多颗数，譬如2 0，代表B(cluster2)最多0个核.
+CMD_SET_CLUSTER_CPU_FREQ_MIN = 17,----->指定CLUSTER对应的CPU最低频率，譬如0 817000，代表LL(cluster0)最低频率为817MHZ.
+CMD_SET_CLUSTER_CPU_FREQ_MAX = 18,----->指定CLUSTER对应的CPU最高频率，譬如0 1600000，代表LL(cluster0)最高频率不能超过1.6GHZ.
+
+//适用于大小核架构.
+CMD_SET_ROOT_CLUSTER = 19,------> 0为LL,1为L,2为B.
+//6750跟6755之后的平台都会支持.
+CMD_SET_CPU_UP_THRESHOLD = 20,------> 调整CPU up水位，game会把CPU up从95改成80(6797)/50(6757)
+CMD_SET_CPU_DOWN_THRESHOLD = 21,------> 调整CPU down水位,game会把CPU down从85改成70(6797)/40(6757)
+CMD_SET_PERF_INDEX = 22,------>perf_index 数值越小，perf越好 /proc/ppm/policy/perfserv_perf_idx
+CMD_SET_NORMALIZED_PERF_INDEX = 23,
+CMD_SET_PPM_MODE = 24,
+CMD_SET_RUSH_BOOST_ENABLED = 25,------>0代表关闭rush boost，1代表开启rush boost, rush boost是指少核快速开启到多核的一个功能
+
+//6797平台会支持.
+CMD_SET_HEAVY_TASK_ENABLED = 26,------>0代表关闭heavy_task_detect，1代表开启heavy_task_detect, heavy_task_detect是6797检测到重载的loading，线程迁移大核的功能.
+CMD_SET_SCN_VALID = 27,
+CMD_SET_IBOOST_UP_THRESHOLD = 28,
+CMD_SET_IBOOST_DOWN_THRESHOLD = 29,
+CMD_SET_SCHED_HTASK_THRESH = 30,------>重载进程判断的水位，默认是1000，越高越难往大核迁移. 最高是1024.
+CMD_SET_SCHED_AVG_HTASK_AC = 31,
+CMD_SET_SCHED_AVG_HTASK_THRESH = 32,------>重载进程判断的水位，默认是1000，越高越难往大核迁移. 最高是1024.
+CMD_SET_ENABLE_WECHAT_PROXY = 33,
+CMD_SET_WIPHY_CAM = 170,
+};
+
+
+白名单：
+path: /vendor/mediatek/proprietary/hardware/perfservice/$platform/app_list/perfservapplist.txt
+最终会build在/system/etc/perfservapplist.txt
+格式：
+命令 包名 参数值(注意这里是不带逗号的)
+包名可以对应多个命令.
+一般都是设定CPU上限或者CPU下限.
+如下设定大笔，神庙逃亡2开3个核.
+CMD_SET_CPU_CORE_MIN com.imangi.templerun2 3
+如下设定是代表针对Cluster2，最多开0个核.
+CMD_SET_CLUSTER_CPU_CORE_MAX com.UCMobile 2 0
+一般情况下如果比较在意游戏的功耗，可以针对某个具体的游戏优先开小核.
+譬如地铁跑酷优先开小核.
+CMD_SET_ROOT_CLUSTER com.kiloo.subwaysurf 0
+
+预设定场景：
+path: /vendor/mediatek/proprietary/hardware/perfservice/$platform/scn_tbl/perfservscntbl.txt
+格式：
+命令,场景,参数(注意这里是带逗号的)
+/vendor/mediatek/proprietary/hardware/perfservice/perfservicenative/perfservice_types.h
+enum {
+SCN_NONE = 0,
+//APP切换.
+SCN_APP_SWITCH = 1, /* apply both for */
+//APP横屏
+SCN_APP_ROTATE = 2,
+//touch事件.
+SCN_APP_TOUCH = 3,
+SCN_SW_SNOOP_BOOST = 4, // SCN_DONT_USE1
+//render boost, 绘图时会有一段时间的渲染.
+SCN_SW_FRAME_UPDATE = 5,
+SCN_APP_LAUNCH = 6,
+//游戏场景.
+SCN_GAMING = 7,
+SCN_120HZ_DISPLAY = 8,
+SCN_SW_LEVEL_BOOST = 9,
+SCN_RUNTIME_BOOST = 10,
+SCN_NUM = 11,
+SCN_APP_RUN_BASE = SCN_NUM,
+};
+
+针对touch事件，开启3个核1.014G.
+CMD_SET_CPU_CORE_MIN, SCN_APP_TOUCH, 3
+CMD_SET_CPU_FREQ_MIN, SCN_APP_TOUCH, 1014000
+针对render boost，开启3个核1.014G
+CMD_SET_CPU_CORE_MIN, SCN_SW_FRAME_UPDATE, 3
+CMD_SET_CPU_FREQ_MIN, SCN_SW_FRAME_UPDATE, 1014000
+针对render boost 调整CPU up down threshold.
+CMD_SET_CPU_UP_THRESHOLD, SCN_SW_FRAME_UPDATE, 80
+CMD_SET_CPU_DOWN_THRESHOLD, SCN_SW_FRAME_UPDATE, 65
+针对APP_SWITCH场景，大核的最小频率，最小是5G(底层会转换成big core的最大频率)，小核最小频率为1.144G.
+CMD_SET_CPU_FREQ_BIG_LITTLE_MIN, SCN_APP_SWITCH, 5000000, 1144000
+针对APP_SWITCH场景，大核最少核数是4个，小核最少核数为0个.
+CMD_SET_CPU_CORE_BIG_LITTLE_MIN, SCN_APP_SWITCH, 4, 0
+针对APP_SWITCH场景，vcore为performance mode(参考说明那项).
+CMD_SET_VCORE, SCN_APP_SWITCH, 3
+针对SCN_APP_ROTATE，频率都设定到最高.
+CMD_SET_CPU_FREQ_BIG_LITTLE_MIN, SCN_APP_ROTATE, 5000000, 1144000
+针对SCN_APP_ROTATE, vcore为performance mode(参考说明那项).
+CMD_SET_VCORE, SCN_APP_ROTATE, 3
+
+PerfService在framework跟APK 上面的应用实例:
+1.//需要引入如下的两个包
+import com.mediatek.perfservice.IPerfServiceWrapper;
+import com.mediatek.perfservice.PerfServiceWrapper;
+2.//构建一个PerfServiceWrapper对象
+mPerfService = new PerfServiceWrapper(null);
+static int mPerfServiceHandle_base_cpu = -1;
+3.//注册场景的行为
+if (mPerfService != null && mPerfServiceHandle_base_cpu == -1) {
+4.//首先是获取一个handle，通过userRegScn，系统会返回一个int类型的handle.
+mPerfServiceHandle_base_cpu = mPerfService.userRegScn();
+//userRegScnConfig函数的格式是：
+//参数1：注册的handle，
+//参数2：命令
+//参数3跟参数4是根据参数2来定的，如果参数2只需要设置1个参数，那就只需要参数3，其他的参数都设定为-1.
+//参数5跟参数6，都设定成-1(代表不care)，后续扩展用.
+
+5.//配置参数
+//CMD_SET_SCREEN_OFF_STATE代表灭屏后是否需要
+mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, 2, -1, -1, -1);
+
+//如果设置两个cluster建议使用下面两个命令.
+//CMD_SET_CPU_CORE_BIG_LITTLE_MIN，L最少核数2个核，LL最少核数是2个核
+mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_CPU_CORE_BIG_LITTLE_MIN, 2, 2, -1, -1);
+mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_CPU_FREQ_BIG_LITTLE_MIN, 819000, 819000, -1, -1);
+
+//如果设置一个cluster建议使用下面的命令.
+//mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_CLUSTER_CPU_CORE_MIN, 0, base_cpu_num_cluster0, -1, -1);
+//mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_CLUSTER_CPU_FREQ_MIN, 0, 819000, -1, -1);
+
+//mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_CLUSTER_CPU_CORE_MIN, 1, base_cpu_num_cluster1, -1, -1);
+//mPerfService.userRegScnConfig(mPerfServiceHandle_base_cpu, IPerfServiceWrapper.CMD_SET_CLUSTER_CPU_FREQ_MIN, 1, 819000, -1, -1);
+}
+6.//使能：
+mPerfService.userEnable(mPerfServiceHandle_base_cpu);
+7.//关闭：
+mPerfService.userDisable(mPerfServiceHandle_base_cpu);
+8.//如果应用，或者服务退出，请务必注销：
+mPerfService.userUnregScn(mPerfServiceHandle_base_cpu);
