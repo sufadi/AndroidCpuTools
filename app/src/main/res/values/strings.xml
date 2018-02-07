@@ -89,6 +89,7 @@
     <string name="settings_ok">CPU Enable Settings</string>
     <string name="settings_no">CPU Disable Settings</string>
     <string name="settings_screenoff_enable">CPU Settings Enable When Screen Off </string>
-    <string name="settings_screenoff_enable_yes">Enable</string>
-    <string name="settings_screenoff_enable_no">Disable</string>
+    <string name="settings_screenoff_enable_yes">After the screen is still effective</string>
+    <string name="settings_screenoff_enable_no">After the screen will not take effect</string>
+    <string name="settings_screenoff_enable_batter">Off screen does not take effect, bright screen can be restored</string>
 </resources>

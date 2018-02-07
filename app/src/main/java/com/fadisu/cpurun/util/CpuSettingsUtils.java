@@ -86,7 +86,6 @@ public class CpuSettingsUtils {
 
             if (PERFHANDLE_ERROR_CODE != mCurPerfHandle) {
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_VCORE, mode, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
-                // screenOffEnable();
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 
                 Log.d(TAG, "setCpuVcoreMode mode = " + mode + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
@@ -110,7 +109,6 @@ public class CpuSettingsUtils {
 
             if (PERFHANDLE_ERROR_CODE != mCurPerfHandle) {
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MAX, freq, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
-                // screenOffEnable();
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 
                 Log.d(TAG, "setCpuFreq freq = " + freq + ", minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mCurPerfHandle = " + mCurPerfHandle);
@@ -129,7 +127,7 @@ public class CpuSettingsUtils {
      * @param coreMin
      * @param coreMax
      */
-    public void setCpu(int minCpuNumber, int maxCpuFreq, int mode, int freqMin, int freqMax, int coreMin, int coreMax, boolean screenOffEnable) {
+    public void setCpu(int minCpuNumber, int maxCpuFreq, int mode, int freqMin, int freqMax, int coreMin, int coreMax, int screenOffVaule) {
         userDisableIfNeed();
         if (null != mPerfServiceWrapper) {
             mCurPerfHandle = mPerfServiceWrapper.userReg(minCpuNumber, maxCpuFreq);
@@ -143,22 +141,13 @@ public class CpuSettingsUtils {
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MIN, freqMin, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MAX, freqMax, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
 
-                if (screenOffEnable) {
-                    mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
-                }
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, screenOffVaule, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
 
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 
                 Log.d(TAG, "setCpu minCpuNumber = " + minCpuNumber + ", maxCpuFreq = " + maxCpuFreq + ", mode = " + mode + ", freqMin = " + freqMin + ", freqMax = " + freqMax + ", coreMin = " + coreMin + ", coreMax = " + coreMax + ", mCurPerfHandle = " + mCurPerfHandle);
             }
         }
-    }
-
-    /**
-     * 默认灭屏持续生效
-     */
-    public void screenOffEnable() {
-        mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, mPerfServiceWrapper.SCREEN_OFF_ENABLE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
     }
 
     /**

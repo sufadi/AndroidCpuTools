@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.util.CpuSettingsUtils;
 import com.fadisu.cpurun.util.CpuUtils;
+import com.mediatek.perfservice.IPerfServiceWrapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -141,14 +142,16 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
         int freqMax = (int) sp_cpu_freq_max.getSelectedItem();
 
         String screenOffStr = (String) sp_screenof_enable.getSelectedItem();
-        boolean isScreenOffEnable = false;
+        int screenOffVaule = 0;
         if (mContext.getString(R.string.settings_screenoff_enable_yes).equals(screenOffStr)) {
-            isScreenOffEnable = true;
-        } else {
-            isScreenOffEnable = false;
+            screenOffVaule = IPerfServiceWrapper.SCREEN_OFF_ENABLE;
+        } else if (mContext.getString(R.string.settings_screenoff_enable_no).equals(screenOffStr)) {
+            screenOffVaule = IPerfServiceWrapper.SCREEN_OFF_DISABLE;
+        } else if (mContext.getString(R.string.settings_screenoff_enable_batter).equals(screenOffStr)) {
+            screenOffVaule = IPerfServiceWrapper.SCREEN_OFF_WAIT_RESTORE;
         }
 
-        mCpuSettingsUtils.setCpu(coreMax, freqMax, vcoreMode, freqMin, freqMax, coreMin, coreMax, isScreenOffEnable);
+        mCpuSettingsUtils.setCpu(coreMax, freqMax, vcoreMode, freqMin, freqMax, coreMin, coreMax, screenOffVaule);
     }
 
     private void stopCpuSettings() {
@@ -157,6 +160,7 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
 
     private ArrayList<String> getScreenOffEnableList(Context mContext) {
         ArrayList<String> result = new ArrayList<>();
+        result.add(mContext.getString(R.string.settings_screenoff_enable_batter));
         result.add(mContext.getString(R.string.settings_screenoff_enable_no));
         result.add(mContext.getString(R.string.settings_screenoff_enable_yes));
         return result;

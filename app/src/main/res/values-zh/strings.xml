@@ -89,6 +89,8 @@
     <string name="settings_ok">CPU 启用设置</string>
     <string name="settings_no">CPU 取消设置</string>
     <string name="settings_screenoff_enable">息屏后CPU设置是否失效</string>
-    <string name="settings_screenoff_enable_yes">不失效</string>
-    <string name="settings_screenoff_enable_no">失效</string>
+    <string name="settings_screenoff_enable_yes">灭屏后依旧生效</string>
+    <string name="settings_screenoff_enable_no">灭屏后就会不生效</string>
+    <string name="settings_screenoff_enable_batter"> 灭屏不生效，亮屏可以恢复</string>
+
 </resources>
