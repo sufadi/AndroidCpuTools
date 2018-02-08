@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.adapter.CustomAdapter;
+import com.fadisu.cpurun.bean.GpuFreqInfo;
 import com.fadisu.cpurun.bean.ScreenInfo;
 import com.fadisu.cpurun.util.BuildHelper;
+import com.fadisu.cpurun.util.GpuUtils;
 import com.fadisu.cpurun.util.RendererUtil;
 import com.fadisu.cpurun.util.ScreenUtil;
 
@@ -91,6 +93,9 @@ public class DisplayFragment extends Fragment implements CustomAdapter.LayoutVie
         result.add(getString(R.string.sys_screen_real_metrics) + mScreenInfo.screenRealMetrics);
         result.add(getString(R.string.screen_density) + mScreenInfo.densityDpiStr);
         result.add(getString(R.string.screen_size) + mScreenInfo.sizeStr);
+
+        GpuFreqInfo mGpuFreqInfo = GpuUtils.getGpuFreq();
+        result.add(mContext.getString(R.string.gpu_freq) + " [ " + mGpuFreqInfo.id +" ] " + mGpuFreqInfo.freq + mContext.getString(R.string.cpu_hz));
 
         result.add(getString(R.string.gpu_freq_volt));
         result.addAll(ScreenUtil.getGpuFreqVolt());

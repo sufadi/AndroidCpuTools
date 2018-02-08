@@ -11,7 +11,7 @@
     <string name="title_cpu_info">CPU Info 信息</string>
     <string name="title_prop">Prop 属性文件</string>
     <string name="title_meminfo">内存信息</string>
-    <string name="title_display">显示信息</string>
+    <string name="title_display">GPU 信息</string>
     <string name="title_cpu_status">CPU 状态</string>
     <string name="title_cpu_scene_freq">CPU场景频率</string>
     <string name="title_cpu_voltage">CPU 电压</string>
@@ -41,6 +41,8 @@
     <string name="cpu_online_status_offline">关闭</string>
     <string name="cpu_stoped">CPU %1$d: 已经停止</string>
     <string name="cpu_usage">CPU 使用率:</string>
+
+    <string name="gpu_freq">GPU 当前频率:</string>
 
     <string name="phone_mode">本机型号:  </string>
     <string name="phone_product">手机制造商: </string>

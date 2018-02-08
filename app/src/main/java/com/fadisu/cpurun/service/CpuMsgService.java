@@ -9,7 +9,9 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import com.fadisu.cpurun.R;
+import com.fadisu.cpurun.bean.GpuFreqInfo;
 import com.fadisu.cpurun.util.CpuUtils;
+import com.fadisu.cpurun.util.GpuUtils;
 import com.fadisu.cpurun.util.ProcCpuStatUtil;
 import com.fadisu.cpurun.util.ThermalInfoUtil;
 
@@ -80,6 +82,9 @@ public class CpuMsgService extends Service {
                     result.add(mContext.getString(R.string.cpu_usage) + ProcCpuStatUtil.getCpuUsage());
                     result.add(ThermalInfoUtil.getCpuTemparature());
                     result.addAll(CpuUtils.getCpuCurFreq(mContext));
+
+                    GpuFreqInfo mGpuFreqInfo = GpuUtils.getGpuFreq();
+                    result.add(mContext.getString(R.string.gpu_freq) + " [ " + mGpuFreqInfo.id +" ] " + mGpuFreqInfo.freq + mContext.getString(R.string.cpu_hz));
                     if (null != mICpuMsgService) {
                         try {
                             Log.d("CpuMsgService", "getCpuUsage = " + result.get(0));

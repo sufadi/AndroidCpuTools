@@ -11,7 +11,7 @@
     <string name="title_cpu_time">CPU Time</string>
     <string name="title_prop">Prop Info</string>
     <string name="title_meminfo">Memory</string>
-    <string name="title_display">Display</string>
+    <string name="title_display">GPU Info</string>
     <string name="title_cpu_status">CPU status</string>
     <string name="title_cpu_scene_freq">CPU Scene Of  Frequency</string>
     <string name="title_cpu_voltage">CPU Voltage</string>
@@ -41,6 +41,8 @@
     <string name="cpu_online_status_offline">Offline</string>
     <string name="cpu_stoped">CPU %1$d: Stopped</string>
     <string name="cpu_usage">CPU Usage:</string>
+
+    <string name="gpu_freq">GPU Cur Freq:</string>
 
     <string name="phone_product">Phone product: </string>
     <string name="phone_band">Phone band: </string>
