@@ -94,4 +94,5 @@
     <string name="settings_screenoff_enable_yes">After the screen is still effective</string>
     <string name="settings_screenoff_enable_no">After the screen will not take effect</string>
     <string name="settings_screenoff_enable_batter">Off screen does not take effect, bright screen can be restored</string>
+    <string name="settings_gpu_freq">GPU Freq Level Settings:</string>
 </resources>

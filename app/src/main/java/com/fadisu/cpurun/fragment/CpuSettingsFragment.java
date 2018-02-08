@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import com.fadisu.cpurun.R;
 import com.fadisu.cpurun.util.CpuSettingsUtils;
 import com.fadisu.cpurun.util.CpuUtils;
+import com.fadisu.cpurun.util.GpuUtils;
 import com.mediatek.perfservice.IPerfServiceWrapper;
 
 import java.util.ArrayList;
@@ -24,17 +25,19 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     private static final String TAG = CpuSettingsFragment.class.getSimpleName();
 
     private List<String> mVcoreList;
+    private List<Integer> mGpuFreqList;
     private List<Integer> mFreqMinList;
     private List<Integer> mFreqMaxList;
     private List<Integer> mCoreMinList;
     private List<Integer> mCoreMaxList;
     private List<String> mScreenOffEnableList;
 
+    private ArrayAdapter<String> mVcoreAdapter;
     private ArrayAdapter<Integer> mFreqMinAdapter;
     private ArrayAdapter<Integer> mFreqMaxAdapter;
-    private ArrayAdapter<String> mVcoreAdapter;
     private ArrayAdapter<Integer> mCoreMinAdapter;
     private ArrayAdapter<Integer> mCoreMaxAdapter;
+    private ArrayAdapter<Integer> mGpuFreqAdapter;
     private ArrayAdapter<String> mScreenOffEnableMaxAdapter;
 
     private Context mContext;
@@ -45,6 +48,7 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     private Button btn_no;
     private Button btn_yes;
 
+    private Spinner sp_gpu_freq;
     private Spinner sp_cpu_vcore;
     private Spinner sp_cpu_core_min;
     private Spinner sp_cpu_core_max;
@@ -71,6 +75,7 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
         btn_no = (Button) mView.findViewById(R.id.btn_no);
         btn_yes = (Button) mView.findViewById(R.id.btn_yes);
 
+        sp_gpu_freq = (Spinner) mView.findViewById(R.id.sp_gpu_freq);
         sp_cpu_vcore = (Spinner) mView.findViewById(R.id.sp_cpu_vcore);
         sp_cpu_core_min = (Spinner) mView.findViewById(R.id.sp_cpu_core_min);
         sp_cpu_core_max = (Spinner) mView.findViewById(R.id.sp_cpu_core_max);
@@ -106,6 +111,10 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
         mScreenOffEnableList = getScreenOffEnableList(mContext);
         mScreenOffEnableMaxAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_dropdown_item, mScreenOffEnableList);
         sp_screenof_enable.setAdapter(mScreenOffEnableMaxAdapter);
+
+        mGpuFreqList = getGpuFreqLevel();
+        mGpuFreqAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_dropdown_item, mGpuFreqList);
+        sp_gpu_freq.setAdapter(mGpuFreqAdapter);
     }
 
     private void initListeners() {
@@ -151,7 +160,13 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
             screenOffVaule = IPerfServiceWrapper.SCREEN_OFF_WAIT_RESTORE;
         }
 
-        mCpuSettingsUtils.setCpu(coreMax, freqMax, vcoreMode, freqMin, freqMax, coreMin, coreMax, screenOffVaule);
+        //获取/d/ged/hal/total_gpu_freq_level_count节点，可以知道系统有多少级GPU 频率.
+        //而最高频率就是total_gpu_freq_level_count - 1.
+        //譬如针对6750T total_gpu_freq_level_count等于3，
+        //所以设定最高频率时，为3-1 = 2，次高频率是2-1 = 1，依次递减，为0代表取消.
+        int gpuLevel = (int) sp_gpu_freq.getSelectedItem();
+
+        mCpuSettingsUtils.setCpu(coreMax, freqMax, vcoreMode, freqMin, freqMax, coreMin, coreMax, screenOffVaule, gpuLevel);
     }
 
     private void stopCpuSettings() {
@@ -185,6 +200,14 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
     private ArrayList<Integer> getCoreMaxList() {
         ArrayList<Integer> result = new ArrayList<>();
         for (int i = mCpuSettingsUtils.CPU_NUMBER; i > 0; i--) {
+            result.add(i);
+        }
+        return result;
+    }
+
+    private ArrayList<Integer> getGpuFreqLevel() {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i <GpuUtils.getGpuFreqLevel(); i++) {
             result.add(i);
         }
         return result;

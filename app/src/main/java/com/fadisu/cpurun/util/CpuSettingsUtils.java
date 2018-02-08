@@ -127,7 +127,7 @@ public class CpuSettingsUtils {
      * @param coreMin
      * @param coreMax
      */
-    public void setCpu(int minCpuNumber, int maxCpuFreq, int mode, int freqMin, int freqMax, int coreMin, int coreMax, int screenOffVaule) {
+    public void setCpu(int minCpuNumber, int maxCpuFreq, int mode, int freqMin, int freqMax, int coreMin, int coreMax, int screenOffVaule, int gpuLevel) {
         userDisableIfNeed();
         if (null != mPerfServiceWrapper) {
             mCurPerfHandle = mPerfServiceWrapper.userReg(minCpuNumber, maxCpuFreq);
@@ -136,12 +136,17 @@ public class CpuSettingsUtils {
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_VCORE, mode, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
 
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_CORE_MIN, coreMin, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_CORE_MAX, coreMax, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
 
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MIN, freqMin, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_CPU_FREQ_MAX, freqMax, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
 
                 mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_SCREEN_OFF_STATE, screenOffVaule, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_GPU_FREQ_MIN, gpuLevel, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+                mPerfServiceWrapper.userRegScnConfig(mCurPerfHandle, mPerfServiceWrapper.CMD_SET_GPU_FREQ_MAX, gpuLevel, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE, PARAM_DEFAULT_VALUE);
+
 
                 mPerfServiceWrapper.userEnable(mCurPerfHandle);
 

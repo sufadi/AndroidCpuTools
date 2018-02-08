@@ -10,7 +10,7 @@ import java.io.IOException;
 public class GpuUtils {
 
     /**
-     * CPU 场景配置文件
+     * GPU 场景配置文件
      *
      * @return
      */
@@ -24,6 +24,33 @@ public class GpuUtils {
                 String[] info = line.split("\\s+");
                 result.id = Integer.parseInt(info[0]);
                 result.freq = Integer.parseInt(info[1]);
+            }
+
+            br.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
+    public static int getGpuFreqLevel() {
+        int result = 0;
+        BufferedReader br = null;
+        try {
+            String line;
+            br = new BufferedReader(new FileReader("/d/ged/hal/total_gpu_freq_level_count"));
+            if ((line = br.readLine()) != null) {
+                result = Integer.parseInt(line);
             }
 
             br.close();

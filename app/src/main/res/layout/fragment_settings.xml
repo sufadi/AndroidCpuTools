@@ -83,6 +83,19 @@
         android:layout_height="wrap_content">
     </Spinner>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_gpu_freq"
+        android:textColor="@color/item_title_color"
+        android:textSize="@dimen/item_title_size" />
+
+    <Spinner
+        android:id="@+id/sp_gpu_freq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
     <Button
         android:id="@+id/btn_yes"
         android:layout_width="match_parent"

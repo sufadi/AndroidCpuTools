@@ -94,5 +94,7 @@
     <string name="settings_screenoff_enable_yes">灭屏后依旧生效</string>
     <string name="settings_screenoff_enable_no">灭屏后就会不生效</string>
     <string name="settings_screenoff_enable_batter"> 灭屏不生效，亮屏可以恢复</string>
+    <string name="settings_gpu_freq">GPU 频率级别设置:</string>
+
 
 </resources>
