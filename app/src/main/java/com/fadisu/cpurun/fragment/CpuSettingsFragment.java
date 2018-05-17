@@ -160,12 +160,7 @@ public class CpuSettingsFragment extends Fragment implements View.OnClickListene
             screenOffVaule = IPerfServiceWrapper.SCREEN_OFF_WAIT_RESTORE;
         }
 
-        //获取/d/ged/hal/total_gpu_freq_level_count节点，可以知道系统有多少级GPU 频率.
-        //而最高频率就是total_gpu_freq_level_count - 1.
-        //譬如针对6750T total_gpu_freq_level_count等于3，
-        //所以设定最高频率时，为3-1 = 2，次高频率是2-1 = 1，依次递减，为0代表取消.
         int gpuLevel = (int) sp_gpu_freq.getSelectedItem();
-
         mCpuSettingsUtils.setCpu(coreMax, freqMax, vcoreMode, freqMin, freqMax, coreMin, coreMax, screenOffVaule, gpuLevel);
     }
 
